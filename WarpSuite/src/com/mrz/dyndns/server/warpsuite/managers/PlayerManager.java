@@ -29,7 +29,7 @@ public class PlayerManager implements Listener
 		
 		for(Player player : plugin.getServer().getOnlinePlayers())
 		{
-			addPlayer(player);
+			addPlayer(player.getName());
 		}
 	}
 	
@@ -46,10 +46,15 @@ public class PlayerManager implements Listener
 		playerWarpConfigs.clear();
 	}
 	
+	public WarpManager getWarpManager(String player)
+	{
+		return playerWarpConfigs.get(player);
+	}
+	
 	@EventHandler
 	public void onPlayerJoin(PlayerJoinEvent event)
 	{
-		addPlayer(event.getPlayer());
+		addPlayer(event.getPlayer().getName());
 	}
 	
 	@EventHandler
@@ -58,10 +63,10 @@ public class PlayerManager implements Listener
 		removePlayer(event.getPlayer().getName());
 	}
 	
-	private void addPlayer(Player player)
+	private void addPlayer(String player)
 	{
-		playerWarpConfigs.put(player.getName(), new WarpManager(new MyConfig("players/" + player.getName(), plugin)));
-		Util.Debug("Added player " + player.getName());
+		playerWarpConfigs.put(player, new WarpManager(new MyConfig("players/" + player, plugin)));
+		Util.Debug("Added player " + player);
 	}
 	
 	private void removePlayer(String player)
