@@ -52,5 +52,6 @@ public class WarpManager
 		config.getCustomConfig().set("Warps." + warpName + ".Z", warp.Z);
 		config.getCustomConfig().set("Warps." + warpName + ".Yaw", warp.Yaw);
 		config.getCustomConfig().set("Warps." + warpName + ".Pitch", warp.Pitch);
+		config.saveCustomConfig();
 	}
 }
