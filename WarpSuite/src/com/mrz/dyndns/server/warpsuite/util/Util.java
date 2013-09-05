@@ -1,6 +1,8 @@
-package com.mrz.dyndns.server.warpsuite;
+package com.mrz.dyndns.server.warpsuite.util;
 
 import java.util.logging.Level;
+
+import com.mrz.dyndns.server.warpsuite.WarpSuite;
 
 public final class Util
 {

@@ -3,6 +3,8 @@ package com.mrz.dyndns.server.warpsuite;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.mrz.dyndns.server.CommandSystem.CommandSystem;
+import com.mrz.dyndns.server.warpsuite.util.Config;
+import com.mrz.dyndns.server.warpsuite.util.Util;
 
 public class WarpSuite extends JavaPlugin
 {

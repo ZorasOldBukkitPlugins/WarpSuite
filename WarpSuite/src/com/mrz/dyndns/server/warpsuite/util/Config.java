@@ -1,4 +1,4 @@
-package com.mrz.dyndns.server.warpsuite;
+package com.mrz.dyndns.server.warpsuite.util;
 
 import org.bukkit.configuration.Configuration;
 
@@ -8,7 +8,7 @@ public final class Config
 	{
 	}
 	
-	protected static void load(Configuration config)
+	public static void load(Configuration config)
 	{
 		timer = config.getInt("timer", 10);
 		radius = config.getInt("radius", 10);
