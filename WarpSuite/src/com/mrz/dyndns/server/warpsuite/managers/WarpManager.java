@@ -44,4 +44,13 @@ public class WarpManager
 		
 		return new SimpleLocation(x, y, z, yaw, pitch);
 	}
+	
+	public void saveWarp(String warpName, SimpleLocation warp)
+	{
+		config.getCustomConfig().set("Warps." + warpName + ".X", warp.X);
+		config.getCustomConfig().set("Warps." + warpName + ".Y", warp.Y);
+		config.getCustomConfig().set("Warps." + warpName + ".Z", warp.Z);
+		config.getCustomConfig().set("Warps." + warpName + ".Yaw", warp.Yaw);
+		config.getCustomConfig().set("Warps." + warpName + ".Pitch", warp.Pitch);
+	}
 }
