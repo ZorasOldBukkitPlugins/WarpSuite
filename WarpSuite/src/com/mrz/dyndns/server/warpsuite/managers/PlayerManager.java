@@ -18,6 +18,7 @@ import com.mrz.dyndns.server.warpsuite.util.Util;
 
 public class PlayerManager implements Listener
 {
+	//TODO: player needs it's own class so I can keep track of things like if the player is trying to warp or not
 	public PlayerManager(WarpSuite plugin)
 	{
 		this.plugin = plugin;

@@ -4,13 +4,16 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import com.mrz.dyndns.server.CommandSystem.CommandSystem;
 import com.mrz.dyndns.server.warpsuite.managers.PlayerManager;
+import com.mrz.dyndns.server.warpsuite.managers.WarpManager;
 import com.mrz.dyndns.server.warpsuite.util.Config;
+import com.mrz.dyndns.server.warpsuite.util.MyConfig;
 import com.mrz.dyndns.server.warpsuite.util.Util;
 
 public class WarpSuite extends JavaPlugin
 {
 	private CommandSystem cs;
 	private PlayerManager playerManager;
+	private WarpManager publicWarpManager;
 	
 	@Override
 	public void onEnable()
@@ -25,6 +28,7 @@ public class WarpSuite extends JavaPlugin
 		Config.load(getConfig());
 		
 		playerManager = new PlayerManager(this);
+		publicWarpManager = new WarpManager(new MyConfig("public", this));
 		
 		getServer().getPluginManager().registerEvents(playerManager, this);
 	}
@@ -34,5 +38,16 @@ public class WarpSuite extends JavaPlugin
 	{
 		playerManager.clearPlayers();
 		cs.close();
+	}
+	
+	//you will never need it
+	public WarpManager getPublicWarpManager()
+	{
+		return publicWarpManager;
+	}
+	
+	public PlayerManager getPlayerManager()
+	{
+		return playerManager;
 	}
 }
