@@ -14,6 +14,9 @@ public class WarpSuite extends JavaPlugin
 		cs = new CommandSystem(this);
 		
 		getConfig().options().copyDefaults(true);
+		saveConfig();
+		
+		
 	}
 	
 	@Override
