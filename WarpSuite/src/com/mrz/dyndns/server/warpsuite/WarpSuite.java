@@ -11,10 +11,14 @@ public class WarpSuite extends JavaPlugin
 	@Override
 	public void onEnable()
 	{
+		Util.initialize(this);
+		Util.setDebugging(true);
+		
 		cs = new CommandSystem(this);
 		
 		getConfig().options().copyDefaults(true);
 		saveConfig();
+		Config.load(getConfig());
 		
 		
 	}
