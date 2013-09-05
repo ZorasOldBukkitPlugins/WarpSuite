@@ -23,7 +23,7 @@ public final class Util
 		isDebugging = debugging;
 	}
 	
-	public static void Debig(Object message)
+	public static void Debug(Object message)
 	{
 		if(isDebugging == true)
 		{
