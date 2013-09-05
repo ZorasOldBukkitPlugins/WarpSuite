@@ -23,7 +23,7 @@ public class PlayerManager implements Listener
 		String dir = plugin.getDataFolder().getAbsolutePath().toString() + "/players";
 		new File(dir).mkdirs();
 		
-		warps = new HashMap<String, MyConfig>();
+		playerWarpConfigs = new HashMap<String, MyConfig>();
 		
 		for(Player player : plugin.getServer().getOnlinePlayers())
 		{
@@ -32,7 +32,12 @@ public class PlayerManager implements Listener
 	}
 	
 	private final WarpSuite plugin;
-	private final Map<String, MyConfig> warps;
+	private final Map<String, MyConfig> playerWarpConfigs;
+	
+	public void clearPlayers()
+	{
+		playerWarpConfigs.clear();
+	}
 	
 	@EventHandler
 	public void onPlayerJoin(PlayerJoinEvent event)
@@ -48,15 +53,15 @@ public class PlayerManager implements Listener
 	
 	private void addPlayer(Player player)
 	{
-		warps.put(player.getName(), new MyConfig("players/" + player.getName(), plugin));
+		playerWarpConfigs.put(player.getName(), new MyConfig("players/" + player.getName(), plugin));
 		Util.Debug("Added player " + player.getName());
 	}
 	
 	private void removePlayer(Player player)
 	{
-		if(warps.containsKey(player.getName()))
+		if(playerWarpConfigs.containsKey(player.getName()))
 		{
-			warps.remove(player.getName());
+			playerWarpConfigs.remove(player.getName());
 			Util.Debug("Removed player " + player.getName());
 		}
 	}
