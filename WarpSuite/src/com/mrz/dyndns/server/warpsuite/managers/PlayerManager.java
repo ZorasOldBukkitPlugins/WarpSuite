@@ -1,7 +1,9 @@
 package com.mrz.dyndns.server.warpsuite.managers;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.bukkit.entity.Player;
@@ -36,6 +38,11 @@ public class PlayerManager implements Listener
 	
 	public void clearPlayers()
 	{
+		List<String> players = new ArrayList<String>(playerWarpConfigs.keySet());
+		for(String player : players)
+		{
+			removePlayer(player);
+		}
 		playerWarpConfigs.clear();
 	}
 	
@@ -48,7 +55,7 @@ public class PlayerManager implements Listener
 	@EventHandler
 	public void onPlayerQuit(PlayerQuitEvent event)
 	{
-		removePlayer(event.getPlayer());
+		removePlayer(event.getPlayer().getName());
 	}
 	
 	private void addPlayer(Player player)
@@ -57,12 +64,13 @@ public class PlayerManager implements Listener
 		Util.Debug("Added player " + player.getName());
 	}
 	
-	private void removePlayer(Player player)
+	private void removePlayer(String player)
 	{
-		if(playerWarpConfigs.containsKey(player.getName()))
+		if(playerWarpConfigs.containsKey(player))
 		{
-			playerWarpConfigs.remove(player.getName());
-			Util.Debug("Removed player " + player.getName());
+			playerWarpConfigs.get(player).saveCustomConfig();
+			playerWarpConfigs.remove(player);
+			Util.Debug("Removed player " + player);
 		}
 	}
 }

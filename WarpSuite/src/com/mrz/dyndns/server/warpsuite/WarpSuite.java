@@ -32,6 +32,7 @@ public class WarpSuite extends JavaPlugin
 	@Override
 	public void onDisable()
 	{
+		playerManager.clearPlayers();
 		cs.close();
 	}
 }
