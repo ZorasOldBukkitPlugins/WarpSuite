@@ -1,0 +1,12 @@
+Folder,Files,LOC,SLOC-P,SLOC-L,MVG,BLOC,C&SLOC,CLOC,CWORD,HCLOC,HCWORD
+Total,10,526,415,262,36,95,0,16,60,0,0
+E:\Programming\Git\WarpSuite\WarpSuite\WarpSuite,10,526,415,262,36,95,0,16,60,0,0
+E:\Programming\Git\WarpSuite\WarpSuite\WarpSuite\src,10,526,415,262,36,95,0,16,60,0,0
+E:\Programming\Git\WarpSuite\WarpSuite\WarpSuite\src\com,10,526,415,262,36,95,0,16,60,0,0
+E:\Programming\Git\WarpSuite\WarpSuite\WarpSuite\src\com\mrz,10,526,415,262,36,95,0,16,60,0,0
+E:\Programming\Git\WarpSuite\WarpSuite\WarpSuite\src\com\mrz\dyndns,10,526,415,262,36,95,0,16,60,0,0
+E:\Programming\Git\WarpSuite\WarpSuite\WarpSuite\src\com\mrz\dyndns\server,10,526,415,262,36,95,0,16,60,0,0
+E:\Programming\Git\WarpSuite\WarpSuite\WarpSuite\src\com\mrz\dyndns\server\warpsuite,10,526,415,262,36,95,0,16,60,0,0
+E:\Programming\Git\WarpSuite\WarpSuite\WarpSuite\src\com\mrz\dyndns\server\warpsuite\managers,2,135,111,75,6,24,0,0,0,0,0
+E:\Programming\Git\WarpSuite\WarpSuite\WarpSuite\src\com\mrz\dyndns\server\warpsuite\permissions,2,78,57,24,5,17,0,4,4,0,0
+E:\Programming\Git\WarpSuite\WarpSuite\WarpSuite\src\com\mrz\dyndns\server\warpsuite\util,4,155,126,86,8,27,0,2,11,0,0

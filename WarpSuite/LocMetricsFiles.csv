@@ -1,0 +1,11 @@
+File,LOC,SLOC-P,SLOC-L,MVG,BLOC,C&SLOC,CLOC,CWORD,HCLOC,HCWORD
+E:\Programming\Git\WarpSuite\WarpSuite\WarpSuite\src\com\mrz\dyndns\server\warpsuite\WarpSuite.java,54,41,29,2,12,0,1,5,0,0
+E:\Programming\Git\WarpSuite\WarpSuite\WarpSuite\src\com\mrz\dyndns\server\warpsuite\WarpSuitePlayer.java,104,80,48,15,15,0,9,40,0,0
+E:\Programming\Git\WarpSuite\WarpSuite\WarpSuite\src\com\mrz\dyndns\server\warpsuite\managers\PlayerManager.java,82,67,43,4,15,0,0,0,0,0
+E:\Programming\Git\WarpSuite\WarpSuite\WarpSuite\src\com\mrz\dyndns\server\warpsuite\managers\WarpManager.java,53,44,32,2,9,0,0,0,0,0
+E:\Programming\Git\WarpSuite\WarpSuite\WarpSuite\src\com\mrz\dyndns\server\warpsuite\permissions\NumeralPermissions.java,32,25,15,4,7,0,0,0,0,0
+E:\Programming\Git\WarpSuite\WarpSuite\WarpSuite\src\com\mrz\dyndns\server\warpsuite\permissions\Permissions.java,46,32,9,1,10,0,4,4,0,0
+E:\Programming\Git\WarpSuite\WarpSuite\WarpSuite\src\com\mrz\dyndns\server\warpsuite\util\Config.java,30,25,19,0,5,0,0,0,0,0
+E:\Programming\Git\WarpSuite\WarpSuite\WarpSuite\src\com\mrz\dyndns\server\warpsuite\util\MyConfig.java,59,47,35,5,10,0,2,11,0,0
+E:\Programming\Git\WarpSuite\WarpSuite\WarpSuite\src\com\mrz\dyndns\server\warpsuite\util\SimpleLocation.java,20,17,13,0,3,0,0,0,0,0
+E:\Programming\Git\WarpSuite\WarpSuite\WarpSuite\src\com\mrz\dyndns\server\warpsuite\util\Util.java,46,37,19,3,9,0,0,0,0,0
