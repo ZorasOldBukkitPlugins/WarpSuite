@@ -16,7 +16,7 @@ public enum Coloring
 	
 	private final ChatColor color;
 	
-	public ChatColor getColor()
+	public ChatColor color()
 	{
 		return color;
 	}
