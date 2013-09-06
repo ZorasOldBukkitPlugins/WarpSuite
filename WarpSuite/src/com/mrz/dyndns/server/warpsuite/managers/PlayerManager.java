@@ -15,6 +15,7 @@ import org.bukkit.permissions.PermissionAttachmentInfo;
 
 import com.mrz.dyndns.server.warpsuite.WarpSuite;
 import com.mrz.dyndns.server.warpsuite.WarpSuitePlayer;
+import com.mrz.dyndns.server.warpsuite.permissions.NumeralPermissions;
 import com.mrz.dyndns.server.warpsuite.util.Util;
 
 public class PlayerManager implements Listener
@@ -55,11 +56,7 @@ public class PlayerManager implements Listener
 	@EventHandler
 	public void onPlayerJoin(PlayerJoinEvent event)
 	{
-		System.out.println("active permissions:");
-		for(PermissionAttachmentInfo perm : event.getPlayer().getEffectivePermissions())
-		{
-			System.out.println(perm.getPermission());
-		}
+		System.out.println("max warp count: " + NumeralPermissions.COUNT.getAmount(event.getPlayer()));
 		addPlayer(event.getPlayer().getName());
 	}
 	

@@ -21,13 +21,8 @@ public enum NumeralPermissions
 			if(perm.getPermission().startsWith(node))
 			{
 				String[] permParts = perm.getPermission().split("\\.");
-				try {
-					return Integer.parseInt(permParts[permParts.length - 1]);
-				} 
-				catch (NumberFormatException e)
-				{
-					throw e;
-				}
+				String amount = permParts[permParts.length - 1];
+				return Integer.parseInt(amount.substring(0, amount.length() - 1));
 			}
 		}
 		
