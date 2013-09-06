@@ -37,4 +37,9 @@ public final class Util
 			}
 		}
 	}
+	
+	public static long getUnixTime()
+	{
+		return System.currentTimeMillis() / 1000L;
+	}
 }
