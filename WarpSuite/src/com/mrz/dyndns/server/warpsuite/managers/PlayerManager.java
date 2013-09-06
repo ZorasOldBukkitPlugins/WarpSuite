@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -48,7 +49,22 @@ public class PlayerManager implements Listener
 	
 	public WarpSuitePlayer getWarpPlayer(String player)
 	{
-		return players.get(player);
+		if(players.containsKey(player))
+		{
+			return players.get(player);
+		}
+		else
+		{
+			if(Bukkit.getPlayer(player) == null)
+			{
+				return null;
+			}
+			else
+			{
+				addPlayer(player);
+				return players.get(player);
+			}
+		}
 	}
 	
 	@EventHandler
