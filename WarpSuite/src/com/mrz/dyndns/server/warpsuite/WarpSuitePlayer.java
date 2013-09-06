@@ -25,7 +25,7 @@ public class WarpSuitePlayer
 		manager = new WarpManager(config);
 	}
 	
-	public Player toPlayer()
+	public Player getPlayer()
 	{
 		return Bukkit.getPlayer(playerName);
 	}
@@ -55,6 +55,15 @@ public class WarpSuitePlayer
 	public String getName()
 	{
 		return playerName;
+	}
+	
+	/**
+	 * Convenience method for sending messages
+	 * @param message Message sent to the player
+	 */
+	public void sendMessage(String message)
+	{
+		getPlayer().sendMessage(message); 
 	}
 	
 	/**
