@@ -18,6 +18,11 @@ public enum NumeralPermissions
 	
 	public int getAmount(Player p) throws NumberFormatException
 	{
+		if(Permissions.COUNT_INFINITE.checkNode(p))
+		{
+			return -1;
+		}
+		
 		for(PermissionAttachmentInfo perm : p.getEffectivePermissions())
 		{
 			if(perm.getPermission().startsWith(node))
