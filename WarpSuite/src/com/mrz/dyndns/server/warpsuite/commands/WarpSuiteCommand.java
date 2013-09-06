@@ -10,6 +10,7 @@ import org.bukkit.entity.Player;
 import com.mrz.dyndns.server.CommandSystem.SimpleCommand;
 import com.mrz.dyndns.server.warpsuite.WarpSuite;
 import com.mrz.dyndns.server.warpsuite.WarpSuitePlayer;
+import com.mrz.dyndns.server.warpsuite.util.Util;
 
 public abstract class WarpSuiteCommand implements SimpleCommand
 {
@@ -33,6 +34,10 @@ public abstract class WarpSuiteCommand implements SimpleCommand
 		}
 	}
 	
+	protected boolean consoleExecute(String commandName, ConsoleCommandSender sender, List<String> args, List<String> variables)
+	{
+		return Util.mustBePlayer(sender);
+	}
+
 	protected abstract boolean warpPlayerExecute(String commandName, WarpSuitePlayer player, List<String> args, List<String> variables);
-	protected abstract boolean consoleExecute(String commandName, ConsoleCommandSender executor, List<String> args, List<String> variables);
 }
