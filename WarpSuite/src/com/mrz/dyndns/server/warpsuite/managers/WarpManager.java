@@ -29,6 +29,11 @@ public class WarpManager
 		}
 	}
 	
+	public int getAmountOfSetWarps()
+	{
+		return config.getCustomConfig().getConfigurationSection("Warps").getKeys(false).size();
+	}
+	
 	public SimpleLocation loadWarp(String warpName)
 	{
 		double x = config.getCustomConfig().getDouble(warpName + ".X");
