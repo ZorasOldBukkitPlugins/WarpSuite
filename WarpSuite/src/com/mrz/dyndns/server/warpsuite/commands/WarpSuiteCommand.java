@@ -26,18 +26,18 @@ public abstract class WarpSuiteCommand implements SimpleCommand
 	{
 		if(sender instanceof Player)
 		{
-			return warpPlayerExecute(commandName, plugin.getPlayerManager().getWarpPlayer(sender.getName()), args, variables);
+			return warpPlayerExecute(plugin.getPlayerManager().getWarpPlayer(sender.getName()), args, variables);
 		}
 		else
 		{
-			return consoleExecute(commandName, Bukkit.getConsoleSender(), args, variables);
+			return consoleExecute(Bukkit.getConsoleSender(), args, variables);
 		}
 	}
 	
-	protected boolean consoleExecute(String commandName, ConsoleCommandSender sender, List<String> args, List<String> variables)
+	protected boolean consoleExecute(ConsoleCommandSender sender, List<String> args, List<String> variables)
 	{
 		return Util.mustBePlayer(sender);
 	}
 
-	protected abstract boolean warpPlayerExecute(String commandName, WarpSuitePlayer player, List<String> args, List<String> variables);
+	public abstract boolean warpPlayerExecute(WarpSuitePlayer player, List<String> args, List<String> variables);
 }

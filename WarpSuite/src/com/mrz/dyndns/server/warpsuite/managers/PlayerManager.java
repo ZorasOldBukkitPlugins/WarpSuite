@@ -46,11 +46,6 @@ public class PlayerManager implements Listener
 		players.clear();
 	}
 	
-	public WarpManager getWarpManager(String player)
-	{
-		return players.get(player).getWarpManager();
-	}
-	
 	public WarpSuitePlayer getWarpPlayer(String player)
 	{
 		return players.get(player);
