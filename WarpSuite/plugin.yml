@@ -1,6 +1,78 @@
 name: Warp Suite
-version: 0.0.4
+version: 0.0.6
 description: All of your warping needs in one place
 author: MrZoraman
 main: com.mrz.dyndns.server.warpsuite.WarpSuite
 prefix: WarpSuite
+permissions:
+  warpsuite.user:
+    description: Standard warp permissions
+    children:
+      warpsuite.help: true
+      warpsuite.warp: true
+      warpsuite.warp.set: true
+      warpsuite.warp.remove: true
+      warpsuite.warp.list: true
+      warpsuite.warp.invite: true
+      warpsuite.public.warp: true
+      warpsuite.public.list: true
+  warpsuite.admin:
+    description: Standard admin permissions
+    children:
+      warpsuite.user: true
+      warpsuite.admin.warp: true
+      warpsuite.admin.sendto: true
+      warpsuite.admin.tomy: true
+      warpsuite.admin.set: true
+      warpsuite.admin.remove: true
+      warpsuite.admin.list: true
+      warpsuite.public.set: true
+      warpsuite.public.remove: true
+      warpsuite.count.infinite: true
+      warpsuite.count.delay.bypass: true
+  warpsuite.warp.*:
+    description: All warp permissions
+    children:
+      warpsuite.warp: true
+      warpsuite.warp.set: true
+      warpsuite.warp.remove: true
+      warpsuite.warp.list: true
+      warpsuite.warp.invite: true
+  warpsuite.admin.*:
+    description: Add admin permissions
+    children:
+      warpsuite.admin.warp: true
+      warpsuite.admin.sendto: true
+      warpsuite.admin.tomy: true
+      warpsuite.admin.set: true
+      warpsuite.admin.remove: true
+      warpsuite.admin.list: true
+  warpsuite.public.*:
+    description: All public warp permissions
+    children:
+      warpsuite.public.warp: true
+      warpsuite.public.set: true
+      warpsuite.public.remove: true
+      warpsuite.public.list: true
+  warpsuite.*:
+    description: All permission nodes
+    children:
+      warpsuite.help: true
+      warpsuite.warp: true
+      warpsuite.warp.set: true
+      warpsuite.warp.remove: true
+      warpsuite.warp.list: true
+      warpsuite.admin.warp: true
+      warpsuite.admin.sendto: true
+      warpsuite.admin.tomy: true
+      warpsuite.admin.set: true
+      warpsuite.admin.remove: true
+      warpsuite.admin.list: true
+      warpsuite.public.warp: true
+      warpsuite.public.set: true
+      warpsuite.public.remove: true
+      warpsuite.public.list: true
+      warpsuite.warp.invite: True
+      warpsuite.count.infinite: true
+      warpsuite.delay.bypass: true
+    

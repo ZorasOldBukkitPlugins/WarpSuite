@@ -16,13 +16,13 @@ public enum Permissions
 	ADMIN_SENDTO	("warpsuite.admin.sendto"),
 	ADMIN_TOMY		("warpsuite.admin.tomy"),
 	ADMIN_SET		("warpsuite.admin.set"),
-	ADMIN_DELETE	("warpsuite.admin.delete"),
+	ADMIN_REMOVE	("warpsuite.admin.remove"),
 	ADMIN_LIST		("warpsuite.admin.list"),
 	
 	//public
 	PUBLIC_WARP		("warpsuite.public.warp"),
 	PUBLIC_SET		("warpsuite.public.set"),
-	PUBLIC_DELETE	("warpsuite.public.delete"),
+	PUBLIC_REMOVE	("warpsuite.public.remove"),
 	PUBLIC_LIST		("warpsuite.public.list"),
 	
 	//misc
