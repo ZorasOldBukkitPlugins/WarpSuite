@@ -34,6 +34,11 @@ public class WarpManager
 		return config.getCustomConfig().getConfigurationSection("Warps").getKeys(false).size();
 	}
 	
+	public boolean warpIsSet(String warpName)
+	{
+		return config.getCustomConfig().getConfigurationSection("Warps").getKeys(false).contains(warpName);
+	}
+	
 	public SimpleLocation loadWarp(String warpName)
 	{
 		double x = config.getCustomConfig().getDouble(warpName + ".X");
@@ -45,7 +50,7 @@ public class WarpManager
 		return new SimpleLocation(x, y, z, yaw, pitch);
 	}
 	
-	public void saveWarp(String warpName, SimpleLocation warp)
+	public void setWarp(String warpName, SimpleLocation warp)
 	{
 		config.getCustomConfig().set("Warps." + warpName + ".X", warp.X);
 		config.getCustomConfig().set("Warps." + warpName + ".Y", warp.Y);
