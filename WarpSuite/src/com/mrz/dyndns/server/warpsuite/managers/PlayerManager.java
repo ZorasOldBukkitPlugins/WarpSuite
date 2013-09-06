@@ -13,12 +13,11 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 import com.mrz.dyndns.server.warpsuite.WarpSuite;
-import com.mrz.dyndns.server.warpsuite.util.MyConfig;
+import com.mrz.dyndns.server.warpsuite.WarpSuitePlayer;
 import com.mrz.dyndns.server.warpsuite.util.Util;
 
 public class PlayerManager implements Listener
 {
-	//TODO: player needs it's own class so I can keep track of things like if the player is trying to warp or not
 	public PlayerManager(WarpSuite plugin)
 	{
 		this.plugin = plugin;
@@ -26,7 +25,7 @@ public class PlayerManager implements Listener
 		String dir = plugin.getDataFolder().getAbsolutePath().toString() + "/players";
 		new File(dir).mkdirs();
 		
-		playerWarpConfigs = new HashMap<String, WarpManager>();
+		players = new HashMap<String, WarpSuitePlayer>();
 		
 		for(Player player : plugin.getServer().getOnlinePlayers())
 		{
@@ -35,21 +34,21 @@ public class PlayerManager implements Listener
 	}
 	
 	private final WarpSuite plugin;
-	private final Map<String, WarpManager> playerWarpConfigs;
+	private final Map<String, WarpSuitePlayer> players;
 	
 	public void clearPlayers()
 	{
-		List<String> players = new ArrayList<String>(playerWarpConfigs.keySet());
-		for(String player : players)
+		List<String> wsPlayerNames = new ArrayList<String>(players.keySet());
+		for(String wsPlayerName : wsPlayerNames)
 		{
-			removePlayer(player);
+			removePlayer(wsPlayerName);
 		}
-		playerWarpConfigs.clear();
+		players.clear();
 	}
 	
 	public WarpManager getWarpManager(String player)
 	{
-		return playerWarpConfigs.get(player);
+		return players.get(player).getWarpManager();
 	}
 	
 	@EventHandler
@@ -66,16 +65,16 @@ public class PlayerManager implements Listener
 	
 	private void addPlayer(String player)
 	{
-		playerWarpConfigs.put(player, new WarpManager(new MyConfig("players/" + player, plugin)));
+		players.put(player, new WarpSuitePlayer(player, plugin));
 		Util.Debug("Added player " + player);
 	}
 	
 	private void removePlayer(String player)
 	{
-		if(playerWarpConfigs.containsKey(player))
+		if(players.containsKey(player))
 		{
-			playerWarpConfigs.get(player).save();
-			playerWarpConfigs.remove(player);
+			players.get(player).getConfig().saveCustomConfig();
+			players.remove(player);
 			Util.Debug("Removed player " + player);
 		}
 	}

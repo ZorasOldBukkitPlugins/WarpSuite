@@ -19,11 +19,6 @@ public class WarpManager
 	private final MyConfig config;
 	private final Map<String, SimpleLocation> warps;
 	
-	public void save()
-	{
-		config.saveCustomConfig();
-	}
-	
 	public void loadWarpsFromConfig()
 	{
 		Set<String> warpNames = config.getCustomConfig().getConfigurationSection("Warps").getKeys(false);

@@ -3,6 +3,7 @@ package com.mrz.dyndns.server.warpsuite;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
+import com.mrz.dyndns.server.warpsuite.managers.WarpManager;
 import com.mrz.dyndns.server.warpsuite.util.Config;
 import com.mrz.dyndns.server.warpsuite.util.MyConfig;
 import com.mrz.dyndns.server.warpsuite.util.SimpleLocation;
@@ -10,26 +11,50 @@ import com.mrz.dyndns.server.warpsuite.util.Util;
 
 public class WarpSuitePlayer
 {
-	private final String player;
+	private final String playerName;
 	private final MyConfig config;
+	private final WarpManager manager;
 	
 	private SimpleLocation warpRequest;
-	private long timeWhenRequestWasMade;
+	private long timeWhenRequestWasMade = -1;
 	
-	public WarpSuitePlayer(String player, WarpSuite plugin)
+	public WarpSuitePlayer(String playerName, WarpSuite plugin)
 	{
-		this.player = player;
-		config = new MyConfig("players/" + player, plugin);
+		this.playerName = playerName;
+		config = new MyConfig("players/" + playerName, plugin);
+		manager = new WarpManager(config);
 	}
 	
 	public Player toPlayer()
 	{
-		return Bukkit.getPlayer(player);
+		return Bukkit.getPlayer(playerName);
 	}
 	
 	public MyConfig getConfig()
 	{
 		return config;
+	}
+	
+	public SimpleLocation getRequest()
+	{
+		if(tryTimeout())
+		{
+			return null;
+		}
+		else
+		{
+			return warpRequest;
+		}
+	}
+	
+	public WarpManager getWarpManager()
+	{
+		return manager;
+	}
+	
+	public String getName()
+	{
+		return playerName;
 	}
 	
 	/**
@@ -57,13 +82,22 @@ public class WarpSuitePlayer
 	 */
 	private boolean tryTimeout()
 	{
-		if(warpRequest == null || timeWhenRequestWasMade == (Long) null)
+		if(warpRequest == null || timeWhenRequestWasMade == -1)
 		{
 			return true;
 		}
 		
 		long timeoutTime = Config.warpInviteTimeout;
 		
-		return (timeWhenRequestWasMade + timeoutTime > Util.getUnixTime());
+		if (timeWhenRequestWasMade + timeoutTime > Util.getUnixTime())
+		{
+			timeWhenRequestWasMade = -1;
+			warpRequest = null;
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 }
