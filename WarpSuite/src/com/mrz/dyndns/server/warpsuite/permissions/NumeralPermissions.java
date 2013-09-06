@@ -3,6 +3,8 @@ package com.mrz.dyndns.server.warpsuite.permissions;
 import org.bukkit.entity.Player;
 import org.bukkit.permissions.PermissionAttachmentInfo;
 
+import com.mrz.dyndns.server.warpsuite.util.Config;
+
 public enum NumeralPermissions
 {
 	COUNT("warpsuite.count.");
@@ -26,6 +28,6 @@ public enum NumeralPermissions
 			}
 		}
 		
-		return -1;
+		return Config.defaultMaxWarps;
 	}
 }
