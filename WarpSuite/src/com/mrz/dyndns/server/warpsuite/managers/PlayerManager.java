@@ -51,6 +51,11 @@ public class PlayerManager implements Listener
 		return players.get(player).getWarpManager();
 	}
 	
+	public WarpSuitePlayer getWarpPlayer(String player)
+	{
+		return players.get(player);
+	}
+	
 	@EventHandler
 	public void onPlayerJoin(PlayerJoinEvent event)
 	{

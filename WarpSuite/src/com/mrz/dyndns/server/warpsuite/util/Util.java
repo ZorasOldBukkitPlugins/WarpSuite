@@ -2,6 +2,9 @@ package com.mrz.dyndns.server.warpsuite.util;
 
 import java.util.logging.Level;
 
+import org.bukkit.ChatColor;
+import org.bukkit.command.CommandSender;
+
 import com.mrz.dyndns.server.warpsuite.WarpSuite;
 
 public final class Util
@@ -41,5 +44,11 @@ public final class Util
 	public static long getUnixTime()
 	{
 		return System.currentTimeMillis() / 1000L;
+	}
+	
+	public static boolean mustBePlayer(CommandSender sender)
+	{
+		sender.sendMessage(ChatColor.RED + "You must be a player to use this command!");
+		return true;
 	}
 }
