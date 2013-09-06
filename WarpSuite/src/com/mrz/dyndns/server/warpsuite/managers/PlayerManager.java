@@ -14,7 +14,6 @@ import org.bukkit.event.player.PlayerQuitEvent;
 
 import com.mrz.dyndns.server.warpsuite.WarpSuite;
 import com.mrz.dyndns.server.warpsuite.WarpSuitePlayer;
-import com.mrz.dyndns.server.warpsuite.permissions.NumeralPermissions;
 import com.mrz.dyndns.server.warpsuite.util.Util;
 
 public class PlayerManager implements Listener
