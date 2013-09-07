@@ -19,6 +19,15 @@ public class WorldLoader
 	
 	public static boolean Load(String worldName)
 	{
-		return mvCore.getMVWorldManager().loadWorld(worldName);
+		boolean result = mvCore.getMVWorldManager().loadWorld(worldName);
+		if(result)
+		{
+			Bukkit.getLogger().warning("Failed to load world \'" + worldName + "\'");
+		}
+		else
+		{
+			Bukkit.getLogger().info("Loaded world \'" + worldName + "\'");
+		}
+		return result;
 	}
 }
