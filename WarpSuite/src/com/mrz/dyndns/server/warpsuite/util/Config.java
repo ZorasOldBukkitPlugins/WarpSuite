@@ -12,7 +12,7 @@ public final class Config
 	{
 		timer = config.getInt("timer", 10);
 		radius = config.getInt("radius", 10);
-		cancelOnMobDamage = config.getBoolean("cancelOn.mobDamage", true);
+		cancelOnDamage = config.getBoolean("cancelOn.damage", true);
 		cancelOnMove = config.getBoolean("cancelOn.move", true);
 		cancelOnPvp = config.getBoolean("cancelOn.playerPVP", true);
 		timerAndRadius = config.getBoolean("timerAndRadius", true);
@@ -24,7 +24,7 @@ public final class Config
 	
 	public static int timer;
 	public static int radius;
-	public static boolean cancelOnMobDamage;
+	public static boolean cancelOnDamage;
 	public static boolean timerAndRadius;
 	public static boolean globalWarpsCountTowardsTotal;
 	public static int defaultMaxWarps;
