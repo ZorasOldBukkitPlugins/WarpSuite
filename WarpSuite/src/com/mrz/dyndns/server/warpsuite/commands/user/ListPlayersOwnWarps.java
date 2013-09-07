@@ -12,6 +12,7 @@ import com.mrz.dyndns.server.warpsuite.commands.WarpSuiteCommand;
 import com.mrz.dyndns.server.warpsuite.permissions.Permissions;
 import com.mrz.dyndns.server.warpsuite.util.Coloring;
 import com.mrz.dyndns.server.warpsuite.util.Config;
+import com.mrz.dyndns.server.warpsuite.util.ListPrinter;
 import com.mrz.dyndns.server.warpsuite.util.Util;
 
 public class ListPlayersOwnWarps extends WarpSuiteCommand
@@ -34,6 +35,33 @@ public class ListPlayersOwnWarps extends WarpSuiteCommand
 		
 		if(Config.useWarpListPages)
 		{
+			ListPrinter lp = new ListPrinter(warpList);
+			int page;
+			if(args.size() == 0)
+			{
+				page = 1;
+			}
+			else
+			{
+				try
+				{
+					page = Integer.parseInt(args.get(0));
+				}
+				catch (NumberFormatException e)
+				{
+					player.sendMessage(NEGATIVE_PRIMARY + "\'" + NEGATIVE_SECONDARY + args.get(0) + NEGATIVE_PRIMARY + "\' is an invalid page number!");
+					return false;
+				}
+			}
+			
+			List<String> subList = lp.getSubList(page);
+			int amountOfPages = lp.getAmountOfPages();
+			
+			player.sendMessage(POSITIVE_PRIMARY + "--------------- Warp List (" + POSITIVE_SECONDARY + page + POSITIVE_PRIMARY + "/" + POSITIVE_SECONDARY + amountOfPages + POSITIVE_PRIMARY + ") --------------");
+			for(int ii = 0; ii < subList.size(); ii++)
+			{
+				player.sendMessage(POSITIVE_SECONDARY + subList.get(ii));
+			}
 			
 			return true;
 		}
