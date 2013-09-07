@@ -20,6 +20,11 @@ public class SetPlayersOwnWarp extends WarpSuiteCommand
 	@Override
 	public boolean warpPlayerExecute(WarpSuitePlayer player, List<String> args, List<String> variables)
 	{
+		if(args.size() == 0)
+		{
+			return false;
+		}
+		
 		int allowedWarps = NumeralPermissions.COUNT.getAmount(player.getPlayer());
 		int warpsOwned = player.getWarpManager().getAmountOfSetWarps();
 		
@@ -45,6 +50,6 @@ public class SetPlayersOwnWarp extends WarpSuiteCommand
 	@Override
 	public String getUsage()
 	{
-		return "set|add " + USAGE_ARGUMENT + "[warpName]";
+		return "warp set|add " + USAGE_ARGUMENT + "[warpName]";
 	}
 }
