@@ -72,7 +72,7 @@ public class WarpSuite extends JavaPlugin
 				}
 				else
 				{
-					Util.invalidPermissions(sender);
+					return Util.invalidPermissions(sender);
 				}
 				return true;
 			}

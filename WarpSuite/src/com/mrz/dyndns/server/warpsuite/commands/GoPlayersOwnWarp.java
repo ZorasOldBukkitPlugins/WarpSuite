@@ -24,7 +24,7 @@ public class GoPlayersOwnWarp extends WarpSuiteCommand
 	{
 		if(!Permissions.WARP.check(player) || !Permissions.HELP.check(player))
 		{
-			Util.invalidPermissions(player);
+			return Util.invalidPermissions(player);
 		}
 		
 		if(args.size() == 0)
