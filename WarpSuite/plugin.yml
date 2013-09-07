@@ -76,4 +76,5 @@ permissions:
       warpsuite.warp.invite: True
       warpsuite.count.infinite: true
       warpsuite.delay.bypass: true
+      warpsuite.reload: true
     

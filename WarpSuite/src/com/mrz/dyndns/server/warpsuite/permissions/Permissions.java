@@ -30,7 +30,8 @@ public enum Permissions
 	//misc
 	WARP_INVITE		("warpsuite.warp.invite"),
 	COUNT_INFINITE	("warpsuite.count.infinite"),
-	DELAY_BYPASS	("warpsuite.delay.bypass");
+	DELAY_BYPASS	("warpsuite.delay.bypass"),
+	RELOAD			("warpsuite.reload");
 	
 	
 	private Permissions(String node)
