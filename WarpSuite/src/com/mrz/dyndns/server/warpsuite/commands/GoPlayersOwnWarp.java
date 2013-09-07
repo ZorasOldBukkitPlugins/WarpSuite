@@ -40,7 +40,7 @@ public class GoPlayersOwnWarp extends WarpSuiteCommand
 			if(canGoToWorld)
 			{
 				//it is time to teleport!
-				if(Permissions.DELAY_BYPASS.check(player) || Util.areTherePlayersInRadius(player))
+				if(Permissions.DELAY_BYPASS.check(player) || !Util.areTherePlayersInRadius(player))
 				{
 					player.teleport(plugin, sLoc);
 					return true;
