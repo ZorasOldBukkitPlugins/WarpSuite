@@ -4,8 +4,10 @@ import java.util.logging.Level;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 
 import com.mrz.dyndns.server.warpsuite.WarpSuite;
+import com.mrz.dyndns.server.warpsuite.WarpSuitePlayer;
 
 public final class Util
 {
@@ -57,5 +59,13 @@ public final class Util
 		return (warpName.contains("\'")
 				|| warpName.contains("\'")
 				|| warpName.contains(" ") == false);
+	}
+	
+	public static boolean areTherePlayersInRadius(WarpSuitePlayer player)
+	{
+		Player p = player.getPlayer();
+		double radius = Config.radius;
+		
+		return (p.getNearbyEntities(radius, radius, radius).size() != 0);
 	}
 }
