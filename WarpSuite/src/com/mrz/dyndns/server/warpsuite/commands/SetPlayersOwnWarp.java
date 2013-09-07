@@ -7,6 +7,10 @@ import org.bukkit.ChatColor;
 import com.mrz.dyndns.server.warpsuite.WarpSuite;
 import com.mrz.dyndns.server.warpsuite.WarpSuitePlayer;
 import com.mrz.dyndns.server.warpsuite.permissions.NumeralPermissions;
+import com.mrz.dyndns.server.warpsuite.util.Coloring;
+import com.mrz.dyndns.server.warpsuite.util.Util;
+
+import static com.mrz.dyndns.server.warpsuite.util.Coloring.*;
 
 public class SetPlayersOwnWarp extends WarpSuiteCommand
 {
@@ -24,11 +28,15 @@ public class SetPlayersOwnWarp extends WarpSuiteCommand
 		
 		if(allowedWarps != -1 && warpsOwned >= allowedWarps)
 		{
-			player.sendMessage(ChatColor.RED + "You already have the maximum warps you're allowed to set! (" + ChatColor.DARK_GRAY + allowedWarps + ChatColor.RED + ")");
+			player.sendMessage(NEGATIVE_PRIMARY + "You already have the maximum warps you're allowed to set! (" + NEGATIVE_SECONDARY + allowedWarps + NEGATIVE_PRIMARY + ")");
 			return true;
 		}
 		
-		
+		String warpName = args.get(0);
+		if(player.getWarpManager().warpIsSet(warpName))
+		{
+			player.sendMessage(POSITIVE_PRIMARY + "Warp \'" + POSITIVE_SECONDARY + "");
+		}
 		
 		return false;
 	}
