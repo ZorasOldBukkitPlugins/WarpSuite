@@ -8,30 +8,30 @@ public class SimpleLocation
 {
 	public SimpleLocation(String world, double x, double y, double z, double yaw, double pitch)
 	{
-		this.World = world;
-		this.X = x;
-		this.Y = y;
-		this.Z = z;
-		this.Yaw = yaw;
-		this.Pitch = pitch;
+		this.world = world;
+		this.x = x;
+		this.y = y;
+		this.z = z;
+		this.yaw = yaw;
+		this.pitch = pitch;
 	}
 	
 	public SimpleLocation(Location loc)
 	{
-		this.World = loc.getWorld().getName();
-		this.X = loc.getX();
-		this.Y = loc.getY();
-		this.Z = loc.getZ();
-		this.Yaw = loc.getYaw();
-		this.Pitch = loc.getPitch();
+		this.world = loc.getWorld().getName();
+		this.x = loc.getX();
+		this.y = loc.getY();
+		this.z = loc.getZ();
+		this.yaw = loc.getYaw();
+		this.pitch = loc.getPitch();
 	}
 	
-	private final String World;
-	private final double X;
-	private final double Y;
-	private final double Z;
-	private final double Yaw;
-	private final double Pitch;
+	private final String world;
+	private final double x;
+	private final double y;
+	private final double z;
+	private final double yaw;
+	private final double pitch;
 	
 	public boolean tryLoad(WarpSuite plugin, String worldName)
 	{
@@ -48,31 +48,31 @@ public class SimpleLocation
 	
 	public String getWorld()
 	{
-		return World;
+		return world;
 	}
 
 	public double getX()
 	{
-		return X;
+		return x;
 	}
 
 	public double getY()
 	{
-		return Y;
+		return y;
 	}
 
 	public double getZ()
 	{
-		return Z;
+		return z;
 	}
 
 	public double getYaw()
 	{
-		return Yaw;
+		return yaw;
 	}
 
 	public double getPitch()
 	{
-		return Pitch;
+		return pitch;
 	}
 }
