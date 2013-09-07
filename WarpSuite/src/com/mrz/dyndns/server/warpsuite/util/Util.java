@@ -51,4 +51,10 @@ public final class Util
 		sender.sendMessage(ChatColor.RED + "You must be a player to use this command!");
 		return true;
 	}
+	
+	public static boolean isValidWarpName(String warpName)
+	{
+		return (warpName.contains("\'")
+				|| warpName.contains("\'") == false);
+	}
 }
