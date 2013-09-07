@@ -9,6 +9,7 @@ public class SimpleLocation
 {
 	public SimpleLocation(String world, double x, double y, double z, double yaw, double pitch)
 	{
+		Util.Debug("Instantiated, world=" + world);
 		this.world = world;
 		this.x = x;
 		this.y = y;

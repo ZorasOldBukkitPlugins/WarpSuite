@@ -8,6 +8,7 @@ import com.mrz.dyndns.server.warpsuite.WarpSuite;
 import com.mrz.dyndns.server.warpsuite.WarpSuitePlayer;
 import com.mrz.dyndns.server.warpsuite.permissions.Permissions;
 import com.mrz.dyndns.server.warpsuite.util.SimpleLocation;
+import com.mrz.dyndns.server.warpsuite.util.Util;
 
 public class GoPlayersOwnWarp extends WarpSuiteCommand
 {
@@ -34,6 +35,7 @@ public class GoPlayersOwnWarp extends WarpSuiteCommand
 		if(player.getWarpManager().warpIsSet(warpName))
 		{
 			SimpleLocation sLoc = player.getWarpManager().loadWarp(warpName);
+			Util.Debug("World name: " + sLoc.getWorld());
 			boolean canGoToWorld = sLoc.tryLoad(plugin);
 			if(canGoToWorld)
 			{

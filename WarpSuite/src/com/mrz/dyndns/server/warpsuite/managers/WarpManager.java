@@ -57,12 +57,12 @@ public class WarpManager
 	{
 		warpName = warpName.toLowerCase();
 		
-		String world = config.getCustomConfig().getString(warpName + ".World");
-		double x = config.getCustomConfig().getDouble(warpName + ".X");
-		double y = config.getCustomConfig().getDouble(warpName + ".Y");
-		double z = config.getCustomConfig().getDouble(warpName + ".Z");
-		double yaw = config.getCustomConfig().getDouble(warpName + ".Yaw");
-		double pitch = config.getCustomConfig().getDouble(warpName + ".Pitch");
+		String world = config.getCustomConfig().getString("Warps." + warpName + ".World");
+		double x = config.getCustomConfig().getDouble("Warps." + warpName + ".X");
+		double y = config.getCustomConfig().getDouble("Warps." + warpName + ".Y");
+		double z = config.getCustomConfig().getDouble("Warps." + warpName + ".Z");
+		double yaw = config.getCustomConfig().getDouble("Warps." + warpName + ".Yaw");
+		double pitch = config.getCustomConfig().getDouble("Warps." + warpName + ".Pitch");
 		
 		return new SimpleLocation(world, x, y, z, yaw, pitch);
 	}
