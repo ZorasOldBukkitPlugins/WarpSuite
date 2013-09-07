@@ -22,7 +22,7 @@ public class GoPlayersOwnWarp extends WarpSuiteCommand
 	@Override
 	public boolean warpPlayerExecute(final WarpSuitePlayer player, List<String> args, List<String> variables)
 	{
-		if(!Permissions.WARP.check(player) || !Permissions.HELP.check(player))
+		if(!Permissions.WARP.check(player) && !Permissions.HELP.check(player))
 		{
 			return Util.invalidPermissions(player);
 		}
