@@ -37,6 +37,8 @@ public class GoPlayersOwnWarp extends WarpSuiteCommand
 			boolean canGoToWorld = sLoc.tryLoad(plugin);
 			if(canGoToWorld)
 			{
+				//it is time to teleport!
+				
 				player.teleport(sLoc);
 				return true;
 			}

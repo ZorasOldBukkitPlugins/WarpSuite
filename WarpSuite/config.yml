@@ -1,6 +1,7 @@
 timer: 10
 radius: 10
 cancelOnDamage: true
+cancelOnMove: true
 timerAndRadius: true
 globalWarpsCountTowardsTotal: false
 defaultMaxWarps: 50

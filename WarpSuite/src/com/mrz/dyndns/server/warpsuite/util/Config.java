@@ -18,6 +18,7 @@ public final class Config
 		defaultMaxWarps = config.getInt("defaultMaxWarps", 50);
 		warpInviteTimeout = config.getInt("warpInviteTimeout", 120);
 		useMultiverse = config.getBoolean("useMultiverse", true);
+		cancelOnMove = config.getBoolean("cancelOnMove", true);
 	}
 	
 	public static int timer;
@@ -28,4 +29,5 @@ public final class Config
 	public static int defaultMaxWarps;
 	public static int warpInviteTimeout;
 	public static boolean useMultiverse;
+	public static boolean cancelOnMove;
 }
