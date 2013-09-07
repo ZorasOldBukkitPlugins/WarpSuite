@@ -4,6 +4,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import com.mrz.dyndns.server.CommandSystem.CommandSystem;
 import com.mrz.dyndns.server.warpsuite.commands.*;
+import com.mrz.dyndns.server.warpsuite.managers.PendingWarpManager;
 import com.mrz.dyndns.server.warpsuite.managers.PlayerManager;
 import com.mrz.dyndns.server.warpsuite.managers.WarpManager;
 import com.mrz.dyndns.server.warpsuite.util.Config;
@@ -16,6 +17,7 @@ public class WarpSuite extends JavaPlugin
 	private PlayerManager playerManager;
 	private WarpManager publicWarpManager;
 	private boolean usingMultiverse;
+	private PendingWarpManager pendingWarpManager;
 	
 	@Override
 	public void onEnable()
@@ -31,6 +33,7 @@ public class WarpSuite extends JavaPlugin
 		
 		playerManager = new PlayerManager(this);
 		publicWarpManager = new WarpManager(new MyConfig("public", this));
+		pendingWarpManager = new PendingWarpManager();
 		
 		getServer().getPluginManager().registerEvents(playerManager, this);
 		
