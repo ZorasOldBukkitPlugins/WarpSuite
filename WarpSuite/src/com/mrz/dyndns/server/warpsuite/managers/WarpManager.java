@@ -49,7 +49,6 @@ public class WarpManager
 		{
 			return false;
 		}
-		
 		return getWarpConfigurationSection().contains(warpName.toLowerCase());
 	}
 	
