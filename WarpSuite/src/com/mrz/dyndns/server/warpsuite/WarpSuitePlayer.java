@@ -47,9 +47,16 @@ public class WarpSuitePlayer
 		}
 	}
 	
-	public void teleport(SimpleLocation sLoc)
+	public void teleport(final WarpSuite plugin, final SimpleLocation sLoc)
 	{
-		getPlayer().teleport(sLoc.toLocation());
+		//run it next tick so if a world had to be loaded we'll let it load up before teleporting the player there
+		Bukkit.getScheduler().runTask(plugin, new Runnable() {
+			@Override
+			public void run()
+			{
+				getPlayer().teleport(sLoc.toLocation());
+			}
+		});
 	}
 	
 	public WarpManager getWarpManager()
