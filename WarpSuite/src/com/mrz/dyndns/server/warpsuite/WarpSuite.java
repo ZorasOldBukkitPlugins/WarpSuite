@@ -35,6 +35,7 @@ public class WarpSuite extends JavaPlugin
 		getServer().getPluginManager().registerEvents(playerManager, this);
 		
 		cs.registerCommand("warp set|add", new SetPlayersOwnWarp(this));
+		cs.registerCommand("warp", new GoPlayersOwnWarp(this));
 		
 		if(getServer().getPluginManager().getPlugin("Multiverse-Core") != null)
 		{
