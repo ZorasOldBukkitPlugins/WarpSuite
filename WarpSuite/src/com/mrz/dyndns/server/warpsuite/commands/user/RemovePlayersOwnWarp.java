@@ -35,7 +35,7 @@ public class RemovePlayersOwnWarp extends WarpSuiteCommand
 		if(player.getWarpManager().warpIsSet(warpName))
 		{
 			player.getWarpManager().removeWarp(warpName);
-			player.sendMessage(POSITIVE_PRIMARY + "Warp " + POSITIVE_SECONDARY + warpName + POSITIVE_PRIMARY + " has been removed.");
+			player.sendMessage(POSITIVE_PRIMARY + "Warp \'" + POSITIVE_SECONDARY + warpName + POSITIVE_PRIMARY + "\' has been removed.");
 			return true;
 		}
 		else
