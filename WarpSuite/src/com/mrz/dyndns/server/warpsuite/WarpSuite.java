@@ -55,7 +55,7 @@ public class WarpSuite extends JavaPlugin
 		getServer().getScheduler().runTaskTimer(this, playerManager, 600L, 600L);//every 30 seconds
 		
 		getServer().getPluginManager().registerEvents(new EntityDamageByEntityListener(this), this);
-		getServer().getPluginManager().registerEvents(new PlayerMoveListener(), this);
+		getServer().getPluginManager().registerEvents(new PlayerMoveListener(this), this);
 	}
 	
 	@Override
