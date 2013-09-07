@@ -54,6 +54,7 @@ public class WarpManager
 	
 	public void setWarp(String warpName, SimpleLocation warp)
 	{
+		String listingName = warpName;
 		warpName = warpName.toLowerCase();
 		
 		config.getCustomConfig().set("Warps." + warpName + ".X", warp.X);
@@ -61,6 +62,9 @@ public class WarpManager
 		config.getCustomConfig().set("Warps." + warpName + ".Z", warp.Z);
 		config.getCustomConfig().set("Warps." + warpName + ".Yaw", warp.Yaw);
 		config.getCustomConfig().set("Warps." + warpName + ".Pitch", warp.Pitch);
+		
+		config.getCustomConfig().set("Warps." + warpName + ".ListingName", listingName);
+		
 		config.saveCustomConfig();
 	}
 }
