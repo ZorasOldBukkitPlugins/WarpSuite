@@ -46,7 +46,7 @@ public enum Permissions
 		return p.getPlayer().hasPermission(node);
 	}
 	
-	public boolean chech(CommandSender sender)
+	public boolean check(CommandSender sender)
 	{
 		return sender.hasPermission(node);
 	}
