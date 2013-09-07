@@ -3,6 +3,7 @@ package com.mrz.dyndns.server.warpsuite;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.mrz.dyndns.server.CommandSystem.CommandSystem;
+import com.mrz.dyndns.server.warpsuite.commands.*;
 import com.mrz.dyndns.server.warpsuite.managers.PlayerManager;
 import com.mrz.dyndns.server.warpsuite.managers.WarpManager;
 import com.mrz.dyndns.server.warpsuite.util.Config;
@@ -31,6 +32,8 @@ public class WarpSuite extends JavaPlugin
 		publicWarpManager = new WarpManager(new MyConfig("public", this));
 		
 		getServer().getPluginManager().registerEvents(playerManager, this);
+		
+		cs.registerCommand("warp set|add", new SetPlayersOwnWarp(this));
 	}
 	
 	@Override
