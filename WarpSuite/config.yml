@@ -1,7 +1,9 @@
 timer: 10
 radius: 10
-cancelOnDamage: true
-cancelOnMove: true
+cancelOn:
+  playerPVP: true
+  move: true
+  mobDamage: true
 timerAndRadius: true
 globalWarpsCountTowardsTotal: false
 defaultMaxWarps: 50
