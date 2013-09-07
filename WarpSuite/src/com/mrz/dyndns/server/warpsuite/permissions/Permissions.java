@@ -1,7 +1,5 @@
 package com.mrz.dyndns.server.warpsuite.permissions;
 
-import org.bukkit.entity.Player;
-
 import com.mrz.dyndns.server.warpsuite.WarpSuitePlayer;
 
 public enum Permissions
