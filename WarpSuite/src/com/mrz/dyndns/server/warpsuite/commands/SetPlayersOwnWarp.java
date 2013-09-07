@@ -47,8 +47,8 @@ public class SetPlayersOwnWarp extends WarpSuiteCommand
 			player.sendMessage(NEGATIVE_PRIMARY + "\'" + NEGATIVE_SECONDARY + warpName + NEGATIVE_PRIMARY + "\' is an invalid warp name!");
 			return true;
 		}
-		player.getWarpManager().setWarp(warpName, new SimpleLocation(player.getPlayer().getLocation()));
 		boolean overwritten = player.getWarpManager().warpIsSet(warpName);
+		player.getWarpManager().setWarp(warpName, new SimpleLocation(player.getPlayer().getLocation()));
 		player.sendMessage(POSITIVE_PRIMARY + "Warp \'" + POSITIVE_SECONDARY + warpName + POSITIVE_PRIMARY + "\' has been " + (overwritten ? "overwritten" : "set") + ".");
 		
 		return true;
