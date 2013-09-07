@@ -9,6 +9,7 @@ import com.mrz.dyndns.server.CommandSystem.CommandSystem;
 import com.mrz.dyndns.server.CommandSystem.SimpleCommand;
 import com.mrz.dyndns.server.warpsuite.commands.GoPlayersOwnWarp;
 import com.mrz.dyndns.server.warpsuite.commands.SetPlayersOwnWarp;
+import com.mrz.dyndns.server.warpsuite.commands.WarpSuiteCommand;
 import com.mrz.dyndns.server.warpsuite.listeners.EntityDamageByEntityListener;
 import com.mrz.dyndns.server.warpsuite.listeners.PlayerMoveListener;
 import com.mrz.dyndns.server.warpsuite.managers.PendingWarpManager;
@@ -46,7 +47,10 @@ public class WarpSuite extends JavaPlugin
 		
 		getServer().getPluginManager().registerEvents(playerManager, this);
 		
-		cs.registerCommand("warp|go set|add", new SetPlayersOwnWarp(this));
+		WarpSuiteCommand cmd = new SetPlayersOwnWarp(this);
+		cs.registerCommand("warp|go set|add", cmd);
+		cs.registerCommand("setwarp", cmd);
+		
 		cs.registerCommand("warp|go", new GoPlayersOwnWarp(this));
 		
 		final WarpSuite plugin = this;
