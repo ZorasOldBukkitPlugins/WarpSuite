@@ -83,6 +83,22 @@ public class WarpManager
 		config.saveCustomConfig();
 	}
 	
+	public void removeWarp(String warpName)
+	{
+		config.getCustomConfig().set("Warps." + warpName + ".World", null);
+		config.getCustomConfig().set("Warps." + warpName + ".X", null);
+		config.getCustomConfig().set("Warps." + warpName + ".Y", null);
+		config.getCustomConfig().set("Warps." + warpName + ".Z", null);
+		config.getCustomConfig().set("Warps." + warpName + ".Yaw", null);
+		config.getCustomConfig().set("Warps." + warpName + ".Pitch", null);
+
+		config.getCustomConfig().set("Warps." + warpName + ".ListingName", null);
+		
+		config.getCustomConfig().set("Warps." + warpName, null);
+		
+		config.saveCustomConfig();
+	}
+	
 	private Set<String> getWarpConfigurationSection()
 	{
 		ConfigurationSection warps = config.getCustomConfig().getConfigurationSection("Warps");

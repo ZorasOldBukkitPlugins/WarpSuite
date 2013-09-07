@@ -7,6 +7,8 @@ import java.util.List;
 import com.mrz.dyndns.server.warpsuite.WarpSuite;
 import com.mrz.dyndns.server.warpsuite.WarpSuitePlayer;
 import com.mrz.dyndns.server.warpsuite.commands.WarpSuiteCommand;
+import com.mrz.dyndns.server.warpsuite.permissions.Permissions;
+import com.mrz.dyndns.server.warpsuite.util.Util;
 
 public class RemovePlayersOwnWarp extends WarpSuiteCommand
 {
@@ -19,7 +21,28 @@ public class RemovePlayersOwnWarp extends WarpSuiteCommand
 	@Override
 	public boolean warpPlayerExecute(WarpSuitePlayer player, List<String> args, List<String> variables)
 	{
-		return false;
+		if(Permissions.WARP_REMOVE.check(player) == false)
+		{
+			return Util.invalidPermissions(player);
+		}
+		
+		if(args.size() == 0)
+		{
+			return false;
+		}
+		
+		String warpName = args.get(0);
+		if(player.getWarpManager().warpIsSet(warpName))
+		{
+			player.getWarpManager().removeWarp(warpName);
+			player.sendMessage(POSITIVE_PRIMARY + "Warp " + POSITIVE_SECONDARY + warpName + POSITIVE_PRIMARY + " has been removed.");
+			return true;
+		}
+		else
+		{
+			player.sendMessage(NEGATIVE_PRIMARY + "Warp \'" + NEGATIVE_SECONDARY + warpName + NEGATIVE_PRIMARY + "\' is not set!");
+			return true;
+		}
 	}
 
 	@Override
