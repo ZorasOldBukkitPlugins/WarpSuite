@@ -46,11 +46,14 @@ public class EntityDamageByEntityListener implements Listener
 				//damage
 				if(Config.cancelOnMobDamage)
 				{
-					plugin.getPendingWarpManager().removePlayer(playerName);
-					Player p = Bukkit.getPlayer(playerName);
-					p.sendMessage(Coloring.NEGATIVE_PRIMARY + "You have been damaged by a mob " + Coloring.NEGATIVE_SECONDARY + "a " + 
-							event.getEntityType().toString().toLowerCase().replace("_", " ") + ", to be precise" + Coloring.NEGATIVE_PRIMARY + "! You will not be warped...");
-					return;
+					if(plugin.getPendingWarpManager().isWaitingToTeleport(playerName))
+					{
+						plugin.getPendingWarpManager().removePlayer(playerName);
+						Player p = Bukkit.getPlayer(playerName);
+						p.sendMessage(Coloring.NEGATIVE_PRIMARY + "You have been damaged by a mob " + Coloring.NEGATIVE_SECONDARY + "a " + 
+								event.getEntityType().toString().toLowerCase().replace("_", " ") + ", to be precise" + Coloring.NEGATIVE_PRIMARY + "! You will not be warped...");
+						return;
+					}
 				}
 			}
 		}
