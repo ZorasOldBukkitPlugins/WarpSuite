@@ -3,8 +3,10 @@ package com.mrz.dyndns.server.warpsuite.managers;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -17,7 +19,7 @@ import com.mrz.dyndns.server.warpsuite.WarpSuite;
 import com.mrz.dyndns.server.warpsuite.WarpSuitePlayer;
 import com.mrz.dyndns.server.warpsuite.util.Util;
 
-public class PlayerManager implements Listener
+public class PlayerManager implements Listener, Runnable
 {
 	public PlayerManager(WarpSuite plugin)
 	{
@@ -92,6 +94,26 @@ public class PlayerManager implements Listener
 			players.get(player).getConfig().saveCustomConfig();
 			players.remove(player);
 			Util.Debug("Removed player " + player);
+		}
+	}
+	
+	//clean up mess
+	@Override
+	public void run()
+	{
+		Util.Debug("Cleaning player list...");
+		Set<String> scheduledForRemoval = new HashSet<String>();
+		for(Map.Entry<String, WarpSuitePlayer> entry : players.entrySet())
+		{
+			if(entry.getValue().getPlayer().isOnline() == false)
+			{
+				scheduledForRemoval.add(entry.getKey());
+			}
+		}
+		for(String toBeRemoved : scheduledForRemoval)
+		{
+			Util.Debug("Removing player " + toBeRemoved);
+			players.remove(toBeRemoved);
 		}
 	}
 }

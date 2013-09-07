@@ -46,6 +46,8 @@ public class WarpSuite extends JavaPlugin
 		{
 			usingMultiverse = false;
 		}
+		
+		getServer().getScheduler().runTaskTimer(this, playerManager, 600L, 600L);//every 30 seconds
 	}
 	
 	@Override
