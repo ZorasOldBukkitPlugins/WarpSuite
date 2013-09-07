@@ -46,11 +46,11 @@ public class WarpSuite extends JavaPlugin
 		
 		getServer().getPluginManager().registerEvents(playerManager, this);
 		
-		cs.registerCommand("warp set|add", new SetPlayersOwnWarp(this));
-		cs.registerCommand("warp", new GoPlayersOwnWarp(this));
+		cs.registerCommand("warp|go set|add", new SetPlayersOwnWarp(this));
+		cs.registerCommand("warp|go", new GoPlayersOwnWarp(this));
 		
 		final WarpSuite plugin = this;
-		cs.registerCommand("warp reload", new SimpleCommand() {
+		cs.registerCommand("warp|go reload", new SimpleCommand() {
 			@Override
 			public boolean Execute(String commandName, final CommandSender sender, List<String> args, List<String> variables)
 			{
