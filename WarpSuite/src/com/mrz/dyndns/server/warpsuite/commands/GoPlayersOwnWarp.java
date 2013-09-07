@@ -29,10 +29,13 @@ public class GoPlayersOwnWarp extends WarpSuiteCommand
 		
 		if(args.size() == 0)
 		{
-			player.sendMessage(NEGATIVE_PRIMARY + "Invalid usage!" + POSITIVE_PRIMARY + " Correct usage: " + USAGE + "/warp " + USAGE_ARGUMENT + " [warpName]");
+			if(Permissions.WARP.check(player))
+			{
+				player.sendMessage(NEGATIVE_PRIMARY + "Invalid usage!" + POSITIVE_PRIMARY + " Correct usage: " + USAGE + "/warp " + USAGE_ARGUMENT + " [warpName]");
+			}
 			if(Permissions.HELP.check(player))
 			{
-				player.sendMessage(POSITIVE_PRIMARY + "Or, if you want to view all of the warp help, issue " + USAGE + "/warp help");
+				player.sendMessage(POSITIVE_PRIMARY + "If you want to view all of the warp help, issue " + USAGE + "/warp help");
 			}
 			return true;
 		}
