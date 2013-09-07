@@ -53,8 +53,11 @@ public class GoPlayersOwnWarp extends WarpSuiteCommand
 						@Override
 						public void run()
 						{
-							plugin.getPendingWarpManager().removePlayer(player.getName());
-							player.teleport(plugin, sLoc);
+							if(plugin.getPendingWarpManager().isWaitingToTeleport(player.getName()))
+							{
+								plugin.getPendingWarpManager().removePlayer(player.getName());
+								player.teleport(plugin, sLoc);
+							}
 						}
 					}, Config.timer * 20L);
 					return true;
