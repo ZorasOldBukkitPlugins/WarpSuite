@@ -37,7 +37,7 @@ public abstract class WarpSuiteCommand implements SimpleCommand
 		
 		if(result == false)
 		{
-			sender.sendMessage(Coloring.NEGATIVE_PRIMARY + "Invalid usage!" + Coloring.POSITIVE_PRIMARY + " Correct usage: " + Coloring.USAGE + "/");
+			sender.sendMessage(Coloring.NEGATIVE_PRIMARY + "Invalid usage!" + Coloring.POSITIVE_PRIMARY + " Correct usage: " + Coloring.USAGE + "/" + getUsage());
 		}
 		
 		return result;
