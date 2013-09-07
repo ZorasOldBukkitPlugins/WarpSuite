@@ -55,6 +55,7 @@ public final class Util
 	public static boolean isValidWarpName(String warpName)
 	{
 		return (warpName.contains("\'")
-				|| warpName.contains("\'") == false);
+				|| warpName.contains("\'")
+				|| warpName.contains(" ") == false);
 	}
 }

@@ -2,12 +2,9 @@ package com.mrz.dyndns.server.warpsuite.commands;
 
 import java.util.List;
 
-import org.bukkit.ChatColor;
-
 import com.mrz.dyndns.server.warpsuite.WarpSuite;
 import com.mrz.dyndns.server.warpsuite.WarpSuitePlayer;
 import com.mrz.dyndns.server.warpsuite.permissions.NumeralPermissions;
-import com.mrz.dyndns.server.warpsuite.util.Coloring;
 import com.mrz.dyndns.server.warpsuite.util.Util;
 
 import static com.mrz.dyndns.server.warpsuite.util.Coloring.*;
@@ -33,11 +30,15 @@ public class SetPlayersOwnWarp extends WarpSuiteCommand
 		}
 		
 		String warpName = args.get(0);
-		if(player.getWarpManager().warpIsSet(warpName))
+		if(!Util.isValidWarpName(warpName))
 		{
-			player.sendMessage(POSITIVE_PRIMARY + "Warp \'" + POSITIVE_SECONDARY + "");
+			player.sendMessage(NEGATIVE_PRIMARY + "\'" + NEGATIVE_SECONDARY + warpName + NEGATIVE_PRIMARY + "\' is an invalid warp name!");
+			return true;
 		}
 		
-		return false;
+		boolean overwritten = player.getWarpManager().warpIsSet(warpName);
+		player.sendMessage(POSITIVE_PRIMARY + "Warp \'" + POSITIVE_SECONDARY + warpName + POSITIVE_PRIMARY + "\' has been " + (overwritten ? "overwritten" : "set") + ".");
+		
+		return true;
 	}
 }
