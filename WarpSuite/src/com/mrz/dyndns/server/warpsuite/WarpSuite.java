@@ -69,22 +69,14 @@ public class WarpSuite extends JavaPlugin
 			{
 				if(Permissions.RELOAD.check(sender))
 				{
-					getServer().getScheduler().runTask(plugin, new Runnable() {
-						@Override
-						public void run()
-						{
-							plugin.reloadConfig();
-							for(WarpSuitePlayer player : plugin.getPlayerManager().getPlayers())
-							{
-								player.getConfig().reloadCustomConfig();
-							}
-
-							plugin.onDisable();
-							plugin.onEnable();
-							plugin.getLogger().info("Reloaded WarpSuite");
-							sender.sendMessage(Coloring.POSITIVE_PRIMARY + "Reloaded WarpSuite!");
-						}
-					});
+					plugin.reloadConfig();
+					Config.load(plugin.getConfig());
+					for(WarpSuitePlayer player : plugin.getPlayerManager().getPlayers())
+					{
+						player.getConfig().reloadCustomConfig();
+					}
+					plugin.getLogger().info("Reloaded WarpSuite");
+					sender.sendMessage(Coloring.POSITIVE_PRIMARY + "Reloaded WarpSuite!");
 				}
 				else
 				{
