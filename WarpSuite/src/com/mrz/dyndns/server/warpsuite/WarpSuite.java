@@ -7,7 +7,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import com.mrz.dyndns.server.CommandSystem.CommandSystem;
 import com.mrz.dyndns.server.CommandSystem.SimpleCommand;
-import com.mrz.dyndns.server.warpsuite.commands.*;
+import com.mrz.dyndns.server.warpsuite.commands.GoPlayersOwnWarp;
+import com.mrz.dyndns.server.warpsuite.commands.SetPlayersOwnWarp;
 import com.mrz.dyndns.server.warpsuite.listeners.EntityDamageByEntityListener;
 import com.mrz.dyndns.server.warpsuite.listeners.PlayerMoveListener;
 import com.mrz.dyndns.server.warpsuite.managers.PendingWarpManager;
