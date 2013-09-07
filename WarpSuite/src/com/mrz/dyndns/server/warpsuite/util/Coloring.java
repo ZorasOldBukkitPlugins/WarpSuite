@@ -16,8 +16,9 @@ public enum Coloring
 	
 	private final ChatColor color;
 	
-	public ChatColor color()
+	@Override
+	public String toString()
 	{
-		return color;
+		return color.toString();
 	}
 }
