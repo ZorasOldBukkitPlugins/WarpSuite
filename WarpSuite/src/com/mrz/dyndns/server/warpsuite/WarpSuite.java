@@ -88,7 +88,7 @@ public class WarpSuite extends JavaPlugin
 			usingMultiverse = false;
 		}
 		
-		getServer().getScheduler().runTaskTimer(this, playerManager, 72000L, 72000L);//every hour seconds
+		getServer().getScheduler().runTaskTimer(this, playerManager, 72000L, 72000L);//every hour
 		
 		getServer().getPluginManager().registerEvents(new EntityDamageByEntityListener(this), this);
 		getServer().getPluginManager().registerEvents(new PlayerMoveListener(this), this);
