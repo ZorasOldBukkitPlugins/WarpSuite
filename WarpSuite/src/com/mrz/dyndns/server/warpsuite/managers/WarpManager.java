@@ -31,12 +31,24 @@ public class WarpManager
 	
 	public int getAmountOfSetWarps()
 	{
+		Set<String> warps = getWarpConfigurationSection();
+		if(warps == null)
+		{
+			return 0;
+		}
+		
 		return config.getCustomConfig().getConfigurationSection("Warps").getKeys(false).size();
 	}
 	
 	public boolean warpIsSet(String warpName)
 	{
-		return config.getCustomConfig().getConfigurationSection("Warps").getKeys(false).contains(warpName);
+		Set<String> warps = getWarpConfigurationSection();
+		if(warps == null)
+		{
+			return false;
+		}
+		
+		return getWarpConfigurationSection().contains(warpName);
 	}
 	
 	public SimpleLocation loadWarp(String warpName)
@@ -66,5 +78,10 @@ public class WarpManager
 		config.getCustomConfig().set("Warps." + warpName + ".ListingName", listingName);
 		
 		config.saveCustomConfig();
+	}
+	
+	private Set<String> getWarpConfigurationSection()
+	{
+		return config.getCustomConfig().getConfigurationSection("Warps").getKeys(false);
 	}
 }
