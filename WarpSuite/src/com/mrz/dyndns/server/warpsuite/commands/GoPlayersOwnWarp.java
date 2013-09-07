@@ -7,7 +7,9 @@ import java.util.List;
 import com.mrz.dyndns.server.warpsuite.WarpSuite;
 import com.mrz.dyndns.server.warpsuite.WarpSuitePlayer;
 import com.mrz.dyndns.server.warpsuite.permissions.Permissions;
+import com.mrz.dyndns.server.warpsuite.util.Config;
 import com.mrz.dyndns.server.warpsuite.util.SimpleLocation;
+import com.mrz.dyndns.server.warpsuite.util.Util;
 
 public class GoPlayersOwnWarp extends WarpSuiteCommand
 {
@@ -18,7 +20,7 @@ public class GoPlayersOwnWarp extends WarpSuiteCommand
 	}
 
 	@Override
-	public boolean warpPlayerExecute(WarpSuitePlayer player, List<String> args, List<String> variables)
+	public boolean warpPlayerExecute(final WarpSuitePlayer player, List<String> args, List<String> variables)
 	{
 		if(args.size() == 0)
 		{
@@ -33,18 +35,74 @@ public class GoPlayersOwnWarp extends WarpSuiteCommand
 		String warpName = args.get(0);
 		if(player.getWarpManager().warpIsSet(warpName))
 		{
-			SimpleLocation sLoc = player.getWarpManager().loadWarp(warpName);
+			final SimpleLocation sLoc = player.getWarpManager().loadWarp(warpName);
 			boolean canGoToWorld = sLoc.tryLoad(plugin);
 			if(canGoToWorld)
 			{
 				//it is time to teleport!
-				if(Permissions.DELAY_BYPASS.check(player))
+				if(Permissions.DELAY_BYPASS.check(player) || Util.areTherePlayersInRadius(player))
 				{
 					player.teleport(plugin, sLoc);
 					return true;
 				}
 				else
 				{
+					//TODO: my gosh this needs testing!
+					StringBuilder sb = new StringBuilder();
+					sb.append(POSITIVE_PRIMARY + "You will be warped in " + POSITIVE_SECONDARY + Config.timer + POSITIVE_PRIMARY + "seconds.");
+					boolean thingsToSay = (Config.cancelOnMobDamage || Config.cancelOnMove || Config.cancelOnPvp);
+					if(thingsToSay)
+					{
+						sb.append(" Don\'t ");
+						
+						if(Config.cancelOnPvp)
+						{
+							sb.append("engage in pvp");
+							if(Config.cancelOnMobDamage && Config.cancelOnMove)
+							{
+								sb.append(", ");
+							}
+							else if(!Config.cancelOnMobDamage || !Config.cancelOnMobDamage)
+							{
+								sb.append("or ");
+							}
+							else
+							{
+								sb.append(".");
+							}
+						}
+						if(Config.cancelOnMobDamage)
+						{
+							sb.append("get hurt by mobs");
+							if(Config.cancelOnMove)
+							{
+								sb.append(" or");
+							}
+							else
+							{
+								sb.append(".");
+							}
+						}
+						if(Config.cancelOnMove)
+						{
+							sb.append("move around.");
+						}
+						
+						player.sendMessage(sb.toString());
+					}
+					else
+					{
+						player.sendMessage(sb.toString());
+					}
+					plugin.getPendingWarpManager().addPlayer(player.getName());
+					plugin.getServer().getScheduler().runTaskLater(plugin, new Runnable() {
+						@Override
+						public void run()
+						{
+							plugin.getPendingWarpManager().removePlayer(player.getName());
+							player.teleport(plugin, sLoc);
+						}
+					}, Config.timer * 20L);
 					return true;
 				}
 			}
