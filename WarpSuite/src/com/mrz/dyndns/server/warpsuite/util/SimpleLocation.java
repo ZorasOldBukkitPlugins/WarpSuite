@@ -33,17 +33,17 @@ public class SimpleLocation
 	private final double yaw;
 	private final double pitch;
 	
-	public boolean tryLoad(WarpSuite plugin, String worldName)
+	public boolean tryLoad(WarpSuite plugin)
 	{
 		if(Config.useMultiverse)
 		{
 			if(plugin.isUsingMultiverse())
 			{
-				return WorldLoader.Load(worldName);
+				return WorldLoader.Load(world);
 			}
 		}
 		
-		return plugin.getServer().getWorld(worldName) != null;
+		return plugin.getServer().getWorld(world) != null;
 	}
 	
 	public String getWorld()
