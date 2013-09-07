@@ -72,7 +72,7 @@ public final class Util
 		return (p.getNearbyEntities(radius, radius, radius).size() != 0);
 	}
 	
-	public static void printDontsMessage(WarpSuitePlayer player)
+	public static void sendYouWillBeWarpedMessage(WarpSuitePlayer player)
 	{
 		//TODO: my gosh this needs testing!
 		StringBuilder sb = new StringBuilder();

@@ -47,7 +47,7 @@ public class GoPlayersOwnWarp extends WarpSuiteCommand
 				}
 				else
 				{
-					Util.printDontsMessage(player);
+					Util.sendYouWillBeWarpedMessage(player);
 					plugin.getPendingWarpManager().addPlayer(player.getName());
 					plugin.getServer().getScheduler().runTaskLater(plugin, new Runnable() {
 						@Override
