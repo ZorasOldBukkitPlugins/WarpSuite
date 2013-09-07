@@ -2,6 +2,8 @@ package com.mrz.dyndns.server.warpsuite.permissions;
 
 import org.bukkit.entity.Player;
 
+import com.mrz.dyndns.server.warpsuite.WarpSuitePlayer;
+
 public enum Permissions
 {
 	//user
@@ -38,8 +40,8 @@ public enum Permissions
 	
 	private final String node;
 	
-	public boolean checkNode(Player p)
+	public boolean checkNode(WarpSuitePlayer p)
 	{
-		return p.hasPermission(node);
+		return p.getPlayer().hasPermission(node);
 	}
 }

@@ -3,6 +3,7 @@ package com.mrz.dyndns.server.warpsuite.permissions;
 import org.bukkit.entity.Player;
 import org.bukkit.permissions.PermissionAttachmentInfo;
 
+import com.mrz.dyndns.server.warpsuite.WarpSuitePlayer;
 import com.mrz.dyndns.server.warpsuite.util.Config;
 
 public enum NumeralPermissions
@@ -16,14 +17,14 @@ public enum NumeralPermissions
 	
 	private final String node;
 	
-	public int getAmount(Player p) throws NumberFormatException
+	public int getAmount(WarpSuitePlayer p) throws NumberFormatException
 	{
 		if(Permissions.COUNT_INFINITE.checkNode(p))
 		{
 			return -1;
 		}
 		
-		for(PermissionAttachmentInfo perm : p.getEffectivePermissions())
+		for(PermissionAttachmentInfo perm : p.getPlayer().getEffectivePermissions())
 		{
 			if(perm.getPermission().startsWith(node))
 			{

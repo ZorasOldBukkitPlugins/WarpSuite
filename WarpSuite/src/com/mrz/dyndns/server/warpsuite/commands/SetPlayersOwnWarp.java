@@ -26,7 +26,7 @@ public class SetPlayersOwnWarp extends WarpSuiteCommand
 			return false;
 		}
 		
-		int allowedWarps = NumeralPermissions.COUNT.getAmount(player.getPlayer());
+		int allowedWarps = NumeralPermissions.COUNT.getAmount(player);
 		int warpsOwned = player.getWarpManager().getAmountOfSetWarps();
 		
 		if(allowedWarps != -1 && warpsOwned >= allowedWarps)
