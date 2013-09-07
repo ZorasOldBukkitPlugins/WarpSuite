@@ -38,9 +38,15 @@ public class GoPlayersOwnWarp extends WarpSuiteCommand
 			if(canGoToWorld)
 			{
 				//it is time to teleport!
-				
-				player.teleport(sLoc);
-				return true;
+				if(Permissions.DELAY_BYPASS.check(player))
+				{
+					player.teleport(sLoc);
+					return true;
+				}
+				else
+				{
+					return true;
+				}
 			}
 			else
 			{
@@ -58,7 +64,7 @@ public class GoPlayersOwnWarp extends WarpSuiteCommand
 	@Override
 	public String getUsage()
 	{
-		//I'll do this myself above (see line (around) 24)
+		//I'll do this myself above (see line (around) 25)
 		return null;
 	}
 
