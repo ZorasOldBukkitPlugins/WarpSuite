@@ -72,6 +72,18 @@ public final class Util
 		return (p.getNearbyEntities(radius, radius, radius).size() != 0);
 	}
 	
+	public static boolean invalidPermissions(WarpSuitePlayer player)
+	{
+		player.sendMessage(Coloring.NEGATIVE_PRIMARY + "You don't have permission to do that!");
+		return true;
+	}
+	
+	public static boolean invalidPermissions(CommandSender sender)
+	{
+		sender.sendMessage(Coloring.NEGATIVE_PRIMARY + "You don't have permission to do that!");
+		return true;
+	}
+	
 	public static void sendYouWillBeWarpedMessage(WarpSuitePlayer player)
 	{
 		//TODO: my gosh this needs testing!
