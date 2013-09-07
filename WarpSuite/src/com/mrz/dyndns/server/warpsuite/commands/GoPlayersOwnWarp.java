@@ -47,53 +47,7 @@ public class GoPlayersOwnWarp extends WarpSuiteCommand
 				}
 				else
 				{
-					//TODO: my gosh this needs testing!
-					StringBuilder sb = new StringBuilder();
-					sb.append(POSITIVE_PRIMARY + "You will be warped in " + POSITIVE_SECONDARY + Config.timer + POSITIVE_PRIMARY + "seconds.");
-					boolean thingsToSay = (Config.cancelOnMobDamage || Config.cancelOnMove || Config.cancelOnPvp);
-					if(thingsToSay)
-					{
-						sb.append(" Don\'t ");
-						
-						if(Config.cancelOnPvp)
-						{
-							sb.append("engage in pvp");
-							if(Config.cancelOnMobDamage && Config.cancelOnMove)
-							{
-								sb.append(", ");
-							}
-							else if(!Config.cancelOnMobDamage || !Config.cancelOnMobDamage)
-							{
-								sb.append("or ");
-							}
-							else
-							{
-								sb.append(".");
-							}
-						}
-						if(Config.cancelOnMobDamage)
-						{
-							sb.append("get hurt by mobs");
-							if(Config.cancelOnMove)
-							{
-								sb.append(" or");
-							}
-							else
-							{
-								sb.append(".");
-							}
-						}
-						if(Config.cancelOnMove)
-						{
-							sb.append("move around.");
-						}
-						
-						player.sendMessage(sb.toString());
-					}
-					else
-					{
-						player.sendMessage(sb.toString());
-					}
+					Util.printDontsMessage(player);
 					plugin.getPendingWarpManager().addPlayer(player.getName());
 					plugin.getServer().getScheduler().runTaskLater(plugin, new Runnable() {
 						@Override
