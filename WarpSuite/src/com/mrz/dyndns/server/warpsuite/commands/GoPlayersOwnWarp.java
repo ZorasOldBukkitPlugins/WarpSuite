@@ -22,6 +22,11 @@ public class GoPlayersOwnWarp extends WarpSuiteCommand
 	@Override
 	public boolean warpPlayerExecute(final WarpSuitePlayer player, List<String> args, List<String> variables)
 	{
+		if(!Permissions.WARP.check(player) || !Permissions.HELP.check(player))
+		{
+			Util.invalidPermissions(player);
+		}
+		
 		if(args.size() == 0)
 		{
 			player.sendMessage(NEGATIVE_PRIMARY + "Invalid usage!" + POSITIVE_PRIMARY + " Correct usage: " + USAGE + "/warp " + USAGE_ARGUMENT + " [warpName]");

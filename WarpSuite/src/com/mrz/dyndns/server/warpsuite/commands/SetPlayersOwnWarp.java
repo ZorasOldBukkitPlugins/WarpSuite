@@ -5,6 +5,7 @@ import java.util.List;
 import com.mrz.dyndns.server.warpsuite.WarpSuite;
 import com.mrz.dyndns.server.warpsuite.WarpSuitePlayer;
 import com.mrz.dyndns.server.warpsuite.permissions.NumeralPermissions;
+import com.mrz.dyndns.server.warpsuite.permissions.Permissions;
 import com.mrz.dyndns.server.warpsuite.util.SimpleLocation;
 import com.mrz.dyndns.server.warpsuite.util.Util;
 
@@ -24,6 +25,11 @@ public class SetPlayersOwnWarp extends WarpSuiteCommand
 		if(args.size() == 0)
 		{
 			return false;
+		}
+		
+		if(!Permissions.WARP_SET.check(player))
+		{
+			return Util.invalidPermissions(player);
 		}
 		
 		int allowedWarps = NumeralPermissions.COUNT.getAmount(player);
