@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+import org.bukkit.configuration.ConfigurationSection;
+
 import com.mrz.dyndns.server.warpsuite.util.MyConfig;
 import com.mrz.dyndns.server.warpsuite.util.SimpleLocation;
 import com.mrz.dyndns.server.warpsuite.util.Util;
@@ -82,6 +84,14 @@ public class WarpManager
 	
 	private Set<String> getWarpConfigurationSection()
 	{
-		return config.getCustomConfig().getConfigurationSection("Warps").getKeys(false);
+		ConfigurationSection warps = config.getCustomConfig().getConfigurationSection("Warps");
+		if(warps == null)
+		{
+			return null;
+		}
+		else
+		{
+			return warps.getKeys(false);
+		}
 	}
 }
