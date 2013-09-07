@@ -97,7 +97,7 @@ public class PlayerManager implements Listener, Runnable
 		}
 	}
 	
-	//clean up mess
+	//clean up any messes that were somehow made...
 	@Override
 	public void run()
 	{
