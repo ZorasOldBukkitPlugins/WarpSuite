@@ -1,6 +1,9 @@
 package com.mrz.dyndns.server.warpsuite.managers;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -97,6 +100,14 @@ public class WarpManager
 		config.getCustomConfig().set("Warps." + warpName, null);
 		
 		config.saveCustomConfig();
+	}
+	
+	public List<String> getWarpList()
+	{
+		Set<String> warpSet = getWarpConfigurationSection();
+		List<String> warpList = new ArrayList<String>(warpSet);
+		Collections.sort(warpList);
+		return warpList;
 	}
 	
 	private Set<String> getWarpConfigurationSection()
