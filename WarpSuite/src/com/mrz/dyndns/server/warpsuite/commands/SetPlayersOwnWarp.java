@@ -41,4 +41,10 @@ public class SetPlayersOwnWarp extends WarpSuiteCommand
 		
 		return true;
 	}
+
+	@Override
+	public String getUsage()
+	{
+		return "set|add " + USAGE_ARGUMENT + "[warpName]";
+	}
 }

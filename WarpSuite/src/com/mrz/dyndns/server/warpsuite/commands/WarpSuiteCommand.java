@@ -10,6 +10,7 @@ import org.bukkit.entity.Player;
 import com.mrz.dyndns.server.CommandSystem.SimpleCommand;
 import com.mrz.dyndns.server.warpsuite.WarpSuite;
 import com.mrz.dyndns.server.warpsuite.WarpSuitePlayer;
+import com.mrz.dyndns.server.warpsuite.util.Coloring;
 import com.mrz.dyndns.server.warpsuite.util.Util;
 
 public abstract class WarpSuiteCommand implements SimpleCommand
@@ -24,14 +25,22 @@ public abstract class WarpSuiteCommand implements SimpleCommand
 	@Override
 	public boolean Execute(String commandName, CommandSender sender, List<String> args, List<String> variables)
 	{
+		boolean result;
 		if(sender instanceof Player)
 		{
-			return warpPlayerExecute(plugin.getPlayerManager().getWarpPlayer(sender.getName()), args, variables);
+			result =  warpPlayerExecute(plugin.getPlayerManager().getWarpPlayer(sender.getName()), args, variables);
 		}
 		else
 		{
-			return consoleExecute(Bukkit.getConsoleSender(), args, variables);
+			result = consoleExecute(Bukkit.getConsoleSender(), args, variables);
 		}
+		
+		if(result == false)
+		{
+			sender.sendMessage(Coloring.NEGATIVE_PRIMARY + "Invalid usage!" + Coloring.POSITIVE_PRIMARY + " Correct usage: " + Coloring.USAGE + "/");
+		}
+		
+		return result;
 	}
 	
 	protected boolean consoleExecute(ConsoleCommandSender sender, List<String> args, List<String> variables)
@@ -40,4 +49,5 @@ public abstract class WarpSuiteCommand implements SimpleCommand
 	}
 
 	public abstract boolean warpPlayerExecute(WarpSuitePlayer player, List<String> args, List<String> variables);
+	public abstract String getUsage();
 }
