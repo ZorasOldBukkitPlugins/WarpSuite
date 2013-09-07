@@ -4,6 +4,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import com.mrz.dyndns.server.CommandSystem.CommandSystem;
 import com.mrz.dyndns.server.warpsuite.commands.*;
+import com.mrz.dyndns.server.warpsuite.listeners.EntityDamageByEntityListener;
+import com.mrz.dyndns.server.warpsuite.listeners.PlayerMoveListener;
 import com.mrz.dyndns.server.warpsuite.managers.PendingWarpManager;
 import com.mrz.dyndns.server.warpsuite.managers.PlayerManager;
 import com.mrz.dyndns.server.warpsuite.managers.WarpManager;
@@ -51,6 +53,9 @@ public class WarpSuite extends JavaPlugin
 		}
 		
 		getServer().getScheduler().runTaskTimer(this, playerManager, 600L, 600L);//every 30 seconds
+		
+		getServer().getPluginManager().registerEvents(new EntityDamageByEntityListener(this), this);
+		getServer().getPluginManager().registerEvents(new PlayerMoveListener(), this);
 	}
 	
 	@Override
@@ -74,5 +79,10 @@ public class WarpSuite extends JavaPlugin
 	public boolean isUsingMultiverse()
 	{
 		return usingMultiverse;
+	}
+	
+	public PendingWarpManager getPendingWarpManager()
+	{
+		return pendingWarpManager;
 	}
 }
