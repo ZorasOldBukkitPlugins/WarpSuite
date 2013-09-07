@@ -73,12 +73,14 @@ public class WarpSuite extends JavaPlugin
 						@Override
 						public void run()
 						{
-							plugin.onDisable();
-							plugin.onEnable();
+							plugin.reloadConfig();
 							for(WarpSuitePlayer player : plugin.getPlayerManager().getPlayers())
 							{
 								player.getConfig().reloadCustomConfig();
 							}
+
+							plugin.onDisable();
+							plugin.onEnable();
 							plugin.getLogger().info("Reloaded WarpSuite");
 							sender.sendMessage(Coloring.POSITIVE_PRIMARY + "Reloaded WarpSuite!");
 						}
