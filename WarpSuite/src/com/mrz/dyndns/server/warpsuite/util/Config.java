@@ -17,6 +17,7 @@ public final class Config
 		globalWarpsCountTowardsTotal = config.getBoolean("globalWarpsCountTowardsTotal", false);
 		defaultMaxWarps = config.getInt("defaultMaxWarps", 50);
 		warpInviteTimeout = config.getInt("warpInviteTimeout", 120);
+		useMultiverse = config.getBoolean("useMultiverse", true);
 	}
 	
 	public static int timer;
@@ -26,4 +27,5 @@ public final class Config
 	public static boolean globalWarpsCountTowardsTotal;
 	public static int defaultMaxWarps;
 	public static int warpInviteTimeout;
+	public static boolean useMultiverse;
 }

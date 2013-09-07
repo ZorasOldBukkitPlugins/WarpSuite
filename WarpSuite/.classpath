@@ -3,6 +3,11 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/EnhancedCommandSystem"/>
-	<classpathentry kind="lib" path="E:/Programming/Java/jars/bukkit-1.6.2-R0.1.jar"/>
+	<classpathentry kind="lib" path="E:/Programming/Java/jars/bukkit-1.6.2-R0.1.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="http://jd.bukkit.org/beta/apidocs/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="E:/Programming/Java/jars/Multiverse-Core-2.5.jar" sourcepath="E:/Programming/Java/jars/Multiverse-Core-2.5-javadoc.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

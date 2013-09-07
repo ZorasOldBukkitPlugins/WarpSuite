@@ -15,6 +15,7 @@ public class WarpSuite extends JavaPlugin
 	private CommandSystem cs;
 	private PlayerManager playerManager;
 	private WarpManager publicWarpManager;
+	private boolean usingMultiverse;
 	
 	@Override
 	public void onEnable()
@@ -34,6 +35,16 @@ public class WarpSuite extends JavaPlugin
 		getServer().getPluginManager().registerEvents(playerManager, this);
 		
 		cs.registerCommand("warp set|add", new SetPlayersOwnWarp(this));
+		
+		if(getServer().getPluginManager().getPlugin("Multiverse-Core") != null)
+		{
+			getLogger().info("Hooking into Multiverse");
+			usingMultiverse = true;
+		}
+		else
+		{
+			usingMultiverse = false;
+		}
 	}
 	
 	@Override
@@ -52,5 +63,10 @@ public class WarpSuite extends JavaPlugin
 	public PlayerManager getPlayerManager()
 	{
 		return playerManager;
+	}
+	
+	public boolean isUsingMultiverse()
+	{
+		return usingMultiverse;
 	}
 }
