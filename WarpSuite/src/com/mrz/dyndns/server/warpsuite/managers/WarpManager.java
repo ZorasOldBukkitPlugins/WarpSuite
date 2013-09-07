@@ -50,7 +50,7 @@ public class WarpManager
 			return false;
 		}
 		
-		return getWarpConfigurationSection().contains(warpName);
+		return getWarpConfigurationSection().contains(warpName.toLowerCase());
 	}
 	
 	public SimpleLocation loadWarp(String warpName)
