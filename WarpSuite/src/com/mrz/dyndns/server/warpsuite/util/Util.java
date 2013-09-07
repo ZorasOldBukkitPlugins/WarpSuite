@@ -76,7 +76,7 @@ public final class Util
 	{
 		//TODO: my gosh this needs testing!
 		StringBuilder sb = new StringBuilder();
-		sb.append(POSITIVE_PRIMARY + "You will be warped in " + POSITIVE_SECONDARY + Config.timer + POSITIVE_PRIMARY + "seconds.");
+		sb.append(POSITIVE_PRIMARY + "You will be warped in " + POSITIVE_SECONDARY + Config.timer + POSITIVE_PRIMARY + " seconds.");
 		boolean thingsToSay = (Config.cancelOnMobDamage || Config.cancelOnMove || Config.cancelOnPvp);
 		if(thingsToSay)
 		{
@@ -91,7 +91,7 @@ public final class Util
 				}
 				else if(!Config.cancelOnMobDamage || !Config.cancelOnMobDamage)
 				{
-					sb.append("or ");
+					sb.append(" or ");
 				}
 				else
 				{
@@ -103,7 +103,7 @@ public final class Util
 				sb.append("get hurt by mobs");
 				if(Config.cancelOnMove)
 				{
-					sb.append(" or");
+					sb.append(" or ");
 				}
 				else
 				{
