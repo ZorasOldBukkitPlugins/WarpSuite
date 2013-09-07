@@ -4,8 +4,6 @@ description: All of your warping needs in one place
 author: MrZoraman
 main: com.mrz.dyndns.server.warpsuite.WarpSuite
 prefix: WarpSuite
-commands:
-  woop:
 permissions:
   warpsuite.user:
     description: Standard warp permissions
