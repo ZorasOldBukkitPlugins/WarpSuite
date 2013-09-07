@@ -56,8 +56,7 @@ public class GoPlayersOwnWarp extends WarpSuiteCommand
 				else
 				{
 					Util.sendYouWillBeWarpedMessage(player);
-					plugin.getPendingWarpManager().addPlayer(player.getName());
-					plugin.getServer().getScheduler().runTaskLater(plugin, new Runnable() {
+					int id = plugin.getServer().getScheduler().runTaskLater(plugin, new Runnable() {
 						@Override
 						public void run()
 						{
@@ -67,7 +66,10 @@ public class GoPlayersOwnWarp extends WarpSuiteCommand
 								player.teleport(plugin, sLoc);
 							}
 						}
-					}, Config.timer * 20L);
+					}, Config.timer * 20L).getTaskId();
+
+					plugin.getPendingWarpManager().addPlayer(player.getName(), id);
+					
 					return true;
 				}
 			}

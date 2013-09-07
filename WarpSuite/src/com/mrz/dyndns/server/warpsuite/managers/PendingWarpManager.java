@@ -1,7 +1,7 @@
 package com.mrz.dyndns.server.warpsuite.managers;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.bukkit.Bukkit;
 
@@ -9,18 +9,19 @@ public class PendingWarpManager
 {
 	public PendingWarpManager()
 	{
-		playersWaitingToTeleport = new HashSet<String>();
+		playersWaitingToTeleport = new HashMap<String, Integer>();
 	}
 	
-	private Set<String> playersWaitingToTeleport;
+	private Map<String, Integer> playersWaitingToTeleport;
 	
-	public void addPlayer(String player)
+	public void addPlayer(String player, int id)
 	{
-		playersWaitingToTeleport.add(player);
+		playersWaitingToTeleport.put(player, id);
 	}
 	
 	public void removePlayer(String player)
 	{
+		Bukkit.getScheduler().cancelTask(playersWaitingToTeleport.get(player));
 		playersWaitingToTeleport.remove(player);
 	}
 	
@@ -32,6 +33,6 @@ public class PendingWarpManager
 			return false;
 		}
 		
-		return playersWaitingToTeleport.contains(player);
+		return playersWaitingToTeleport.containsKey(player);
 	}
 }
