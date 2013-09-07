@@ -2,6 +2,7 @@ package com.mrz.dyndns.server.warpsuite.managers;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -47,6 +48,11 @@ public class PlayerManager implements Listener, Runnable
 			removePlayer(wsPlayerName);
 		}
 		players.clear();
+	}
+	
+	public Collection<WarpSuitePlayer> getPlayers()
+	{
+		return players.values();
 	}
 	
 	public WarpSuitePlayer getWarpPlayer(String player)
