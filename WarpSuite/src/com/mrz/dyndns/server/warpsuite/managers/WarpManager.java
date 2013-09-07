@@ -41,6 +41,8 @@ public class WarpManager
 	
 	public SimpleLocation loadWarp(String warpName)
 	{
+		warpName = warpName.toLowerCase();
+		
 		double x = config.getCustomConfig().getDouble(warpName + ".X");
 		double y = config.getCustomConfig().getDouble(warpName + ".Y");
 		double z = config.getCustomConfig().getDouble(warpName + ".Z");
@@ -52,6 +54,8 @@ public class WarpManager
 	
 	public void setWarp(String warpName, SimpleLocation warp)
 	{
+		warpName = warpName.toLowerCase();
+		
 		config.getCustomConfig().set("Warps." + warpName + ".X", warp.X);
 		config.getCustomConfig().set("Warps." + warpName + ".Y", warp.Y);
 		config.getCustomConfig().set("Warps." + warpName + ".Z", warp.Z);
