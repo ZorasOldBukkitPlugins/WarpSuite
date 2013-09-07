@@ -4,10 +4,12 @@ import org.bukkit.ChatColor;
 
 public enum Coloring
 {
-	POSITIVE_PRIMARY(ChatColor.DARK_GREEN),
-	POSITIVE_SECONDARY(ChatColor.GREEN),
-	NEGATIVE_PRIMARY(ChatColor.RED),
-	NEGATIVE_SECONDARY(ChatColor.DARK_GRAY);
+	POSITIVE_PRIMARY	(ChatColor.DARK_GREEN),
+	POSITIVE_SECONDARY	(ChatColor.GREEN),
+	NEGATIVE_PRIMARY	(ChatColor.RED),
+	NEGATIVE_SECONDARY	(ChatColor.DARK_GRAY),
+	USAGE				(ChatColor.AQUA),
+	USAGE_ARGUMENT		(ChatColor.LIGHT_PURPLE);
 	
 	private Coloring(ChatColor color)
 	{
