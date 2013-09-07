@@ -18,7 +18,7 @@ public enum NumeralPermissions
 	
 	public int getAmount(WarpSuitePlayer p) throws NumberFormatException
 	{
-		if(Permissions.COUNT_INFINITE.checkNode(p))
+		if(Permissions.COUNT_INFINITE.check(p))
 		{
 			return -1;
 		}

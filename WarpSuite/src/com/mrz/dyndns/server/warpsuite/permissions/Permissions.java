@@ -38,7 +38,7 @@ public enum Permissions
 	
 	private final String node;
 	
-	public boolean checkNode(WarpSuitePlayer p)
+	public boolean check(WarpSuitePlayer p)
 	{
 		return p.getPlayer().hasPermission(node);
 	}
