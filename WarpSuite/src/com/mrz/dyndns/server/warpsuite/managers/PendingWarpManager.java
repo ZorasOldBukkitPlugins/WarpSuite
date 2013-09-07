@@ -3,6 +3,8 @@ package com.mrz.dyndns.server.warpsuite.managers;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.bukkit.Bukkit;
+
 public class PendingWarpManager
 {
 	public PendingWarpManager()
@@ -24,6 +26,12 @@ public class PendingWarpManager
 	
 	public boolean isWaitingToTeleport(String player)
 	{
+		if(Bukkit.getPlayer(player) == null)
+		{
+			removePlayer(player);
+			return false;
+		}
+		
 		return playersWaitingToTeleport.contains(player);
 	}
 }
