@@ -1,5 +1,6 @@
 package com.mrz.dyndns.server.warpsuite.util;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 
 import com.mrz.dyndns.server.warpsuite.WarpSuite;
@@ -44,6 +45,11 @@ public class SimpleLocation
 		}
 		
 		return plugin.getServer().getWorld(world) != null;
+	}
+	
+	public Location toLocation()
+	{
+		return new Location(Bukkit.getWorld(world), x, y, z, (float)yaw, (float)pitch);
 	}
 	
 	public String getWorld()

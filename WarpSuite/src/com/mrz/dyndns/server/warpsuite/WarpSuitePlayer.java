@@ -47,6 +47,11 @@ public class WarpSuitePlayer
 		}
 	}
 	
+	public void teleport(SimpleLocation sLoc)
+	{
+		getPlayer().teleport(sLoc.toLocation());
+	}
+	
 	public WarpManager getWarpManager()
 	{
 		return manager;
