@@ -10,6 +10,8 @@ public class WorldLoader
 	{
 	}
 	
+	//TODO: TEST
+	
 	private static MultiverseCore mvCore;
 	
 	static
