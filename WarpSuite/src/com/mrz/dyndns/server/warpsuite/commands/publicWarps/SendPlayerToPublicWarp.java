@@ -25,7 +25,7 @@ public class SendPlayerToPublicWarp extends WarpSuiteCommand
 	@Override
 	public boolean warpPlayerExecute(WarpSuitePlayer player, List<String> args, List<String> variables)
 	{
-		if(Permissions.PUBLIC_SENDTO.check(player, true))
+		if(Permissions.PUBLIC_SENDTO.check(player, true) == false)
 		{
 			return true;
 		}
@@ -63,7 +63,7 @@ public class SendPlayerToPublicWarp extends WarpSuiteCommand
 		}
 		
 		SimpleLocation sLoc = manager.loadWarp(warpName);
-		sender.sendMessage(POSITIVE_PRIMARY + "\'" + POSITIVE_SECONDARY + targetName + POSITIVE_PRIMARY + "\' has been sent to public warp \'" + POSITIVE_SECONDARY + warpName + POSITIVE_PRIMARY + "\'");
+		sender.sendMessage(POSITIVE_PRIMARY + "Player \'" + POSITIVE_SECONDARY + targetName + POSITIVE_PRIMARY + "\' has been sent to public warp \'" + POSITIVE_SECONDARY + warpName + POSITIVE_PRIMARY + "\'");
 		return target.warpTo(sLoc, true);
 	}
 
