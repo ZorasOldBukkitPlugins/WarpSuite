@@ -25,8 +25,7 @@ public class WarpPlayerToTheirWarp extends WarpSuiteCommand
 	@Override
 	public boolean warpPlayerExecute(WarpSuitePlayer player, List<String> args, List<String> variables)
 	{
-
-		if(Permissions.ADMIN_SENDTO.check(player))
+		if(Permissions.ADMIN_SENDTO.check(player) == false)
 		{
 			return Util.invalidPermissions(player);
 		}
