@@ -27,6 +27,7 @@ public enum Permissions
 	PUBLIC_SET		("warpsuite.public.set"),
 	PUBLIC_REMOVE	("warpsuite.public.remove"),
 	PUBLIC_LIST		("warpsuite.public.list"),
+	PUBLIC_SENDTO	("warpsuite.public.sendto"),
 	PUBLIC_BASE		("warpsuite.public."),
 	
 	//misc
