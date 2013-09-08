@@ -37,8 +37,12 @@ public class ListPrinter
 		}
 		
 		List<String> subList = new ArrayList<String>();
-//		player.sendMessage(ChatColor.YELLOW + "------------------" + ChatColor.GREEN + "Warps" + ChatColor.YELLOW + " - " 
-//				+ ChatColor.LIGHT_PURPLE + " page " + currentPage + ChatColor.DARK_PURPLE + " of " + ChatColor.LIGHT_PURPLE + pages + ChatColor.YELLOW + "-----------------");
+		
+		if(page < 0 || page > pages)
+		{
+			return null;
+		}
+		
 		for(int ii = currentPage * listSize; ii < (currentPage * listSize ) + numberToDisplay; ii++)
 		{
 //				player.sendMessage(ChatColor.AQUA + itemArray[ii-listSize]);
@@ -47,6 +51,11 @@ public class ListPrinter
 		
 		return subList;
 	
+	}
+	
+	public void calculatePages()
+	{
+		
 	}
 	
 	public int getAmountOfPages()

@@ -80,6 +80,11 @@ public class ListOtherPlayersWarps extends WarpSuiteCommand
 			}
 			
 			List<String> subList = lp.getSubList(page);
+			if(subList == null)
+			{
+				sender.sendMessage(NEGATIVE_PRIMARY + "Invalid page number! Your page number was either too high or too low");
+				return true;
+			}
 			int amountOfPages = lp.getAmountOfPages();
 			
 			sender.sendMessage(POSITIVE_PRIMARY + "---------- " + POSITIVE_SECONDARY + targetName + (targetName.endsWith("s") ? "\'" : "\'s") + POSITIVE_PRIMARY + " warp List (" + POSITIVE_SECONDARY + page + POSITIVE_PRIMARY + "/" + POSITIVE_SECONDARY + amountOfPages + POSITIVE_PRIMARY + ") ---------");
