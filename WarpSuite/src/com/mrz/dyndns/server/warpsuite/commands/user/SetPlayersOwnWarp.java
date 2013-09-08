@@ -28,9 +28,9 @@ public class SetPlayersOwnWarp extends WarpSuiteCommand
 			return false;
 		}
 		
-		if(!Permissions.WARP_SET.check(player))
+		if(Permissions.WARP_SET.check(player, true) == false)
 		{
-			return Util.invalidPermissions(player);
+			return true;
 		}
 		
 		int allowedWarps = NumeralPermissions.COUNT.getAmount(player);

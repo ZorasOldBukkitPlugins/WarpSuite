@@ -80,7 +80,7 @@ public class WarpSuite extends JavaPlugin
 			@Override
 			public boolean Execute(String commandName, final CommandSender sender, List<String> args, List<String> variables)
 			{
-				if(Permissions.RELOAD.check(sender))
+				if(Permissions.RELOAD.check(sender, true))
 				{
 					plugin.reloadConfig();
 					Config.load(plugin.getConfig());
@@ -90,12 +90,12 @@ public class WarpSuite extends JavaPlugin
 					}
 					plugin.getLogger().info("Reloaded WarpSuite");
 					sender.sendMessage(Coloring.POSITIVE_PRIMARY + "Reloaded WarpSuite!");
+					return true;
 				}
 				else
 				{
-					return Util.invalidPermissions(sender);
+					return true;
 				}
-				return true;
 			}
 		});
 		

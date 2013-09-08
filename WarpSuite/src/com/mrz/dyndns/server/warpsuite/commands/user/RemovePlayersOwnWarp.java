@@ -8,7 +8,6 @@ import com.mrz.dyndns.server.warpsuite.WarpSuite;
 import com.mrz.dyndns.server.warpsuite.commands.WarpSuiteCommand;
 import com.mrz.dyndns.server.warpsuite.permissions.Permissions;
 import com.mrz.dyndns.server.warpsuite.players.WarpSuitePlayer;
-import com.mrz.dyndns.server.warpsuite.util.Util;
 
 public class RemovePlayersOwnWarp extends WarpSuiteCommand
 {
@@ -21,9 +20,9 @@ public class RemovePlayersOwnWarp extends WarpSuiteCommand
 	@Override
 	public boolean warpPlayerExecute(WarpSuitePlayer player, List<String> args, List<String> variables)
 	{
-		if(Permissions.WARP_REMOVE.check(player) == false)
+		if(Permissions.WARP_REMOVE.check(player, true) == false)
 		{
-			return Util.invalidPermissions(player);
+			return true;
 		}
 		
 		if(args.size() == 0)

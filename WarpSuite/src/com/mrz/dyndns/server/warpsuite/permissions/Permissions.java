@@ -3,6 +3,7 @@ package com.mrz.dyndns.server.warpsuite.permissions;
 import org.bukkit.command.CommandSender;
 
 import com.mrz.dyndns.server.warpsuite.players.WarpSuitePlayer;
+import com.mrz.dyndns.server.warpsuite.util.Util;
 
 public enum Permissions
 {
@@ -42,14 +43,20 @@ public enum Permissions
 	
 	private final String node;
 	
-	public boolean check(WarpSuitePlayer p)
+	public boolean check(WarpSuitePlayer p, boolean notify)
 	{
-		return p.getPlayer().hasPermission(node);
+		return check(p.getPlayer(), notify);
 	}
 	
-	public boolean check(CommandSender sender)
+	public boolean check(CommandSender sender, boolean notify)
 	{
-		return sender.hasPermission(node);
+		//I have the message sent here so I don't have to call Bukkit.getPlayer(..) twice each time I check and send invalid permissions message
+		boolean result = sender.hasPermission(node);
+		if(notify && result == false)
+		{
+			Util.invalidPermissions(sender);
+		}
+		return result;
 	}
 	
 	public String getNode()

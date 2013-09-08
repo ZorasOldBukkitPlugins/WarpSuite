@@ -26,22 +26,23 @@ public class GoPlayersWarp extends WarpSuiteCommand
 	@Override
 	public boolean warpPlayerExecute(final WarpSuitePlayer player, List<String> args, List<String> variables)
 	{
-		if(!Permissions.WARP.check(player) && !Permissions.HELP.check(player) && !Permissions.ADMIN_WARP.check(player))
+		if(!Permissions.WARP.check(player, false) && !Permissions.HELP.check(player, false) && !Permissions.ADMIN_WARP.check(player, false))
 		{
-			return Util.invalidPermissions(player);
+			Util.invalidPermissions(player);
+			return true;
 		}
 		
 		if(args.size() == 0)
 		{
-			if(Permissions.WARP.check(player))
+			if(Permissions.WARP.check(player, false))
 			{
 				player.sendMessage(NEGATIVE_PRIMARY + "Invalid usage!" + POSITIVE_PRIMARY + " Correct usage: " + USAGE + "/warp " + USAGE_ARGUMENT + "[warpName]");
 			}
-			if(Permissions.ADMIN_WARP.check(player))
+			if(Permissions.ADMIN_WARP.check(player, false))
 			{
 				player.sendMessage(NEGATIVE_PRIMARY + "Invalid usage!" + POSITIVE_PRIMARY + " Correct usage: " + USAGE + "/warp " + USAGE_ARGUMENT + "[playerName] [warpName]");
 			}
-			if(Permissions.HELP.check(player))
+			if(Permissions.HELP.check(player, false))
 			{
 				player.sendMessage(POSITIVE_PRIMARY + "If you want to view all of the warp commands, issue " + USAGE + "/warp help");
 			}
@@ -51,9 +52,9 @@ public class GoPlayersWarp extends WarpSuiteCommand
 		if(args.size() == 2)
 		{
 			//this is an admin command
-			if(Permissions.ADMIN_WARP.check(player) == false)
+			if(Permissions.ADMIN_WARP.check(player, true) == false)
 			{
-				return Util.invalidPermissions(player);
+				return true;
 			}
 			
 			String targetPlayer = args.get(0);

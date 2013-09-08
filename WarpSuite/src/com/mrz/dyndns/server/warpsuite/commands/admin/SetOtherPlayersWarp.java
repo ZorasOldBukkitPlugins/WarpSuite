@@ -24,9 +24,9 @@ public class SetOtherPlayersWarp extends WarpSuiteCommand
 	@Override
 	public boolean warpPlayerExecute(WarpSuitePlayer player, List<String> args, List<String> variables)
 	{
-		if(Permissions.ADMIN_SET.check(player) == false)
+		if(Permissions.ADMIN_SET.check(player, true) == false)
 		{
-			return Util.invalidPermissions(player);
+			return true;
 		}
 		
 		if(args.size() == 0)

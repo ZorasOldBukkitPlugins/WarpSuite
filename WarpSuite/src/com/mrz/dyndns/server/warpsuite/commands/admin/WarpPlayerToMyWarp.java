@@ -9,7 +9,6 @@ import com.mrz.dyndns.server.warpsuite.commands.WarpSuiteCommand;
 import com.mrz.dyndns.server.warpsuite.permissions.Permissions;
 import com.mrz.dyndns.server.warpsuite.players.WarpSuitePlayer;
 import com.mrz.dyndns.server.warpsuite.util.SimpleLocation;
-import com.mrz.dyndns.server.warpsuite.util.Util;
 
 public class WarpPlayerToMyWarp extends WarpSuiteCommand
 {
@@ -22,9 +21,9 @@ public class WarpPlayerToMyWarp extends WarpSuiteCommand
 	@Override
 	public boolean warpPlayerExecute(WarpSuitePlayer player, List<String> args, List<String> variables)
 	{
-		if(Permissions.ADMIN_TOMY.check(player) == false)
+		if(Permissions.ADMIN_TOMY.check(player, true) == false)
 		{
-			return Util.invalidPermissions(player);
+			return true;
 		}
 		
 		String targetName = variables.get(0);
