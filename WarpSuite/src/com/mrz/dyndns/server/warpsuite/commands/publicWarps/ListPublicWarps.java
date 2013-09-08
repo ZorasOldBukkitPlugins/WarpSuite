@@ -83,7 +83,7 @@ public class ListPublicWarps extends WarpSuiteCommand
 		}
 		else
 		{
-			sender.sendMessage(lp.toString(PUBLIC_WARP.getColor()));
+			sender.sendMessage(lp.toString(PUBLIC_WARP));
 			return true;
 		}
 	}

@@ -69,7 +69,7 @@ public class ListPlayersOwnWarps extends WarpSuiteCommand
 		}
 		else
 		{
-			player.sendMessage(lp.toString(PRIVATE_WARP.getColor()));
+			player.sendMessage(lp.toString(PRIVATE_WARP));
 			return true;
 		}
 	}

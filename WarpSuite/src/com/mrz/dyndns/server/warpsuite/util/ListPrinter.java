@@ -3,8 +3,6 @@ package com.mrz.dyndns.server.warpsuite.util;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.bukkit.ChatColor;
-
 public class ListPrinter
 {
 	public ListPrinter(List<String> items)
@@ -63,13 +61,13 @@ public class ListPrinter
 		this.listSize = listSize;
 	}
 	
-	public String toString(ChatColor color)
+	public String toString(Coloring color)
 	{
 		StringBuilder sb = new StringBuilder();
 		sb.append(Coloring.POSITIVE_PRIMARY + "Warp List: ");
 		for(int ii = 0; ii < items.size(); ii++)
 		{
-			sb.append(color).append(items.get(ii)).append(Coloring.POSITIVE_PRIMARY).append(", ");
+			sb.append(color.toString()).append(items.get(ii)).append(Coloring.POSITIVE_PRIMARY).append(", ");
 		}
 		String warps = sb.substring(0, sb.length() - 2);
 		return warps;
