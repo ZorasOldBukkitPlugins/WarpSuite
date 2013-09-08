@@ -1,5 +1,5 @@
 name: Warp Suite
-version: 0.6.0
+version: 0.6.1
 description: All of your warping needs in one place
 author: MrZoraman
 main: com.mrz.dyndns.server.warpsuite.WarpSuite
