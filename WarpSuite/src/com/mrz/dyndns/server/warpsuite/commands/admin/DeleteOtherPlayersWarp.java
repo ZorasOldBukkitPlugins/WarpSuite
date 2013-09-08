@@ -56,7 +56,7 @@ public class DeleteOtherPlayersWarp extends WarpSuiteCommand
 		
 		String warpName = args.get(0);		
 		target.getWarpManager().removeWarp(warpName);
-		sender.sendMessage(POSITIVE_PRIMARY + "Warp \'" + POSITIVE_SECONDARY + warpName + POSITIVE_PRIMARY + "\' has been removed");
+		sender.sendMessage(POSITIVE_PRIMARY + "Warp \'" + POSITIVE_SECONDARY + warpName + POSITIVE_PRIMARY + "\' has been removed from player \'" + POSITIVE_SECONDARY + targetName + POSITIVE_PRIMARY + "\'");
 		return true;
 	}
 
