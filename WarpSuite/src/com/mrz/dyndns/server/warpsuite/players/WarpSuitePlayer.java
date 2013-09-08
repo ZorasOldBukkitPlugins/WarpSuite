@@ -70,6 +70,19 @@ public class WarpSuitePlayer
 		}
 	}
 	
+	public boolean clearRequest()
+	{
+		if(warpRequest == null)
+		{
+			return false;
+		}
+		else
+		{
+			warpRequest = null;
+			return true;
+		}
+	}
+	
 	private void teleport(final SimpleLocation sLoc)
 	{
 		//run it next tick so if a world had to be loaded we'll let it load up before teleporting the player there
