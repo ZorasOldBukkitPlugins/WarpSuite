@@ -10,7 +10,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import com.mrz.dyndns.server.warpsuite.WarpSuite;
-import com.mrz.dyndns.server.warpsuite.WarpSuitePlayer;
+import com.mrz.dyndns.server.warpsuite.players.WarpSuitePlayer;
 
 public final class Util
 {

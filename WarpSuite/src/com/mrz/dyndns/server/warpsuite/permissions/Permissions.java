@@ -2,7 +2,7 @@ package com.mrz.dyndns.server.warpsuite.permissions;
 
 import org.bukkit.command.CommandSender;
 
-import com.mrz.dyndns.server.warpsuite.WarpSuitePlayer;
+import com.mrz.dyndns.server.warpsuite.players.WarpSuitePlayer;
 
 public enum Permissions
 {

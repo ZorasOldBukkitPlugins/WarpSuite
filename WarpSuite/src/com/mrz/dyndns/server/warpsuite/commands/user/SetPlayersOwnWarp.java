@@ -3,10 +3,10 @@ package com.mrz.dyndns.server.warpsuite.commands.user;
 import java.util.List;
 
 import com.mrz.dyndns.server.warpsuite.WarpSuite;
-import com.mrz.dyndns.server.warpsuite.WarpSuitePlayer;
 import com.mrz.dyndns.server.warpsuite.commands.WarpSuiteCommand;
 import com.mrz.dyndns.server.warpsuite.permissions.NumeralPermissions;
 import com.mrz.dyndns.server.warpsuite.permissions.Permissions;
+import com.mrz.dyndns.server.warpsuite.players.WarpSuitePlayer;
 import com.mrz.dyndns.server.warpsuite.util.SimpleLocation;
 import com.mrz.dyndns.server.warpsuite.util.Util;
 

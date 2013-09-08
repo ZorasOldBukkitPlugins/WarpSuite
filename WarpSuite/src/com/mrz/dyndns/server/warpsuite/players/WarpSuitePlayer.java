@@ -1,8 +1,9 @@
-package com.mrz.dyndns.server.warpsuite;
+package com.mrz.dyndns.server.warpsuite.players;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
+import com.mrz.dyndns.server.warpsuite.WarpSuite;
 import com.mrz.dyndns.server.warpsuite.managers.WarpManager;
 import com.mrz.dyndns.server.warpsuite.util.Config;
 import com.mrz.dyndns.server.warpsuite.util.MyConfig;

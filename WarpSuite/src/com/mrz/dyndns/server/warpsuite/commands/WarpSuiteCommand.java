@@ -9,7 +9,7 @@ import org.bukkit.entity.Player;
 
 import com.mrz.dyndns.server.CommandSystem.SimpleCommand;
 import com.mrz.dyndns.server.warpsuite.WarpSuite;
-import com.mrz.dyndns.server.warpsuite.WarpSuitePlayer;
+import com.mrz.dyndns.server.warpsuite.players.WarpSuitePlayer;
 import com.mrz.dyndns.server.warpsuite.util.Coloring;
 import com.mrz.dyndns.server.warpsuite.util.Util;
 

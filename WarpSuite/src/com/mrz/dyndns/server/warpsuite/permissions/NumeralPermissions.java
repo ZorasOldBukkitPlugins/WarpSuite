@@ -2,7 +2,7 @@ package com.mrz.dyndns.server.warpsuite.permissions;
 
 import org.bukkit.permissions.PermissionAttachmentInfo;
 
-import com.mrz.dyndns.server.warpsuite.WarpSuitePlayer;
+import com.mrz.dyndns.server.warpsuite.players.WarpSuitePlayer;
 import com.mrz.dyndns.server.warpsuite.util.Config;
 
 public enum NumeralPermissions
