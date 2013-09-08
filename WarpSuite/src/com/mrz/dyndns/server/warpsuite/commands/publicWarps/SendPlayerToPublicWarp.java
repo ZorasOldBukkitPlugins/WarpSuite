@@ -63,6 +63,7 @@ public class SendPlayerToPublicWarp extends WarpSuiteCommand
 		}
 		
 		SimpleLocation sLoc = manager.loadWarp(warpName);
+		sender.sendMessage(POSITIVE_PRIMARY + "\'" + POSITIVE_SECONDARY + targetName + POSITIVE_PRIMARY + "\' has been sent to public warp \'" + POSITIVE_SECONDARY + warpName + POSITIVE_PRIMARY + "\'");
 		return target.warpTo(sLoc, true);
 	}
 
