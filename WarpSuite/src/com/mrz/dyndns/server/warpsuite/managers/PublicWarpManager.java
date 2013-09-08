@@ -22,6 +22,9 @@ public class PublicWarpManager extends WarpManager
 		}
 		
 		Player p = player.getPlayer();
-		return p.hasPermission(Permissions.PUBLIC_BASE.getNode() + warpName) || p.hasPermission(Permissions.PUBLIC_BASE + "*");
+		return p.hasPermission(Permissions.PUBLIC_BASE.getNode() + warpName) 
+				|| p.hasPermission(Permissions.PUBLIC_BASE + "*")
+				|| p.hasPermission(Permissions.WARP_BASE + "*")
+				|| p.hasPermission("*");
 	}
 }
