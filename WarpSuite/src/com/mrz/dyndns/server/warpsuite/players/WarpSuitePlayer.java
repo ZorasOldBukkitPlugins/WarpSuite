@@ -21,7 +21,7 @@ public class WarpSuitePlayer
 	private final WarpManager manager;
 	private final WarpSuite plugin;
 	
-	private SimpleLocation warpRequest;
+	private SimpleLocation warpRequest = null;
 	private long timeWhenRequestWasMade = -1;
 	
 	private Player player = null;
