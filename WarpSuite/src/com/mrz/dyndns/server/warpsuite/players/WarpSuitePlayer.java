@@ -34,6 +34,8 @@ public class WarpSuitePlayer
 	
 	public Player getPlayer()
 	{
+		//this is an efficency test. Lets see how often this actually gets called
+		System.out.println("getPlayer() called for " + playerName);
 		return Bukkit.getPlayer(playerName);
 	}
 	
