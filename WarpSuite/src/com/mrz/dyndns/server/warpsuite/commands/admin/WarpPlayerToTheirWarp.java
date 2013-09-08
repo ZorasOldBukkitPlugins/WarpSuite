@@ -16,13 +16,10 @@ import com.mrz.dyndns.server.warpsuite.util.SimpleLocation;
 public class WarpPlayerToTheirWarp extends WarpSuiteCommand
 {
 
-	public WarpPlayerToTheirWarp(WarpSuite plugin, boolean forcePublic)
+	public WarpPlayerToTheirWarp(WarpSuite plugin)
 	{
 		super(plugin);
-		this.forcePublic = forcePublic;
 	}
-	
-	private final boolean forcePublic;
 
 	@Override
 	public boolean warpPlayerExecute(WarpSuitePlayer player, List<String> args, List<String> variables)
@@ -59,38 +56,20 @@ public class WarpPlayerToTheirWarp extends WarpSuiteCommand
 			else
 			{
 				String warpName = args.get(0);
-				if(forcePublic)
+				
+				if(target.getWarpManager().warpIsSet(warpName) == false)
 				{
-					if(plugin.getPublicWarpManager().warpIsSet(warpName))
-					{
-						SimpleLocation sLoc = plugin.getPublicWarpManager().loadWarp(warpName);
-						target.warpTo(sLoc, true);
-						sender.sendMessage(POSITIVE_PRIMARY + "\'" + POSITIVE_SECONDARY + playerName + POSITIVE_PRIMARY + "\' has been warped to public warp \'" 
-								+ POSITIVE_SECONDARY + sLoc.getListingName() + POSITIVE_PRIMARY + "\'");
-						return true;
-					}
-					else
-					{
-						sender.sendMessage(NEGATIVE_PRIMARY + "There is no public warp called \'" + NEGATIVE_SECONDARY + warpName + NEGATIVE_PRIMARY + "\' set!");
-						return true;
-					}
+					sender.sendMessage(NEGATIVE_PRIMARY + "Player \'" + NEGATIVE_SECONDARY + playerName + NEGATIVE_PRIMARY + "\' does not have a warp called \'" +
+							NEGATIVE_SECONDARY + warpName + NEGATIVE_PRIMARY + "\' set!");
+					return true;
 				}
 				else
 				{
-					if(target.getWarpManager().warpIsSet(warpName) == false)
-					{
-						sender.sendMessage(NEGATIVE_PRIMARY + "Player \'" + NEGATIVE_SECONDARY + playerName + NEGATIVE_PRIMARY + "\' does not have a warp called \'" +
-								NEGATIVE_SECONDARY + warpName + NEGATIVE_PRIMARY + "\' set!");
-						return true;
-					}
-					else
-					{
-						SimpleLocation sLoc = target.getWarpManager().loadWarp(warpName);
-						target.warpTo(sLoc, true);
-						sender.sendMessage(POSITIVE_PRIMARY + "\'" + POSITIVE_SECONDARY + playerName + POSITIVE_PRIMARY + "\' has been warped to warp \'" 
-								+ POSITIVE_SECONDARY + sLoc.getListingName() + POSITIVE_PRIMARY + "\'");
-						return true;
-					}
+					SimpleLocation sLoc = target.getWarpManager().loadWarp(warpName);
+					target.warpTo(sLoc, true);
+					sender.sendMessage(POSITIVE_PRIMARY + "\'" + POSITIVE_SECONDARY + playerName + POSITIVE_PRIMARY + "\' has been warped to warp \'" 
+							+ POSITIVE_SECONDARY + sLoc.getListingName() + POSITIVE_PRIMARY + "\'");
+					return true;
 				}
 			}
 		}
@@ -99,14 +78,7 @@ public class WarpPlayerToTheirWarp extends WarpSuiteCommand
 	@Override
 	public String getUsage()
 	{
-		if(forcePublic)
-		{
-			return "warp " + USAGE_ARGUMENT + "[playerName] " + USAGE + "sendto|to public " + USAGE_ARGUMENT + "[warpName]";
-		}
-		else
-		{
-			return "warp " + USAGE_ARGUMENT + "[playerName] " + USAGE + "sendto|to their|his|her " + USAGE_ARGUMENT + "[warpName]";
-		}
+		return "warp " + USAGE_ARGUMENT + "[playerName] " + USAGE + "sendto|to their|his|her " + USAGE_ARGUMENT + "[warpName]";
 	}
 
 }
