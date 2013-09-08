@@ -24,7 +24,6 @@ public class GoPlayersWarp extends WarpSuiteCommand
 	@Override
 	public boolean warpPlayerExecute(final WarpSuitePlayer player, List<String> args, List<String> variables)
 	{
-		System.out.println("entry point");
 		if(!Permissions.WARP.check(player) && !Permissions.HELP.check(player) && !Permissions.ADMIN_WARP.check(player))
 		{
 			return Util.invalidPermissions(player);
@@ -66,9 +65,9 @@ public class GoPlayersWarp extends WarpSuiteCommand
 			else
 			{
 				String warpName = args.get(1);
-				if(target.getWarpManager().warpIsSet(warpName))
+				if(warpManager.warpIsSet(warpName))
 				{
-					SimpleLocation sLoc = target.getWarpManager().loadWarp(warpName);
+					SimpleLocation sLoc = warpManager.loadWarp(warpName);
 					return warpPlayer(player, sLoc);
 				}
 				else

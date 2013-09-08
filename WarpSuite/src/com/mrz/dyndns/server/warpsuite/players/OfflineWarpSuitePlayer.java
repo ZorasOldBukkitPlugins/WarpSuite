@@ -19,16 +19,14 @@ public class OfflineWarpSuitePlayer
 	
 	public WarpManager getWarpManager()
 	{
-		String fileName = plugin.getDataFolder().getAbsolutePath() + "/players/" + playerName + ".yml";
-		System.out.println("fileName: " + fileName);
-		File file = new File(plugin.getDataFolder().getAbsolutePath() + "/players/" + playerName + ".yml");
+		String fileName = plugin.getDataFolder().getAbsolutePath() + System.getProperty("file.separator") + "players" + System.getProperty("file.separator") + playerName + ".yml";
+		File file = new File(fileName);
 		if(file.exists())
 		{
 			return new WarpManager(new MyConfig("players/" + playerName, plugin));
 		}
 		else
 		{
-			System.out.println("returning null");
 			return null;
 		}
 	}
