@@ -1,5 +1,5 @@
 name: Warp Suite
-version: BETA 1.0.6
+version: BETA 1.0.8
 description: All of your warping needs in one place
 author: MrZoraman
 main: com.mrz.dyndns.server.warpsuite.WarpSuite
@@ -42,6 +42,7 @@ permissions:
       warpsuite.warp.list: true
   warpsuite.invite.*:
     description: All warp invitationing commands
+    children:
       warpsuite.invite: true
       warpsuite.invite.accept: true
       warpsuite.invite.deny: true
