@@ -1,6 +1,7 @@
 package com.mrz.dyndns.server.warpsuite.util;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.bukkit.command.CommandSender;
@@ -10,27 +11,34 @@ import com.mrz.dyndns.server.warpsuite.managers.PublicWarpManager;
 
 public class ListPrinter
 {
-	public ListPrinter(CommandSender sender, List<String> items, WarpSuite plugin)
+	public ListPrinter(CommandSender sender, List<String> items, WarpSuite plugin, boolean addPublicWarps)
 	{
 		this.items = new ArrayList<String>();
-		for(int ii = 0; ii < this.items.size(); ii++)
+		Collections.sort(items);
+
+		if(addPublicWarps)
+		{
+			PublicWarpManager manager = plugin.getPublicWarpManager();
+			List<String> publicWarps = manager.getWarpList();
+			Collections.sort(publicWarps);
+			for(int ii = 0; ii < publicWarps.size(); ii++)
+			{
+				String publicWarp = publicWarps.get(ii);
+				if(manager.checkPlayer(sender, publicWarp))
+				{
+					this.items.add(Coloring.PUBLIC_WARP + publicWarp);
+				}
+			}
+		}
+		for(int ii = 0; ii < items.size(); ii++)
 		{
 			this.items.add(Coloring.PRIVATE_WARP + items.get(ii));
 		}
-		PublicWarpManager manager = plugin.getPublicWarpManager();
-		List<String> publicWarps = manager.getWarpList();
-		for(int ii = 0; ii < publicWarps.size(); ii++)
-		{
-			String publicWarp = publicWarps.get(ii);
-			if(manager.checkPlayer(sender, publicWarp))
-			{
-				this.items.add(Coloring.PUBLIC_WARP + publicWarp);
-			}
-		}
+		
 		listSize = 9;
 	}
 	
-	private final List<String> items;
+	private List<String> items;
 	
 	private int listSize;
 	private int pages = -1;
