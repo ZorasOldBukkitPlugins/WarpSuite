@@ -66,7 +66,9 @@ public class WarpSuitePlayer
 		}
 		else
 		{
-			return warpRequest;
+			SimpleLocation requestLoc = warpRequest;
+			clearRequest();
+			return requestLoc;
 		}
 	}
 	
@@ -79,6 +81,7 @@ public class WarpSuitePlayer
 		else
 		{
 			warpRequest = null;
+			timeWhenRequestWasMade = -1;
 			return true;
 		}
 	}
@@ -148,13 +151,13 @@ public class WarpSuitePlayer
 		
 		if (timeWhenRequestWasMade + timeoutTime > Util.getUnixTime())
 		{
-			timeWhenRequestWasMade = -1;
-			warpRequest = null;
-			return true;
+			return false;
 		}
 		else
 		{
-			return false;
+			timeWhenRequestWasMade = -1;
+			warpRequest = null;
+			return true;
 		}
 	}
 	
