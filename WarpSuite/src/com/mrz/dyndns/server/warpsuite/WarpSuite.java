@@ -55,8 +55,6 @@ public class WarpSuite extends JavaPlugin
 		
 		getServer().getPluginManager().registerEvents(playerManager, this);
 		
-		WarpManager.initializePublicWarps(this);
-		
 		WarpSuiteCommand cmd = new SetPlayersOwnWarp(this);
 		cs.registerCommand("warp|go set|add", cmd);
 		cs.registerCommand("setwarp", cmd);
