@@ -66,7 +66,12 @@ public class WarpManager
 		double yaw = config.getCustomConfig().getDouble("Warps." + warpName + ".Yaw");
 		double pitch = config.getCustomConfig().getDouble("Warps." + warpName + ".Pitch");
 		
-		return new SimpleLocation(world, x, y, z, yaw, pitch);
+		String listingName = config.getCustomConfig().getString("Warps." + warpName + ".ListingName");
+		
+		SimpleLocation sLoc = new SimpleLocation(world, x, y, z, yaw, pitch);
+		sLoc.setListingName(listingName);
+		
+		return sLoc;
 	}
 	
 	public void setWarp(String warpName, SimpleLocation warp)
@@ -105,7 +110,11 @@ public class WarpManager
 	public List<String> getWarpList()
 	{
 		Set<String> warpSet = getWarpConfigurationSection();
-		List<String> warpList = new ArrayList<String>(warpSet);
+		List<String> warpList = new ArrayList<String>();
+		for(String warpName : warpSet)
+		{
+			warpList.add("Warps." + warpName + ".ListingName");
+		}
 		Collections.sort(warpList);
 		return warpList;
 	}
