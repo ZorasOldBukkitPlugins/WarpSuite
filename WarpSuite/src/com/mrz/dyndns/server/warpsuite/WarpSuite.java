@@ -8,7 +8,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import com.mrz.dyndns.server.CommandSystem.CommandSystem;
 import com.mrz.dyndns.server.CommandSystem.SimpleCommand;
 import com.mrz.dyndns.server.warpsuite.commands.WarpSuiteCommand;
-import com.mrz.dyndns.server.warpsuite.commands.user.GoPlayersOwnWarp;
+import com.mrz.dyndns.server.warpsuite.commands.user.GoPlayersWarp;
 import com.mrz.dyndns.server.warpsuite.commands.user.ListPlayersOwnWarps;
 import com.mrz.dyndns.server.warpsuite.commands.user.RemovePlayersOwnWarp;
 import com.mrz.dyndns.server.warpsuite.commands.user.SetPlayersOwnWarp;
@@ -60,7 +60,7 @@ public class WarpSuite extends JavaPlugin
 		
 		cs.registerCommand("warp list", new ListPlayersOwnWarps(this));
 		
-		cs.registerCommand("warp|go", new GoPlayersOwnWarp(this));
+		cs.registerCommand("warp|go", new GoPlayersWarp(this));
 		
 		final WarpSuite plugin = this;
 		cs.registerCommand("warp|go reload", new SimpleCommand() {
@@ -96,7 +96,7 @@ public class WarpSuite extends JavaPlugin
 			usingMultiverse = false;
 		}
 		
-		getServer().getScheduler().runTaskTimer(this, playerManager, 72000L, 72000L);//every hour
+//		getServer().getScheduler().runTaskTimer(this, playerManager, 72000L, 72000L);//every hour
 		
 		getServer().getPluginManager().registerEvents(new EntityDamageByEntityListener(this), this);
 		getServer().getPluginManager().registerEvents(new PlayerMoveListener(this), this);

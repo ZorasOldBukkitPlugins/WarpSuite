@@ -4,10 +4,8 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -20,7 +18,7 @@ import com.mrz.dyndns.server.warpsuite.WarpSuite;
 import com.mrz.dyndns.server.warpsuite.WarpSuitePlayer;
 import com.mrz.dyndns.server.warpsuite.util.Util;
 
-public class PlayerManager implements Listener, Runnable
+public class PlayerManager implements Listener
 {
 	public PlayerManager(WarpSuite plugin)
 	{
@@ -103,23 +101,23 @@ public class PlayerManager implements Listener, Runnable
 		}
 	}
 	
-	//clean up any messes that were somehow made...
-	@Override
-	public void run()
-	{
-		Util.Debug("Cleaning player list...");
-		Set<String> scheduledForRemoval = new HashSet<String>();
-		for(Map.Entry<String, WarpSuitePlayer> entry : players.entrySet())
-		{
-			if(entry.getValue().getPlayer().isOnline() == false)
-			{
-				scheduledForRemoval.add(entry.getKey());
-			}
-		}
-		for(String toBeRemoved : scheduledForRemoval)
-		{
-			Util.Debug("Removing player " + toBeRemoved);
-			players.remove(toBeRemoved);
-		}
-	}
+//	//clean up any messes that were somehow made...
+//	@Override
+//	public void run()
+//	{
+//		Util.Debug("Cleaning player list...");
+//		Set<String> scheduledForRemoval = new HashSet<String>();
+//		for(Map.Entry<String, WarpSuitePlayer> entry : players.entrySet())
+//		{
+//			if(entry.getValue().getPlayer().isOnline() == false)
+//			{
+//				scheduledForRemoval.add(entry.getKey());
+//			}
+//		}
+//		for(String toBeRemoved : scheduledForRemoval)
+//		{
+//			Util.Debug("Removing player " + toBeRemoved);
+//			players.remove(toBeRemoved);
+//		}
+//	}
 }
