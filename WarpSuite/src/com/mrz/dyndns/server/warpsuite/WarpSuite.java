@@ -56,7 +56,7 @@ public class WarpSuite extends JavaPlugin
 		cs.registerCommand("warp|go set|add", cmd);
 		cs.registerCommand("setwarp", cmd);
 		
-		cs.registerCommand("warp|go|delwarp delete|del|remove|clear", new RemovePlayersOwnWarp(this));
+		cs.registerCommand("warp|go delete|del|remove|clear", new RemovePlayersOwnWarp(this));
 		cs.registerCommand("delwarp", cmd);
 		//TODO: config for extra commands?
 		
