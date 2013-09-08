@@ -34,6 +34,8 @@ public class SimpleLocation
 	private final double yaw;
 	private final double pitch;
 	
+	private String listingName;
+	
 	public boolean tryLoad(WarpSuite plugin)
 	{
 		if(Config.useMultiverse)
@@ -80,5 +82,15 @@ public class SimpleLocation
 	public double getPitch()
 	{
 		return pitch;
+	}
+
+	public String getListingName()
+	{
+		return listingName;
+	}
+
+	public void setListingName(String listingName)
+	{
+		this.listingName = listingName;
 	}
 }
