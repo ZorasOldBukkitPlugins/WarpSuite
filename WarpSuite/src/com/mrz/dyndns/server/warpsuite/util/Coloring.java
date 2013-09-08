@@ -11,7 +11,8 @@ public enum Coloring
 	WARNING_PRIMARY		(ChatColor.GOLD),
 	WARNING_SECONDARY	(ChatColor.YELLOW),
 	USAGE				(ChatColor.AQUA),
-	USAGE_ARGUMENT		(ChatColor.LIGHT_PURPLE);
+	USAGE_ARGUMENT		(ChatColor.LIGHT_PURPLE),
+	PUBLIC_WARP			(ChatColor.AQUA);
 	
 	private Coloring(ChatColor color)
 	{
