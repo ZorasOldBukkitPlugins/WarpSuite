@@ -13,6 +13,9 @@ import com.mrz.dyndns.server.warpsuite.commands.admin.ListOtherPlayersWarps;
 import com.mrz.dyndns.server.warpsuite.commands.admin.SetOtherPlayersWarp;
 import com.mrz.dyndns.server.warpsuite.commands.admin.WarpPlayerToMyWarp;
 import com.mrz.dyndns.server.warpsuite.commands.admin.WarpPlayerToTheirWarp;
+import com.mrz.dyndns.server.warpsuite.commands.invites.AcceptInvite;
+import com.mrz.dyndns.server.warpsuite.commands.invites.DenyInvite;
+import com.mrz.dyndns.server.warpsuite.commands.invites.SendInvite;
 import com.mrz.dyndns.server.warpsuite.commands.publicWarps.GoToPublicWarp;
 import com.mrz.dyndns.server.warpsuite.commands.publicWarps.GoToPublicWarpIfApplicable;
 import com.mrz.dyndns.server.warpsuite.commands.publicWarps.PublicRemoveWarp;
@@ -84,7 +87,11 @@ public class WarpSuite extends JavaPlugin
 		cs.registerCommand("warp|go set|add public", new PublicSetWarp(this));
 		cs.registerCommand("warp|go public", new GoToPublicWarp(this));
 		cs.registerCommand("warp|go delete|del|remove|clear public", new PublicRemoveWarp(this));
-		//cs.registerCommand("warp|go list public", new ListPublicWarps(this));
+		
+		//invites
+		cs.registerCommand("warp|go invite {*} to", new SendInvite(this));
+		cs.registerCommand("warp|go accept", new AcceptInvite(this));
+		cs.registerCommand("warp|go deny", new DenyInvite(this));
 		
 		final WarpSuite plugin = this;
 		cs.registerCommand("warp|go reload", new SimpleCommand() {
