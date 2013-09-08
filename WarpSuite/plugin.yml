@@ -14,9 +14,11 @@ permissions:
       warpsuite.warp.set: true
       warpsuite.warp.remove: true
       warpsuite.warp.list: true
-      warpsuite.warp.invite: true
       warpsuite.public.warp: true
       warpsuite.public.list: true
+      warpsuite.invite: true
+      warpsuite.invite.accept: true
+      warpsuite.invite.deny: true
   warpsuite.admin:
     description: Standard admin permissions
     children:
@@ -38,7 +40,11 @@ permissions:
       warpsuite.warp.set: true
       warpsuite.warp.remove: true
       warpsuite.warp.list: true
-      warpsuite.warp.invite: true
+  warpsuite.invite.*:
+    description: All warp invitationing commands
+      warpsuite.invite: true
+      warpsuite.invite.accept: true
+      warpsuite.invite.deny: true
   warpsuite.admin.*:
     description: Add admin permissions
     children:
@@ -75,7 +81,9 @@ permissions:
       warpsuite.public.remove: true
       warpsuite.public.list: true
       warpsuite.public.sendto: true
-      warpsuite.warp.invite: True
+      warpsuite.invite: true
+      warpsuite.invite.accept: true
+      warpsuite.invite.deny: true
       warpsuite.count.infinite: true
       warpsuite.delay.bypass: true
       warpsuite.reload: true
