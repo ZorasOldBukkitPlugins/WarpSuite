@@ -7,7 +7,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import com.mrz.dyndns.server.EnhancedCommandSystem.CommandSystem;
 import com.mrz.dyndns.server.EnhancedCommandSystem.SimpleCommand;
-import com.mrz.dyndns.server.warpsuite.commands.GoPlayersWarp;
 import com.mrz.dyndns.server.warpsuite.commands.WarpSuiteCommand;
 import com.mrz.dyndns.server.warpsuite.commands.admin.DeleteOtherPlayersWarp;
 import com.mrz.dyndns.server.warpsuite.commands.admin.ListOtherPlayersWarps;
@@ -15,7 +14,9 @@ import com.mrz.dyndns.server.warpsuite.commands.admin.SetOtherPlayersWarp;
 import com.mrz.dyndns.server.warpsuite.commands.admin.WarpPlayerToMyWarp;
 import com.mrz.dyndns.server.warpsuite.commands.admin.WarpPlayerToTheirWarp;
 import com.mrz.dyndns.server.warpsuite.commands.publicWarps.GoToPublicWarp;
+import com.mrz.dyndns.server.warpsuite.commands.publicWarps.GoToPublicWarpIfApplicable;
 import com.mrz.dyndns.server.warpsuite.commands.publicWarps.PublicSetWarp;
+import com.mrz.dyndns.server.warpsuite.commands.user.GoPlayersOwnWarp;
 import com.mrz.dyndns.server.warpsuite.commands.user.ListPlayersOwnWarps;
 import com.mrz.dyndns.server.warpsuite.commands.user.RemovePlayersOwnWarp;
 import com.mrz.dyndns.server.warpsuite.commands.user.SetPlayersOwnWarp;
@@ -66,8 +67,8 @@ public class WarpSuite extends JavaPlugin
 		
 		cs.registerCommand("warp list", new ListPlayersOwnWarps(this));
 		//TODO: test
-		cs.registerCommand("warp|go", new GoPlayersWarp(this, false));
-		cs.registerCommand("warp|go my", new GoPlayersWarp(this, true));
+		cs.registerCommand("warp|go", new GoToPublicWarpIfApplicable(this));
+		cs.registerCommand("warp|go my", new GoPlayersOwnWarp(this));
 		
 		//admin commands
 		cs.registerCommand("warp|go {*} sendto|to their|his|her", new WarpPlayerToTheirWarp(this, false));
