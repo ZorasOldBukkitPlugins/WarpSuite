@@ -30,12 +30,18 @@ public enum Permissions
 	PUBLIC_SENDTO	("warpsuite.public.sendto"),
 	PUBLIC_BASE		("warpsuite.public."),
 	
+	//invites
+	INVITE			("warpsuite.invite"),
+	INVITE_ACCEPT	("warpsuite.invite.accept"),
+	INVITE_DENY		("warpsuite.invite.deny"),
+	
 	//misc
-	WARP_INVITE		("warpsuite.warp.invite"),
 	COUNT_INFINITE	("warpsuite.count.infinite"),
 	DELAY_BYPASS	("warpsuite.delay.bypass"),
 	RELOAD			("warpsuite.reload"),
 	WARP_BASE		("warpsuite.");
+	
+	
 	
 	
 	private Permissions(String node)
