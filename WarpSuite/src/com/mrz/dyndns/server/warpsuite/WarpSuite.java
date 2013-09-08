@@ -21,19 +21,18 @@ import com.mrz.dyndns.server.warpsuite.listeners.EntityDamageByEntityListener;
 import com.mrz.dyndns.server.warpsuite.listeners.PlayerMoveListener;
 import com.mrz.dyndns.server.warpsuite.managers.PendingWarpManager;
 import com.mrz.dyndns.server.warpsuite.managers.PlayerManager;
-import com.mrz.dyndns.server.warpsuite.managers.WarpManager;
+import com.mrz.dyndns.server.warpsuite.managers.PublicWarpManager;
 import com.mrz.dyndns.server.warpsuite.permissions.Permissions;
 import com.mrz.dyndns.server.warpsuite.players.WarpSuitePlayer;
 import com.mrz.dyndns.server.warpsuite.util.Coloring;
 import com.mrz.dyndns.server.warpsuite.util.Config;
-import com.mrz.dyndns.server.warpsuite.util.MyConfig;
 import com.mrz.dyndns.server.warpsuite.util.Util;
 
 public class WarpSuite extends JavaPlugin
 {
 	private CommandSystem cs;
 	private PlayerManager playerManager;
-	private WarpManager publicWarpManager;
+	private PublicWarpManager publicWarpManager;
 	private boolean usingMultiverse;
 	private PendingWarpManager pendingWarpManager;
 	
@@ -50,7 +49,7 @@ public class WarpSuite extends JavaPlugin
 		Config.load(getConfig());
 		
 		playerManager = new PlayerManager(this);
-		publicWarpManager = new WarpManager(new MyConfig("public", this));
+		publicWarpManager = new PublicWarpManager(this);
 		pendingWarpManager = new PendingWarpManager();
 		
 		getServer().getPluginManager().registerEvents(playerManager, this);
@@ -64,11 +63,12 @@ public class WarpSuite extends JavaPlugin
 		//TODO: config for extra commands?
 		
 		cs.registerCommand("warp list", new ListPlayersOwnWarps(this));
-		
-		cs.registerCommand("warp|go", new GoPlayersWarp(this));
+		//TODO: test
+		cs.registerCommand("warp|go", new GoPlayersWarp(this, false));
+		cs.registerCommand("warp|go my", new GoPlayersWarp(this, true));
 		
 		//admin commands
-		cs.registerCommand("warp|go {*} sendto|to their|his|her", new WarpPlayerToTheirWarp(this));
+		cs.registerCommand("warp|go {*} sendto|to their|his|her", new WarpPlayerToTheirWarp(this, false));
 		cs.registerCommand("warp|go {*} to my", new WarpPlayerToMyWarp(this));
 		cs.registerCommand("warp|go {*} set|add", new SetOtherPlayersWarp(this));
 		cs.registerCommand("warp|go {*} delete|del|remove|clear", new DeleteOtherPlayersWarp(this));
@@ -122,7 +122,7 @@ public class WarpSuite extends JavaPlugin
 	}
 	
 	//you will never need it
-	public WarpManager getPublicWarpManager()
+	public PublicWarpManager getPublicWarpManager()
 	{
 		return publicWarpManager;
 	}
