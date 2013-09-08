@@ -63,7 +63,7 @@ public class PublicRemoveWarp extends WarpSuiteCommand
 	@Override
 	public String getUsage()
 	{
-		return "warp public" + USAGE_ARGUMENT + "[playerName] " + USAGE + "delete|del|remove|clear " + USAGE_ARGUMENT + "[warpName]";
+		return "warp" + USAGE_ARGUMENT + "[playerName] " + USAGE + "delete|del|remove|clear public " + USAGE_ARGUMENT + "[warpName]";
 	}
 
 }

@@ -51,6 +51,6 @@ public class PublicSetWarp extends WarpSuiteCommand
 	@Override
 	public String getUsage()
 	{
-		return "warp public" + USAGE_ARGUMENT + "[playerName] " + USAGE + "set|add " + USAGE_ARGUMENT + "[warpName]";
+		return "warp public" + USAGE_ARGUMENT + "[playerName] " + USAGE + "set|add public " + USAGE_ARGUMENT + "[warpName]";
 	}
 }

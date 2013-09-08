@@ -80,9 +80,9 @@ public class WarpSuite extends JavaPlugin
 		cs.registerCommand("warp|go {*} list", new ListOtherPlayersWarps(this));
 		
 		//public warps
-		cs.registerCommand("warp|go public set|add", new PublicSetWarp(this));
+		cs.registerCommand("warp|go set|add public", new PublicSetWarp(this));
 		cs.registerCommand("warp|go public", new GoToPublicWarp(this));
-		cs.registerCommand("warp|go public delete|del|remove|clear", new PublicRemoveWarp(this));
+		cs.registerCommand("warp|go delete|del|remove|clear public", new PublicRemoveWarp(this));
 		
 		final WarpSuite plugin = this;
 		cs.registerCommand("warp|go reload", new SimpleCommand() {
