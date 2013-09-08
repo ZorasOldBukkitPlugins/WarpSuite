@@ -26,6 +26,7 @@ public enum Permissions
 	PUBLIC_SET		("warpsuite.public.set"),
 	PUBLIC_REMOVE	("warpsuite.public.remove"),
 	PUBLIC_LIST		("warpsuite.public.list"),
+	PUBLIC_BASE		("wrpsuite.public"),
 	
 	//misc
 	WARP_INVITE		("warpsuite.warp.invite"),
@@ -49,5 +50,10 @@ public enum Permissions
 	public boolean check(CommandSender sender)
 	{
 		return sender.hasPermission(node);
+	}
+	
+	public String getNode()
+	{
+		return node;
 	}
 }
