@@ -50,7 +50,7 @@ public class SendInvite extends WarpSuiteCommand
 		if(result)
 		{
 			target.sendMessage(POSITIVE_PRIMARY + "Player \'" + POSITIVE_SECONDARY + player.getName() + POSITIVE_PRIMARY + "\' has invited you to one of their warps! Use " 
-					+ USAGE + "/warp accept" + POSITIVE_PRIMARY + " to go to their warp, or " + USAGE + "/warp deny" + POSITIVE_PRIMARY + "to deny it.");
+					+ USAGE + "/warp accept" + POSITIVE_PRIMARY + " to go to their warp, or " + USAGE + "/warp deny " + POSITIVE_PRIMARY + "to deny it.");
 			
 			player.sendMessage(POSITIVE_PRIMARY + "Request to go to warp \'" + POSITIVE_SECONDARY + warpName 
 					+ POSITIVE_PRIMARY + "\' sent to player \'" + POSITIVE_SECONDARY + targetName + POSITIVE_PRIMARY + "\'");
