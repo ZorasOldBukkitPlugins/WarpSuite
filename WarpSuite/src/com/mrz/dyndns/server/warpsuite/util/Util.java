@@ -61,7 +61,8 @@ public final class Util
 	{
 		return (warpName.contains("\'")
 				|| warpName.contains("\'")
-				|| warpName.contains(" ") == false);
+				|| warpName.contains(" ")
+				|| warpName.contains(".") == false);
 	}
 	
 	public static boolean areTherePlayersInRadius(WarpSuitePlayer player)
