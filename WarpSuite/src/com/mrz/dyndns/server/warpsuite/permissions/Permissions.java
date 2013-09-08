@@ -27,14 +27,14 @@ public enum Permissions
 	PUBLIC_SET		("warpsuite.public.set"),
 	PUBLIC_REMOVE	("warpsuite.public.remove"),
 	PUBLIC_LIST		("warpsuite.public.list"),
-	PUBLIC_BASE		("warpsuite.public"),
+	PUBLIC_BASE		("warpsuite.public."),
 	
 	//misc
 	WARP_INVITE		("warpsuite.warp.invite"),
 	COUNT_INFINITE	("warpsuite.count.infinite"),
 	DELAY_BYPASS	("warpsuite.delay.bypass"),
 	RELOAD			("warpsuite.reload"),
-	WARP_BASE		("warpsuite");
+	WARP_BASE		("warpsuite.");
 	
 	
 	private Permissions(String node)
