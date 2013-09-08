@@ -7,36 +7,16 @@ import com.mrz.dyndns.server.warpsuite.permissions.Permissions;
 import com.mrz.dyndns.server.warpsuite.players.WarpSuitePlayer;
 import com.mrz.dyndns.server.warpsuite.util.MyConfig;
 
-public class PublicWarpManager
+public class PublicWarpManager extends WarpManager
 {
-	private static PublicWarpManager instance = null;
-	
-	public static PublicWarpManager getInstance()
+	public PublicWarpManager(WarpSuite plugin)
 	{
-		return instance;
-	}
-	
-	public static void initialize(WarpSuite plugin)
-	{
-		instance = new PublicWarpManager(plugin);
-	}
-
-	private PublicWarpManager(WarpSuite plugin)
-	{
-		//this.plugin = plugin;
-		manager = new WarpManager(new MyConfig("public", plugin));
-	}
-	
-	private final WarpManager manager;
-	
-	public WarpManager getWarpManager()
-	{
-		return manager;
+		super(new MyConfig("public", plugin));
 	}
 	
 	public boolean checkPlayer(WarpSuitePlayer player, String warpName)
 	{
-		if(manager.warpIsSet(warpName) == false)
+		if(warpIsSet(warpName) == false)
 		{
 			return false;
 		}
