@@ -5,7 +5,9 @@ import static com.mrz.dyndns.server.warpsuite.util.Coloring.*;
 import java.util.List;
 
 import com.mrz.dyndns.server.warpsuite.WarpSuite;
+import com.mrz.dyndns.server.warpsuite.managers.WarpManager;
 import com.mrz.dyndns.server.warpsuite.permissions.Permissions;
+import com.mrz.dyndns.server.warpsuite.players.OfflineWarpSuitePlayer;
 import com.mrz.dyndns.server.warpsuite.players.WarpSuitePlayer;
 import com.mrz.dyndns.server.warpsuite.util.Config;
 import com.mrz.dyndns.server.warpsuite.util.SimpleLocation;
@@ -53,10 +55,11 @@ public class GoPlayersWarp extends WarpSuiteCommand
 			}
 			
 			String targetPlayer = args.get(0);
-			WarpSuitePlayer target = plugin.getPlayerManager().getWarpPlayer(targetPlayer);
-			if(target == null)
+			OfflineWarpSuitePlayer target = new OfflineWarpSuitePlayer(targetPlayer, plugin);
+			WarpManager warpManager = target.getWarpManager();
+			if(warpManager == null)
 			{
-				player.sendMessage(NEGATIVE_PRIMARY + "Player \'" + NEGATIVE_SECONDARY + targetPlayer + NEGATIVE_PRIMARY + "\' is not online!");
+				player.sendMessage(NEGATIVE_PRIMARY + "Player \'" + NEGATIVE_SECONDARY + targetPlayer + NEGATIVE_PRIMARY + "\' either has no warps, or hasn't played on this server before.");
 				return true;
 			}
 			else
