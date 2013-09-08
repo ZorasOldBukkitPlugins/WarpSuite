@@ -31,16 +31,16 @@ public class ListPublicWarps extends WarpSuiteCommand
 			return true;
 		}
 		
-		return execute(player.getPlayer(), args, variables);
+		return execute(player.getPlayer(), args);
 	}
 	
 	@Override
 	public boolean consoleExecute(ConsoleCommandSender sender, List<String> args, List<String> variables)
 	{
-		return execute(sender, args, variables);
+		return execute(sender, args);
 	}
 	
-	private boolean execute(CommandSender sender, List<String> args, List<String> variables)
+	private boolean execute(CommandSender sender, List<String> args)
 	{
 		PublicWarpManager manager = plugin.getPublicWarpManager();
 		ListPrinter lp = new ListPrinter(sender, manager.getWarpList(), plugin);

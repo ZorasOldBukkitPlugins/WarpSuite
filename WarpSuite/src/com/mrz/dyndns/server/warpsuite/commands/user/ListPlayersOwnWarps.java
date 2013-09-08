@@ -4,12 +4,16 @@ import static com.mrz.dyndns.server.warpsuite.util.Coloring.*;
 
 import java.util.List;
 
+import org.bukkit.command.ConsoleCommandSender;
+
 import com.mrz.dyndns.server.warpsuite.WarpSuite;
 import com.mrz.dyndns.server.warpsuite.commands.WarpSuiteCommand;
+import com.mrz.dyndns.server.warpsuite.commands.publicWarps.ListPublicWarps;
 import com.mrz.dyndns.server.warpsuite.permissions.Permissions;
 import com.mrz.dyndns.server.warpsuite.players.WarpSuitePlayer;
 import com.mrz.dyndns.server.warpsuite.util.Config;
 import com.mrz.dyndns.server.warpsuite.util.ListPrinter;
+import com.mrz.dyndns.server.warpsuite.util.Util;
 
 public class ListPlayersOwnWarps extends WarpSuiteCommand
 {
@@ -22,6 +26,14 @@ public class ListPlayersOwnWarps extends WarpSuiteCommand
 	@Override
 	public boolean warpPlayerExecute(WarpSuitePlayer player, List<String> args, List<String> variables)
 	{
+		if(args.size() == 1)
+		{
+			if(args.get(0).equals("public"))
+			{
+				return (new ListPublicWarps(plugin).warpPlayerExecute(player, args, variables));
+			}
+		}
+		
 		if(Permissions.WARP_LIST.check(player, true) == false)
 		{
 			return true;
@@ -72,6 +84,20 @@ public class ListPlayersOwnWarps extends WarpSuiteCommand
 			player.sendMessage(lp.toString(PRIVATE_WARP));
 			return true;
 		}
+	}
+	
+	@Override
+	public boolean consoleExecute(ConsoleCommandSender sender, List<String> args, List<String> variables)
+	{
+		if(args.size() == 1)
+		{
+			if(args.get(0).equals("public"))
+			{
+				return (new ListPublicWarps(plugin).consoleExecute(sender, args, variables));
+			}
+		}
+		
+		return Util.mustBePlayer(sender);
 	}
 
 	@Override
