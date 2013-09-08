@@ -9,7 +9,6 @@ import com.mrz.dyndns.server.warpsuite.managers.WarpManager;
 import com.mrz.dyndns.server.warpsuite.permissions.Permissions;
 import com.mrz.dyndns.server.warpsuite.players.OfflineWarpSuitePlayer;
 import com.mrz.dyndns.server.warpsuite.players.WarpSuitePlayer;
-import com.mrz.dyndns.server.warpsuite.util.Config;
 import com.mrz.dyndns.server.warpsuite.util.SimpleLocation;
 import com.mrz.dyndns.server.warpsuite.util.Util;
 
@@ -68,7 +67,7 @@ public class GoPlayersWarp extends WarpSuiteCommand
 				if(warpManager.warpIsSet(warpName))
 				{
 					SimpleLocation sLoc = warpManager.loadWarp(warpName);
-					return warpPlayer(player, sLoc);
+					return player.warpTo(sLoc);
 				}
 				else
 				{
@@ -83,7 +82,7 @@ public class GoPlayersWarp extends WarpSuiteCommand
 		if(player.getWarpManager().warpIsSet(warpName))
 		{
 			final SimpleLocation sLoc = player.getWarpManager().loadWarp(warpName);
-			return warpPlayer(player, sLoc);
+			return player.warpTo(sLoc);
 		}
 		else
 		{
@@ -98,43 +97,4 @@ public class GoPlayersWarp extends WarpSuiteCommand
 		//I'll do this myself above (see line (around) 25)
 		return null;
 	}
-	
-	private boolean warpPlayer(final WarpSuitePlayer player, final SimpleLocation sLoc)
-	{
-		boolean canGoToWorld = sLoc.tryLoad(plugin);
-		if(canGoToWorld)
-		{
-			//it is time to teleport!
-			if(Permissions.DELAY_BYPASS.check(player) || !Util.areTherePlayersInRadius(player))
-			{
-				player.teleport(plugin, sLoc);
-				return true;
-			}
-			else
-			{
-				Util.sendYouWillBeWarpedMessage(player);
-				int id = plugin.getServer().getScheduler().runTaskLater(plugin, new Runnable() {
-					@Override
-					public void run()
-					{
-						if(plugin.getPendingWarpManager().isWaitingToTeleport(player.getName()))
-						{
-							plugin.getPendingWarpManager().removePlayer(player.getName());
-							player.teleport(plugin, sLoc);
-						}
-					}
-				}, Config.timer * 20L).getTaskId();
-
-				plugin.getPendingWarpManager().addPlayer(player.getName(), id);
-				
-				return true;
-			}
-		}
-		else
-		{
-			player.sendMessage(NEGATIVE_PRIMARY + "The world warp \'" + NEGATIVE_SECONDARY + "\' is located in either no longer exists, or isn't loaded");
-			return true;
-		}
-	}
-
 }

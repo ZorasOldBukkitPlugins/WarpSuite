@@ -43,7 +43,7 @@ public abstract class WarpSuiteCommand implements SimpleCommand
 		return result;
 	}
 	
-	protected boolean consoleExecute(ConsoleCommandSender sender, List<String> args, List<String> variables)
+	public boolean consoleExecute(ConsoleCommandSender sender, List<String> args, List<String> variables)
 	{
 		return Util.mustBePlayer(sender);
 	}
