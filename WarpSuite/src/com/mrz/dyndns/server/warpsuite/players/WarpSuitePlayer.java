@@ -1,10 +1,14 @@
 package com.mrz.dyndns.server.warpsuite.players;
 
+import static com.mrz.dyndns.server.warpsuite.util.Coloring.NEGATIVE_PRIMARY;
+import static com.mrz.dyndns.server.warpsuite.util.Coloring.NEGATIVE_SECONDARY;
+
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import com.mrz.dyndns.server.warpsuite.WarpSuite;
 import com.mrz.dyndns.server.warpsuite.managers.WarpManager;
+import com.mrz.dyndns.server.warpsuite.permissions.Permissions;
 import com.mrz.dyndns.server.warpsuite.util.Config;
 import com.mrz.dyndns.server.warpsuite.util.MyConfig;
 import com.mrz.dyndns.server.warpsuite.util.SimpleLocation;
@@ -15,6 +19,7 @@ public class WarpSuitePlayer
 	private final String playerName;
 	private final MyConfig config;
 	private final WarpManager manager;
+	private final WarpSuite plugin;
 	
 	private SimpleLocation warpRequest;
 	private long timeWhenRequestWasMade = -1;
@@ -22,6 +27,7 @@ public class WarpSuitePlayer
 	public WarpSuitePlayer(String playerName, WarpSuite plugin)
 	{
 		this.playerName = playerName;
+		this.plugin = plugin;
 		config = new MyConfig("players/" + playerName, plugin);
 		manager = new WarpManager(config);
 	}
@@ -48,7 +54,7 @@ public class WarpSuitePlayer
 		}
 	}
 	
-	public void teleport(final WarpSuite plugin, final SimpleLocation sLoc)
+	public void teleport(final SimpleLocation sLoc)
 	{
 		//run it next tick so if a world had to be loaded we'll let it load up before teleporting the player there
 		Bukkit.getScheduler().runTask(plugin, new Runnable() {
@@ -120,6 +126,51 @@ public class WarpSuitePlayer
 		else
 		{
 			return false;
+		}
+	}
+	
+	/**
+	 * 
+	 * @param plugin WarpSuite plugin
+	 * @param sLoc 
+	 * @return
+	 */
+	public boolean warpPlayer(final SimpleLocation sLoc)
+	{
+		boolean canGoToWorld = sLoc.tryLoad(plugin);
+		if(canGoToWorld)
+		{
+			//it is time to teleport!
+			if(Permissions.DELAY_BYPASS.check(this) || !Util.areTherePlayersInRadius(this))
+			{
+				teleport(sLoc);
+				return true;
+			}
+			else
+			{
+				Util.sendYouWillBeWarpedMessage(this);
+				final WarpSuitePlayer player = this;
+				int id = plugin.getServer().getScheduler().runTaskLater(plugin, new Runnable() {
+					@Override
+					public void run()
+					{
+						if(plugin.getPendingWarpManager().isWaitingToTeleport(player.getName()))
+						{
+							plugin.getPendingWarpManager().removePlayer(player.getName());
+							player.teleport(sLoc);
+						}
+					}
+				}, Config.timer * 20L).getTaskId();
+
+				plugin.getPendingWarpManager().addPlayer(player.getName(), id);
+				
+				return true;
+			}
+		}
+		else
+		{
+			sendMessage(NEGATIVE_PRIMARY + "The world warp \'" + NEGATIVE_SECONDARY + "\' is located in either no longer exists, or isn't loaded");
+			return true;
 		}
 	}
 }
