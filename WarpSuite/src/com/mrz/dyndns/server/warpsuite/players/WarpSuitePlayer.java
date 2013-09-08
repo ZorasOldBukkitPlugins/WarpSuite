@@ -132,16 +132,17 @@ public class WarpSuitePlayer
 	/**
 	 * 
 	 * @param plugin WarpSuite plugin
-	 * @param sLoc 
-	 * @return
+	 * @param sLoc place to teleport to
+	 * @param override if player is teleported regardless of circumstances
+	 * @return true of warp was successful
 	 */
-	public boolean warpTo(final SimpleLocation sLoc)
+	public boolean warpTo(final SimpleLocation sLoc, boolean override)
 	{
 		boolean canGoToWorld = sLoc.tryLoad(plugin);
 		if(canGoToWorld)
 		{
 			//it is time to teleport!
-			if(Permissions.DELAY_BYPASS.check(this) || !Util.areTherePlayersInRadius(this))
+			if(Permissions.DELAY_BYPASS.check(this) || !Util.areTherePlayersInRadius(this) || override)
 			{
 				teleport(sLoc);
 				return true;

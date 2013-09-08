@@ -66,7 +66,7 @@ public class WarpPlayerToTheirWarp extends WarpSuiteCommand
 				else
 				{
 					SimpleLocation sLoc = target.getWarpManager().loadWarp(warpName);
-					target.warpTo(sLoc);
+					target.warpTo(sLoc, true);
 					sender.sendMessage(POSITIVE_PRIMARY + "\'" + POSITIVE_SECONDARY + playerName + POSITIVE_PRIMARY + "\' has been warped to warp \'" 
 							+ POSITIVE_SECONDARY + sLoc.getListingName() + POSITIVE_PRIMARY + "\'");
 					return true;

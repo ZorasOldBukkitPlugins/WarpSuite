@@ -67,7 +67,7 @@ public class GoPlayersWarp extends WarpSuiteCommand
 				if(warpManager.warpIsSet(warpName))
 				{
 					SimpleLocation sLoc = warpManager.loadWarp(warpName);
-					return player.warpTo(sLoc);
+					return player.warpTo(sLoc, false);
 				}
 				else
 				{
@@ -82,7 +82,7 @@ public class GoPlayersWarp extends WarpSuiteCommand
 		if(player.getWarpManager().warpIsSet(warpName))
 		{
 			final SimpleLocation sLoc = player.getWarpManager().loadWarp(warpName);
-			return player.warpTo(sLoc);
+			return player.warpTo(sLoc, false);
 		}
 		else
 		{
