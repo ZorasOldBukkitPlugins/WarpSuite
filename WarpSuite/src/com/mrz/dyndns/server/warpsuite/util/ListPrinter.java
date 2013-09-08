@@ -53,11 +53,6 @@ public class ListPrinter
 	
 	}
 	
-	public void calculatePages()
-	{
-		
-	}
-	
 	public int getAmountOfPages()
 	{
 		return pages;
