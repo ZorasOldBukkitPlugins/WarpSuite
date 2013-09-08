@@ -54,6 +54,11 @@ public class ListPrinter
 		return pages;
 	}
 	
+	public void setListSize(int listSize)
+	{
+		this.listSize = listSize;
+	}
+	
 	@Override
 	public String toString()
 	{
