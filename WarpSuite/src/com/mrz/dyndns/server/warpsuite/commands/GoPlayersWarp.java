@@ -15,10 +15,13 @@ import com.mrz.dyndns.server.warpsuite.util.Util;
 public class GoPlayersWarp extends WarpSuiteCommand
 {
 
-	public GoPlayersWarp(WarpSuite plugin)
+	public GoPlayersWarp(WarpSuite plugin, boolean disregardPublicWarp)
 	{
 		super(plugin);
+		this.disregardPublicWarp = disregardPublicWarp;
 	}
+	
+	private final boolean disregardPublicWarp;
 
 	@Override
 	public boolean warpPlayerExecute(final WarpSuitePlayer player, List<String> args, List<String> variables)
@@ -79,6 +82,13 @@ public class GoPlayersWarp extends WarpSuiteCommand
 		}
 		
 		String warpName = args.get(0);
+		if(disregardPublicWarp == false)
+		{
+			if(plugin.getPublicWarpManager().checkPlayer(player, warpName))
+			{
+				return player.warpTo(plugin.getPublicWarpManager().loadWarp(warpName), false);
+			}
+		}
 		if(player.getWarpManager().warpIsSet(warpName))
 		{
 			final SimpleLocation sLoc = player.getWarpManager().loadWarp(warpName);

@@ -70,6 +70,7 @@ public class WarpSuite extends JavaPlugin
 		//admin commands
 		cs.registerCommand("warp|go {*} sendto|to their|his|her", new WarpPlayerToTheirWarp(this, false));
 		cs.registerCommand("warp|go {*} to my", new WarpPlayerToMyWarp(this));
+		cs.registerCommand("warp|go {*} sendto|to public", new WarpPlayerToTheirWarp(this, true));
 		cs.registerCommand("warp|go {*} set|add", new SetOtherPlayersWarp(this));
 		cs.registerCommand("warp|go {*} delete|del|remove|clear", new DeleteOtherPlayersWarp(this));
 		cs.registerCommand("warp|go {*} list", new ListOtherPlayersWarps(this));
