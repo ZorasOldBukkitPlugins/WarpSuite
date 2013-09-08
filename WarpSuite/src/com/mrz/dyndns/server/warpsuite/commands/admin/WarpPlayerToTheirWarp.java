@@ -78,7 +78,7 @@ public class WarpPlayerToTheirWarp extends WarpSuiteCommand
 	@Override
 	public String getUsage()
 	{
-		return "warp sendto|to their|his|her " + USAGE_ARGUMENT + "[warpName]";
+		return "warp " + USAGE_ARGUMENT + "[playerName] " + USAGE + "sendto|to their|his|her " + USAGE_ARGUMENT + "[warpName]";
 	}
 
 }
