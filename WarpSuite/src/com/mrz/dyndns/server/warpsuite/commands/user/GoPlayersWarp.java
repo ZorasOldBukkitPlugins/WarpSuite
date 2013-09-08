@@ -32,7 +32,7 @@ public class GoPlayersWarp extends WarpSuiteCommand
 		{
 			if(Permissions.WARP.check(player))
 			{
-				player.sendMessage(NEGATIVE_PRIMARY + "Invalid usage!" + POSITIVE_PRIMARY + " Correct usage: " + USAGE + "/warp " + USAGE_ARGUMENT + " [warpName]");
+				player.sendMessage(NEGATIVE_PRIMARY + "Invalid usage!" + POSITIVE_PRIMARY + " Correct usage: " + USAGE + "/warp " + USAGE_ARGUMENT + "[warpName]");
 			}
 			if(Permissions.ADMIN_WARP.check(player))
 			{
