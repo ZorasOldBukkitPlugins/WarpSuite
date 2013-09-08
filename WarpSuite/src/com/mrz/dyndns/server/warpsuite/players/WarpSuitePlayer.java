@@ -24,6 +24,8 @@ public class WarpSuitePlayer
 	private SimpleLocation warpRequest;
 	private long timeWhenRequestWasMade = -1;
 	
+	private Player player = null;
+	
 	public WarpSuitePlayer(String playerName, WarpSuite plugin)
 	{
 		this.playerName = playerName;
@@ -34,9 +36,21 @@ public class WarpSuitePlayer
 	
 	public Player getPlayer()
 	{
-		//this is an efficency test. Lets see how often this actually gets called
-		System.out.println("getPlayer() called for " + playerName);
-		return Bukkit.getPlayer(playerName);
+		if(player == null)
+		{
+			player = Bukkit.getPlayer(playerName);
+		}
+		
+		plugin.getServer().getScheduler().runTask(plugin, new Runnable() {
+			@Override
+			public void run()
+			{
+				//so it doesn't go stale
+				player = null;
+			}
+		});
+		
+		return player;
 	}
 	
 	public MyConfig getConfig()
