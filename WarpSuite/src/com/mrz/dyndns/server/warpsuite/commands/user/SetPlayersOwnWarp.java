@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.mrz.dyndns.server.warpsuite.WarpSuite;
 import com.mrz.dyndns.server.warpsuite.commands.WarpSuiteCommand;
+import com.mrz.dyndns.server.warpsuite.managers.PublicWarpManager;
 import com.mrz.dyndns.server.warpsuite.permissions.NumeralPermissions;
 import com.mrz.dyndns.server.warpsuite.permissions.Permissions;
 import com.mrz.dyndns.server.warpsuite.players.WarpSuitePlayer;
@@ -47,6 +48,12 @@ public class SetPlayersOwnWarp extends WarpSuiteCommand
 		{
 			player.sendMessage(NEGATIVE_PRIMARY + "\'" + NEGATIVE_SECONDARY + warpName + NEGATIVE_PRIMARY + "\' is an invalid warp name!");
 			return true;
+		}
+		if(PublicWarpManager.getInstance().checkPlayer(player, warpName))
+		{
+			player.sendMessage(WARNING_PRIMARY + "Note: Your warp (" + WARNING_SECONDARY + warpName + WARNING_PRIMARY + ") has the same name as public warp \'" 
+					+ WARNING_SECONDARY + warpName + WARNING_PRIMARY + "\'. To go to YOUR warp and not the public warp, use the command " + USAGE 
+					+ "/warp my " + USAGE_ARGUMENT + warpName);
 		}
 		boolean overwritten = player.getWarpManager().warpIsSet(warpName);
 		player.getWarpManager().setWarp(warpName, new SimpleLocation(player.getPlayer().getLocation()));
