@@ -52,7 +52,7 @@ public class ListOtherPlayersWarps extends WarpSuiteCommand
 			return true;
 		}
 
-		ListPrinter lp = new ListPrinter(manager.getWarpList());
+		ListPrinter lp = new ListPrinter(sender, manager.getWarpList(), plugin);
 		lp.setListSize(listSize);
 		
 		if(Config.useWarpListPages)
@@ -86,7 +86,7 @@ public class ListOtherPlayersWarps extends WarpSuiteCommand
 			sender.sendMessage(POSITIVE_PRIMARY + "---------- " + POSITIVE_SECONDARY + targetName + (targetName.endsWith("s") ? "\'" : "\'s") + POSITIVE_PRIMARY + " warp List (" + POSITIVE_SECONDARY + page + POSITIVE_PRIMARY + "/" + POSITIVE_SECONDARY + amountOfPages + POSITIVE_PRIMARY + ") ---------");
 			for(int ii = 0; ii < subList.size(); ii++)
 			{
-				sender.sendMessage(POSITIVE_SECONDARY + subList.get(ii));
+				sender.sendMessage(subList.get(ii));
 			}
 		}
 		else

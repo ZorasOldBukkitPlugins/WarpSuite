@@ -43,7 +43,7 @@ public class ListPublicWarps extends WarpSuiteCommand
 	private boolean execute(CommandSender sender, List<String> args, List<String> variables)
 	{
 		PublicWarpManager manager = plugin.getPublicWarpManager();
-		ListPrinter lp = new ListPrinter(manager.getWarpList());
+		ListPrinter lp = new ListPrinter(sender, manager.getWarpList(), plugin);
 		
 		if(Config.useWarpListPages)
 		{
@@ -76,7 +76,7 @@ public class ListPublicWarps extends WarpSuiteCommand
 			sender.sendMessage(POSITIVE_PRIMARY + "------------- public warp List (" + POSITIVE_SECONDARY + page + POSITIVE_PRIMARY + "/" + POSITIVE_SECONDARY + amountOfPages + POSITIVE_PRIMARY + ") ------------");
 			for(int ii = 0; ii < subList.size(); ii++)
 			{
-				sender.sendMessage(PUBLIC_WARP + subList.get(ii));
+				sender.sendMessage(subList.get(ii));
 			}
 			
 			return true;

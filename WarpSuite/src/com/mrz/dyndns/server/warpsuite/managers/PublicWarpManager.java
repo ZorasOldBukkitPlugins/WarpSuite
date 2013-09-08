@@ -1,6 +1,6 @@
 package com.mrz.dyndns.server.warpsuite.managers;
 
-import org.bukkit.entity.Player;
+import org.bukkit.command.CommandSender;
 
 import com.mrz.dyndns.server.warpsuite.WarpSuite;
 import com.mrz.dyndns.server.warpsuite.permissions.Permissions;
@@ -16,15 +16,18 @@ public class PublicWarpManager extends WarpManager
 	
 	public boolean checkPlayer(WarpSuitePlayer player, String warpName)
 	{
+		return checkPlayer(player.getPlayer(), warpName);
+	}
+	
+	public boolean checkPlayer(CommandSender sender, String warpName)
+	{
 		if(warpIsSet(warpName) == false)
 		{
 			return false;
 		}
-		
-		Player p = player.getPlayer();
-		return p.hasPermission(Permissions.PUBLIC_BASE.getNode() + warpName) 
-				|| p.hasPermission(Permissions.PUBLIC_BASE.getNode() + "*")
-				|| p.hasPermission(Permissions.WARP_BASE.getNode() + "*")
-				|| p.hasPermission("*");
+		return sender.hasPermission(Permissions.PUBLIC_BASE.getNode() + warpName) 
+				|| sender.hasPermission(Permissions.PUBLIC_BASE.getNode() + "*")
+				|| sender.hasPermission(Permissions.WARP_BASE.getNode() + "*")
+				|| sender.hasPermission("*");
 	}
 }

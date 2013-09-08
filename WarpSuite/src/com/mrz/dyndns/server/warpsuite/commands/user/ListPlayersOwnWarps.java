@@ -29,7 +29,7 @@ public class ListPlayersOwnWarps extends WarpSuiteCommand
 		
 		List<String> warpList = player.getWarpManager().getWarpList();
 
-		ListPrinter lp = new ListPrinter(warpList);
+		ListPrinter lp = new ListPrinter(player.getPlayer(), warpList, plugin);
 		
 		if(Config.useWarpListPages)
 		{
@@ -62,7 +62,7 @@ public class ListPlayersOwnWarps extends WarpSuiteCommand
 			player.sendMessage(POSITIVE_PRIMARY + "--------------- Warp List (" + POSITIVE_SECONDARY + page + POSITIVE_PRIMARY + "/" + POSITIVE_SECONDARY + amountOfPages + POSITIVE_PRIMARY + ") --------------");
 			for(int ii = 0; ii < subList.size(); ii++)
 			{
-				player.sendMessage(POSITIVE_SECONDARY + subList.get(ii));
+				player.sendMessage(subList.get(ii));
 			}
 			
 			return true;

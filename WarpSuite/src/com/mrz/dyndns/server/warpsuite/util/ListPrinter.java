@@ -3,11 +3,30 @@ package com.mrz.dyndns.server.warpsuite.util;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.bukkit.command.CommandSender;
+
+import com.mrz.dyndns.server.warpsuite.WarpSuite;
+import com.mrz.dyndns.server.warpsuite.managers.PublicWarpManager;
+
 public class ListPrinter
 {
-	public ListPrinter(List<String> items)
+	public ListPrinter(CommandSender sender, List<String> items, WarpSuite plugin)
 	{
-		this.items = items;
+		this.items = new ArrayList<String>();
+		for(int ii = 0; ii < this.items.size(); ii++)
+		{
+			this.items.add(Coloring.PRIVATE_WARP + items.get(ii));
+		}
+		PublicWarpManager manager = plugin.getPublicWarpManager();
+		List<String> publicWarps = manager.getWarpList();
+		for(int ii = 0; ii < publicWarps.size(); ii++)
+		{
+			String publicWarp = publicWarps.get(ii);
+			if(manager.checkPlayer(sender, publicWarp))
+			{
+				this.items.add(Coloring.PUBLIC_WARP + publicWarp);
+			}
+		}
 		listSize = 9;
 	}
 	
