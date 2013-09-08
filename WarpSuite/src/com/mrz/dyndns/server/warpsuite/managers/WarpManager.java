@@ -113,7 +113,7 @@ public class WarpManager
 		List<String> warpList = new ArrayList<String>();
 		for(String warpName : warpSet)
 		{
-			warpList.add("Warps." + warpName + ".ListingName");
+			warpList.add(config.getCustomConfig().getString("Warps." + warpName + ".ListingName"));
 		}
 		Collections.sort(warpList);
 		return warpList;
