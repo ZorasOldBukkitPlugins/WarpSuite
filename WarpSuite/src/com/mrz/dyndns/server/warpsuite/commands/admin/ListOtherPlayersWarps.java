@@ -32,16 +32,16 @@ public class ListOtherPlayersWarps extends WarpSuiteCommand
 			return true;
 		}
 		
-		return execute(player.getPlayer(), args, variables);
+		return execute(player.getPlayer(), args, variables, 9);
 	}
 	
 	@Override
 	public boolean consoleExecute(ConsoleCommandSender sender, List<String> args, List<String> variables)
 	{
-		return execute(sender, args, variables);
+		return execute(sender, args, variables, 25);
 	}
 	
-	private boolean execute(CommandSender sender, List<String> args, List<String> variables)
+	private boolean execute(CommandSender sender, List<String> args, List<String> variables, int listSize)
 	{
 		String targetName = variables.get(0);
 		OfflineWarpSuitePlayer target = new OfflineWarpSuitePlayer(targetName, plugin);
@@ -53,10 +53,7 @@ public class ListOtherPlayersWarps extends WarpSuiteCommand
 		}
 
 		ListPrinter lp = new ListPrinter(manager.getWarpList());
-		if(sender instanceof ConsoleCommandSender)
-		{
-			lp.setListSize(25);
-		}
+		lp.setListSize(listSize);
 		
 		if(Config.useWarpListPages)
 		{
