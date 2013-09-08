@@ -61,6 +61,7 @@ public class DeleteOtherPlayersWarp extends WarpSuiteCommand
 		{
 			sender.sendMessage(NEGATIVE_PRIMARY + "Player \'" + NEGATIVE_SECONDARY + targetName 
 					+ NEGATIVE_PRIMARY + "\' does not have a warp called \'" + NEGATIVE_SECONDARY + warpName + NEGATIVE_PRIMARY + "\' set!");
+			return true;
 		}
 		manager.removeWarp(warpName);
 		sender.sendMessage(POSITIVE_PRIMARY + "Warp \'" + POSITIVE_SECONDARY + warpName + POSITIVE_PRIMARY + "\' has been removed from player \'" + POSITIVE_SECONDARY + targetName + POSITIVE_PRIMARY + "\'");
