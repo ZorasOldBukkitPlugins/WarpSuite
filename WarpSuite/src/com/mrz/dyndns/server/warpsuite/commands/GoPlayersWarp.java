@@ -9,6 +9,7 @@ import com.mrz.dyndns.server.warpsuite.managers.WarpManager;
 import com.mrz.dyndns.server.warpsuite.permissions.Permissions;
 import com.mrz.dyndns.server.warpsuite.players.OfflineWarpSuitePlayer;
 import com.mrz.dyndns.server.warpsuite.players.WarpSuitePlayer;
+import com.mrz.dyndns.server.warpsuite.util.Config;
 import com.mrz.dyndns.server.warpsuite.util.SimpleLocation;
 import com.mrz.dyndns.server.warpsuite.util.Util;
 
@@ -18,7 +19,14 @@ public class GoPlayersWarp extends WarpSuiteCommand
 	public GoPlayersWarp(WarpSuite plugin, boolean disregardPublicWarp)
 	{
 		super(plugin);
-		this.disregardPublicWarp = disregardPublicWarp;
+		if(Config.defaultToPublicWarp)
+		{
+			this.disregardPublicWarp = false;
+		}
+		else
+		{
+			this.disregardPublicWarp = disregardPublicWarp;
+		}
 	}
 	
 	private final boolean disregardPublicWarp;
