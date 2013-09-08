@@ -9,6 +9,7 @@ import java.util.Set;
 
 import org.bukkit.configuration.ConfigurationSection;
 
+import com.mrz.dyndns.server.warpsuite.WarpSuite;
 import com.mrz.dyndns.server.warpsuite.util.MyConfig;
 import com.mrz.dyndns.server.warpsuite.util.SimpleLocation;
 import com.mrz.dyndns.server.warpsuite.util.Util;
@@ -23,6 +24,18 @@ public class WarpManager
 	
 	private final MyConfig config;
 	private final Map<String, SimpleLocation> warps;
+	
+	private static WarpManager publicWarps = null;
+	
+	public static void initializePublicWarps(WarpSuite plugin)
+	{
+		publicWarps = new WarpManager(new MyConfig("public", plugin));
+	}
+	
+	public static WarpManager getPublicWarpManager()
+	{
+		return publicWarps;
+	}
 	
 	public void loadWarpsFromConfig()
 	{
