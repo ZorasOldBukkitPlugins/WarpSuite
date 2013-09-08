@@ -14,6 +14,7 @@ import com.mrz.dyndns.server.warpsuite.commands.admin.ListOtherPlayersWarps;
 import com.mrz.dyndns.server.warpsuite.commands.admin.SetOtherPlayersWarp;
 import com.mrz.dyndns.server.warpsuite.commands.admin.WarpPlayerToMyWarp;
 import com.mrz.dyndns.server.warpsuite.commands.admin.WarpPlayerToTheirWarp;
+import com.mrz.dyndns.server.warpsuite.commands.publicWarps.PublicSetWarp;
 import com.mrz.dyndns.server.warpsuite.commands.user.ListPlayersOwnWarps;
 import com.mrz.dyndns.server.warpsuite.commands.user.RemovePlayersOwnWarp;
 import com.mrz.dyndns.server.warpsuite.commands.user.SetPlayersOwnWarp;
@@ -74,6 +75,9 @@ public class WarpSuite extends JavaPlugin
 		cs.registerCommand("warp|go {*} set|add", new SetOtherPlayersWarp(this));
 		cs.registerCommand("warp|go {*} delete|del|remove|clear", new DeleteOtherPlayersWarp(this));
 		cs.registerCommand("warp|go {*} list", new ListOtherPlayersWarps(this));
+		
+		//public warps
+		cs.registerCommand("warp|go public set|add", new PublicSetWarp(this));
 		
 		final WarpSuite plugin = this;
 		cs.registerCommand("warp|go reload", new SimpleCommand() {
