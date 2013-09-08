@@ -135,7 +135,7 @@ public class WarpSuitePlayer
 	 * @param sLoc 
 	 * @return
 	 */
-	public boolean warpPlayer(final SimpleLocation sLoc)
+	public boolean warpTo(final SimpleLocation sLoc)
 	{
 		boolean canGoToWorld = sLoc.tryLoad(plugin);
 		if(canGoToWorld)
