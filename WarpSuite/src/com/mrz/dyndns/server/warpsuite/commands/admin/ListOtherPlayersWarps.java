@@ -82,7 +82,7 @@ public class ListOtherPlayersWarps extends WarpSuiteCommand
 			List<String> subList = lp.getSubList(page);
 			int amountOfPages = lp.getAmountOfPages();
 			
-			sender.sendMessage(POSITIVE_PRIMARY + "--------------- " + POSITIVE_SECONDARY + targetName + (targetName.endsWith("s") ? "\'" : "\'s") + POSITIVE_PRIMARY + "warp List (" + POSITIVE_SECONDARY + page + POSITIVE_PRIMARY + "/" + POSITIVE_SECONDARY + amountOfPages + POSITIVE_PRIMARY + ") --------------");
+			sender.sendMessage(POSITIVE_PRIMARY + "---------- " + POSITIVE_SECONDARY + targetName + (targetName.endsWith("s") ? "\'" : "\'s") + POSITIVE_PRIMARY + " warp List (" + POSITIVE_SECONDARY + page + POSITIVE_PRIMARY + "/" + POSITIVE_SECONDARY + amountOfPages + POSITIVE_PRIMARY + ") ---------");
 			for(int ii = 0; ii < subList.size(); ii++)
 			{
 				sender.sendMessage(POSITIVE_SECONDARY + subList.get(ii));
