@@ -21,6 +21,7 @@ public final class Config
 		warpInviteTimeout = config.getInt("warpInviteTimeout", 120);
 		useMultiverse = config.getBoolean("useMultiverse", true);
 		useWarpListPages = config.getBoolean("warpListPages", true);
+		defaultToPublicWarp = config.getBoolean("defaultToPublicWarp", true);
 	}
 	
 	public static int timer;
@@ -34,4 +35,5 @@ public final class Config
 	public static boolean cancelOnMove;
 	public static boolean cancelOnPvp;
 	public static boolean useWarpListPages;
+	public static boolean defaultToPublicWarp;
 }

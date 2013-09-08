@@ -10,3 +10,4 @@ defaultMaxWarps: 50
 warpInviteTimeout: 120
 useMultiverse: true
 warpListPages: false
+defaultToPublicWarp: true
