@@ -1,4 +1,4 @@
-package com.mrz.dyndns.server.warpsuite.commands.admin;
+package com.mrz.dyndns.server.warpsuite.commands.publicWarps;
 
 import static com.mrz.dyndns.server.warpsuite.util.Coloring.*;
 
@@ -9,17 +9,16 @@ import org.bukkit.command.ConsoleCommandSender;
 
 import com.mrz.dyndns.server.warpsuite.WarpSuite;
 import com.mrz.dyndns.server.warpsuite.commands.WarpSuiteCommand;
-import com.mrz.dyndns.server.warpsuite.managers.WarpManager;
+import com.mrz.dyndns.server.warpsuite.managers.PublicWarpManager;
 import com.mrz.dyndns.server.warpsuite.permissions.Permissions;
-import com.mrz.dyndns.server.warpsuite.players.OfflineWarpSuitePlayer;
 import com.mrz.dyndns.server.warpsuite.players.WarpSuitePlayer;
 import com.mrz.dyndns.server.warpsuite.util.Config;
 import com.mrz.dyndns.server.warpsuite.util.ListPrinter;
 
-public class ListOtherPlayersWarps extends WarpSuiteCommand
+public class ListPublicWarps extends WarpSuiteCommand
 {
 
-	public ListOtherPlayersWarps(WarpSuite plugin)
+	public ListPublicWarps(WarpSuite plugin)
 	{
 		super(plugin);
 	}
@@ -27,33 +26,24 @@ public class ListOtherPlayersWarps extends WarpSuiteCommand
 	@Override
 	public boolean warpPlayerExecute(WarpSuitePlayer player, List<String> args, List<String> variables)
 	{
-		if(Permissions.ADMIN_LIST.check(player, true) == false)
+		if(Permissions.PUBLIC_LIST.check(player, true) == false)
 		{
 			return true;
 		}
 		
-		return execute(player.getPlayer(), args, variables, 9);
+		return execute(player.getPlayer(), args, variables);
 	}
 	
 	@Override
 	public boolean consoleExecute(ConsoleCommandSender sender, List<String> args, List<String> variables)
 	{
-		return execute(sender, args, variables, 25);
+		return execute(sender, args, variables);
 	}
 	
-	private boolean execute(CommandSender sender, List<String> args, List<String> variables, int listSize)
+	private boolean execute(CommandSender sender, List<String> args, List<String> variables)
 	{
-		String targetName = variables.get(0);
-		OfflineWarpSuitePlayer target = new OfflineWarpSuitePlayer(targetName, plugin);
-		WarpManager manager = target.getWarpManager();
-		if(manager == null)
-		{
-			sender.sendMessage(NEGATIVE_PRIMARY + "\'" + NEGATIVE_SECONDARY + targetName + NEGATIVE_PRIMARY + "\' has never played on this server before!");
-			return true;
-		}
-
+		PublicWarpManager manager = plugin.getPublicWarpManager();
 		ListPrinter lp = new ListPrinter(manager.getWarpList());
-		lp.setListSize(listSize);
 		
 		if(Config.useWarpListPages)
 		{
@@ -83,18 +73,19 @@ public class ListOtherPlayersWarps extends WarpSuiteCommand
 			}
 			int amountOfPages = lp.getAmountOfPages();
 			
-			sender.sendMessage(POSITIVE_PRIMARY + "---------- " + POSITIVE_SECONDARY + targetName + (targetName.endsWith("s") ? "\'" : "\'s") + POSITIVE_PRIMARY + " warp List (" + POSITIVE_SECONDARY + page + POSITIVE_PRIMARY + "/" + POSITIVE_SECONDARY + amountOfPages + POSITIVE_PRIMARY + ") ---------");
+			sender.sendMessage(POSITIVE_PRIMARY + "------------- public warp List (" + POSITIVE_SECONDARY + page + POSITIVE_PRIMARY + "/" + POSITIVE_SECONDARY + amountOfPages + POSITIVE_PRIMARY + ") ------------");
 			for(int ii = 0; ii < subList.size(); ii++)
 			{
-				sender.sendMessage(POSITIVE_SECONDARY + subList.get(ii));
+				sender.sendMessage(PUBLIC_WARP + subList.get(ii));
 			}
+			
+			return true;
 		}
 		else
 		{
-			sender.sendMessage(lp.toString(PRIVATE_WARP.getColor()));
+			sender.sendMessage(lp.toString(PUBLIC_WARP.getColor()));
+			return true;
 		}
-		
-		return true;
 	}
 
 	@Override
@@ -102,11 +93,11 @@ public class ListOtherPlayersWarps extends WarpSuiteCommand
 	{
 		if(Config.useWarpListPages)
 		{
-			return "warp " + USAGE_ARGUMENT + "[playerName]" + USAGE + " list " + USAGE_ARGUMENT + "(page)";
+			return "warp " + USAGE_ARGUMENT + "[playerName]" + USAGE + " public list " + USAGE_ARGUMENT + "(page)";
 		}
 		else
 		{
-			return "warp " + USAGE_ARGUMENT + "[playerName]" + USAGE + " list";
+			return "warp " + USAGE_ARGUMENT + "[playerName]" + USAGE + " public list";
 		}
 	}
 

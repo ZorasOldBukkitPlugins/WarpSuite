@@ -12,7 +12,8 @@ public enum Coloring
 	WARNING_SECONDARY	(ChatColor.YELLOW),
 	USAGE				(ChatColor.AQUA),
 	USAGE_ARGUMENT		(ChatColor.LIGHT_PURPLE),
-	PUBLIC_WARP			(ChatColor.AQUA);
+	PUBLIC_WARP			(ChatColor.AQUA),
+	PRIVATE_WARP		(ChatColor.GRAY);
 	
 	private Coloring(ChatColor color)
 	{
@@ -20,6 +21,11 @@ public enum Coloring
 	}
 	
 	private final ChatColor color;
+	
+	public ChatColor getColor()
+	{
+		return color;
+	}
 	
 	@Override
 	public String toString()

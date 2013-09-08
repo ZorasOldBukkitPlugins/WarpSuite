@@ -63,14 +63,13 @@ public class ListPrinter
 		this.listSize = listSize;
 	}
 	
-	@Override
-	public String toString()
+	public String toString(ChatColor color)
 	{
 		StringBuilder sb = new StringBuilder();
 		sb.append(Coloring.POSITIVE_PRIMARY + "Warp List: ");
 		for(int ii = 0; ii < items.size(); ii++)
 		{
-			sb.append(ChatColor.GRAY).append(items.get(ii)).append(Coloring.POSITIVE_PRIMARY).append(", ");
+			sb.append(color).append(items.get(ii)).append(Coloring.POSITIVE_PRIMARY).append(", ");
 		}
 		String warps = sb.substring(0, sb.length() - 2);
 		return warps;
