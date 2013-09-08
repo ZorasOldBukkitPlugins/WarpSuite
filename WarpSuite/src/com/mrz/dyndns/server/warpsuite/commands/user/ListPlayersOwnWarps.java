@@ -26,11 +26,21 @@ public class ListPlayersOwnWarps extends WarpSuiteCommand
 	@Override
 	public boolean warpPlayerExecute(WarpSuitePlayer player, List<String> args, List<String> variables)
 	{
-		if(args.size() == 1)
+		if(args.size() > 0)
 		{
-			if(args.get(0).equals("public"))
+			if(args.get(args.size() - 1).equalsIgnoreCase("public"))
 			{
-				return (new ListPublicWarps(plugin).warpPlayerExecute(player, args, variables));
+				ListPublicWarps lpw = new ListPublicWarps(plugin);
+				boolean result = lpw.warpPlayerExecute(player, args.subList(0,  args.size() - 1), variables);
+				if(result == false)
+				{
+					player.sendMessage(lpw.getUsage());
+					return true;
+				}
+				else
+				{
+					return true;
+				}
 			}
 		}
 		
@@ -89,11 +99,21 @@ public class ListPlayersOwnWarps extends WarpSuiteCommand
 	@Override
 	public boolean consoleExecute(ConsoleCommandSender sender, List<String> args, List<String> variables)
 	{
-		if(args.size() == 1)
+		if(args.size() > 0)
 		{
-			if(args.get(0).equals("public"))
+			if(args.get(args.size() - 1).equalsIgnoreCase("public"))
 			{
-				return (new ListPublicWarps(plugin).consoleExecute(sender, args, variables));
+				ListPublicWarps lpw = new ListPublicWarps(plugin);
+				boolean result = lpw.consoleExecute(sender, args.subList(0,  args.size() - 1), variables);
+				if(result == false)
+				{
+					sender.sendMessage(lpw.getUsage());
+					return true;
+				}
+				else
+				{
+					return true;
+				}
 			}
 		}
 		
