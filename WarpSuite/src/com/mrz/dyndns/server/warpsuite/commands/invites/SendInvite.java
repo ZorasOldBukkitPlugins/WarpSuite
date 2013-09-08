@@ -54,6 +54,8 @@ public class SendInvite extends WarpSuiteCommand
 			
 			player.sendMessage(POSITIVE_PRIMARY + "Request to go to warp \'" + POSITIVE_SECONDARY + warpName 
 					+ POSITIVE_PRIMARY + "\' sent to player \'" + POSITIVE_SECONDARY + targetName + POSITIVE_PRIMARY + "\'");
+			
+			plugin.getLogger().info(player.getName() + " has sent a warp invite to " + targetName + " at location x=" + sLoc.getX() + ", y=" + sLoc.getY() + ", z=" + sLoc.getZ());
 		}
 		else
 		{
