@@ -67,23 +67,23 @@ public class WarpHelp extends WarpSuiteCommand
 		//TODO: force warp limits
 		List<String> helpEntries = new ArrayList<String>();
 		helpEntries.add(WARNING_PRIMARY + "Note either brackets or parentheses: " + USAGE_ARGUMENT + "[mandatory arguments] " + WARNING_PRIMARY + "or" + USAGE_ARGUMENT + " (optional arguments)");
-		if(check(sender, Permissions.WARP) && isConsole)
+		if(check(sender, Permissions.WARP) && !isConsole)
 		{
 			helpEntries.add(USAGE + "/warp " + USAGE_ARGUMENT + "[warpName]" + USAGE_SEPERATOR + " - " + USAGE_DESCRIPTION + "Sends you to the specified warp");
 		}
-		if(check(sender, Permissions.WARP_SET) && isConsole)
+		if(check(sender, Permissions.WARP_SET) && !isConsole)
 		{
 			helpEntries.add(USAGE + "/warp set " + USAGE_ARGUMENT + "[warpName]" + USAGE_SEPERATOR + " - " + USAGE_DESCRIPTION + "Sets or overwrites a warp");
 		}
-		if(check(sender, Permissions.WARP_REMOVE) && isConsole)
+		if(check(sender, Permissions.WARP_REMOVE) && !isConsole)
 		{
 			helpEntries.add(USAGE + "/warp remove " + USAGE_ARGUMENT + "[warpName]" + USAGE_SEPERATOR + " - " + USAGE_DESCRIPTION + "Removes a warp");
 		}
-		if(check(sender, Permissions.WARP_LIST) && isConsole)
+		if(check(sender, Permissions.WARP_LIST) && !isConsole)
 		{
 			helpEntries.add(USAGE + "/warp list" + (Config.useWarpListPages ? USAGE_ARGUMENT + " (page)": "") + USAGE_SEPERATOR + " - " + USAGE_DESCRIPTION + "Lists your warps");
 		}
-		if(check(sender, Permissions.ADMIN_WARP) && isConsole)
+		if(check(sender, Permissions.ADMIN_WARP) && !isConsole)
 		{
 			helpEntries.add(USAGE + "/warp " + USAGE_ARGUMENT + "[playerName] [warpName]" + USAGE_SEPERATOR + " - " + USAGE_DESCRIPTION + "Sends you to a player\'s warp");
 		}
@@ -91,11 +91,11 @@ public class WarpHelp extends WarpSuiteCommand
 		{
 			helpEntries.add(USAGE + "/warp " + USAGE_ARGUMENT + "[playerName]" + USAGE + " to their" + USAGE_ARGUMENT + " [warpName]" + USAGE_SEPERATOR + " - " + USAGE_DESCRIPTION + "Sends a player to their warp");
 		}
-		if(check(sender, Permissions.ADMIN_TOMY) && isConsole)
+		if(check(sender, Permissions.ADMIN_TOMY) && !isConsole)
 		{
 			helpEntries.add(USAGE + "/warp " + USAGE_ARGUMENT + "[playerName]" + USAGE + " to my" + USAGE_ARGUMENT + " [warpName]" + USAGE_SEPERATOR + " - " + USAGE_DESCRIPTION + "Sends a player to your warp");
 		}
-		if(check(sender, Permissions.ADMIN_SET) && isConsole)
+		if(check(sender, Permissions.ADMIN_SET) && !isConsole)
 		{
 			helpEntries.add(USAGE + "/warp " + USAGE_ARGUMENT + "[playerName]" + USAGE + " set" + USAGE_ARGUMENT + " [warpName]" + USAGE_SEPERATOR + " - " + USAGE_DESCRIPTION + "Sets a warp for a player");
 		}
@@ -107,11 +107,11 @@ public class WarpHelp extends WarpSuiteCommand
 		{
 			helpEntries.add(USAGE + "/warp " + USAGE_ARGUMENT + "[playerName]" + USAGE + " list" + (Config.useWarpListPages ? USAGE_ARGUMENT + " (page)": "") + USAGE_SEPERATOR + " - " + USAGE_DESCRIPTION + "Lists a player\'s warps");
 		}
-		if(check(sender, Permissions.PUBLIC_WARP) && isConsole)
+		if(check(sender, Permissions.PUBLIC_WARP) && !isConsole)
 		{
 			helpEntries.add(USAGE + "/warp public " + USAGE_ARGUMENT + "[warpName]" + USAGE_SEPERATOR + " - " + USAGE_DESCRIPTION + "Sends you to a public warp");
 		}
-		if(check(sender, Permissions.PUBLIC_SET) && isConsole)
+		if(check(sender, Permissions.PUBLIC_SET) && !isConsole)
 		{
 			helpEntries.add(USAGE + "/warp set public " + USAGE_ARGUMENT + "[warpName]" + USAGE_SEPERATOR + " - " + USAGE_DESCRIPTION + "Sets a public warp");
 		}
@@ -127,15 +127,15 @@ public class WarpHelp extends WarpSuiteCommand
 		{
 			helpEntries.add(USAGE + "/warp " + USAGE_ARGUMENT + "[playerName]" + USAGE + " to public" + USAGE_ARGUMENT + " [warpName]" + USAGE_SEPERATOR + " - " + USAGE_DESCRIPTION + "Sends a player to a public warp");
 		}
-		if(check(sender, Permissions.INVITE) && isConsole)
+		if(check(sender, Permissions.INVITE) && !isConsole)
 		{
 			helpEntries.add(USAGE + "/warp invite " + USAGE_ARGUMENT + "[playerName]" + USAGE + " to " + USAGE_ARGUMENT + "[warpName]" + USAGE_SEPERATOR + " - " + USAGE_DESCRIPTION + "Invites a player to one of your warps");
 		}
-		if(check(sender, Permissions.INVITE_ACCEPT) && isConsole)
+		if(check(sender, Permissions.INVITE_ACCEPT) && !isConsole)
 		{
 			helpEntries.add(USAGE + "/warp accept" + USAGE_SEPERATOR + " - " + USAGE_DESCRIPTION + "Accepts a warp request");
 		}
-		if(check(sender, Permissions.INVITE_DENY) && isConsole)
+		if(check(sender, Permissions.INVITE_DENY) && !isConsole)
 		{
 			helpEntries.add(USAGE + "/warp deny" + USAGE_SEPERATOR + " - " + USAGE_DESCRIPTION + "Denies a warp request");
 		}
