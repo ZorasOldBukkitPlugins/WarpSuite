@@ -28,7 +28,7 @@ public enum Permissions
 	PUBLIC_REMOVE	("warpsuite.public.remove"),
 	PUBLIC_LIST		("warpsuite.public.list"),
 	PUBLIC_SENDTO	("warpsuite.public.sendto"),
-	PUBLIC_BASE		("warpsuite.public."),
+	PUBLIC_BASE		("warpsuite.public.warp."),
 	
 	//invites
 	INVITE			("warpsuite.invite"),

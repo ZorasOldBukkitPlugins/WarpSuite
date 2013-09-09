@@ -89,7 +89,7 @@ public class ListPublicWarps extends WarpSuiteCommand
 		}
 		else
 		{
-			sender.sendMessage(lp.toString(PUBLIC_WARP));
+			sender.sendMessage(POSITIVE_PRIMARY + "Public " + lp.toString(PUBLIC_WARP));
 			return true;
 		}
 	}
