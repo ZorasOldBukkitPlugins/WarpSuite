@@ -8,6 +8,7 @@ import com.mrz.dyndns.server.warpsuite.WarpSuite;
 import com.mrz.dyndns.server.warpsuite.commands.WarpSuiteCommand;
 import com.mrz.dyndns.server.warpsuite.permissions.Permissions;
 import com.mrz.dyndns.server.warpsuite.players.WarpSuitePlayer;
+import com.mrz.dyndns.server.warpsuite.util.Config;
 import com.mrz.dyndns.server.warpsuite.util.SimpleLocation;
 
 public class SendInvite extends WarpSuiteCommand
@@ -50,7 +51,8 @@ public class SendInvite extends WarpSuiteCommand
 		if(result)
 		{
 			target.sendMessage(POSITIVE_PRIMARY + "Player \'" + POSITIVE_SECONDARY + player.getName() + POSITIVE_PRIMARY + "\' has invited you to one of their warps! Use " 
-					+ USAGE + "/warp accept" + POSITIVE_PRIMARY + " to go to their warp, or " + USAGE + "/warp deny " + POSITIVE_PRIMARY + "to deny it.");
+					+ USAGE + "/warp accept" + POSITIVE_PRIMARY + " to go to their warp, or " + USAGE + "/warp deny " + POSITIVE_PRIMARY + "to deny it. The request will time out in "
+					+ POSITIVE_SECONDARY + Config.warpInviteTimeout + POSITIVE_PRIMARY + " seconds.");
 			
 			player.sendMessage(POSITIVE_PRIMARY + "Request to go to warp \'" + POSITIVE_SECONDARY + warpName 
 					+ POSITIVE_PRIMARY + "\' sent to player \'" + POSITIVE_SECONDARY + targetName + POSITIVE_PRIMARY + "\'");
