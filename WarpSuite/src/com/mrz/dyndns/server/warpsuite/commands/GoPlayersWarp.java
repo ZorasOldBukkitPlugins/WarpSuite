@@ -55,7 +55,7 @@ public abstract class GoPlayersWarp extends WarpSuiteCommand
 			if(args.get(0).equalsIgnoreCase("help"))
 			{
 				WarpHelp help = new WarpHelp(plugin);
-				boolean result = help.warpPlayerExecute(player, args.subList(0, args.size() - 1), variables);
+				boolean result = help.warpPlayerExecute(player, args, variables);
 				if(!result)
 				{
 					player.sendMessage(help.getUsage());
@@ -125,7 +125,7 @@ public abstract class GoPlayersWarp extends WarpSuiteCommand
 			if(args.get(0).equalsIgnoreCase("help"))
 			{
 				WarpHelp help = new WarpHelp(plugin);
-				boolean result = help.consoleExecute(sender, args.subList(0, args.size() - 1), variables);
+				boolean result = help.consoleExecute(sender, args, variables);
 				if(!result)
 				{
 					sender.sendMessage(help.getUsage());
