@@ -41,7 +41,10 @@ public class WarpHelp extends WarpSuiteCommand
 	
 	private boolean execute(CommandSender sender, List<String> args, int listSize)
 	{
-		args = args.subList(1, args.size() - 1);
+		if(args.size() > 0)
+		{
+			args = args.subList(1, args.size());
+		}
 		
 		int page;
 		if(args.size() == 0)
