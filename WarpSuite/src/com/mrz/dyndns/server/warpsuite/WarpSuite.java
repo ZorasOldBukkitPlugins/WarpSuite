@@ -107,7 +107,7 @@ public class WarpSuite extends JavaPlugin
 						player.getConfig().reloadCustomConfig();
 					}
 					plugin.getLogger().info("Reloaded WarpSuite");
-					sender.sendMessage(Coloring.POSITIVE_PRIMARY + "Reloaded WarpSuite!");
+					sender.sendMessage(Coloring.POSITIVE_PRIMARY + "WarpSuite Reloaded!");
 					return true;
 				}
 				else
