@@ -24,7 +24,6 @@ public class PlayerManager implements Listener
 	{
 		this.plugin = plugin;
 		
-		//TODO: needs testing
 		String dir = plugin.getDataFolder().getAbsolutePath().toString() + System.getProperty("file.separator") + "players";
 		new File(dir).mkdirs();
 		

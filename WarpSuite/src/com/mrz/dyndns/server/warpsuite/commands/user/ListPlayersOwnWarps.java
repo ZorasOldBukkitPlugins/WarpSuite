@@ -50,7 +50,11 @@ public class ListPlayersOwnWarps extends WarpSuiteCommand
 		}
 		
 		List<String> warpList = player.getWarpManager().getWarpList();
-
+		if(warpList == null)
+		{
+			player.sendMessage(POSITIVE_PRIMARY + "No warps to list.");
+			return true;
+		}
 		ListPrinter lp = new ListPrinter(player.getPlayer(), warpList, plugin, true, true);
 		
 		if(Config.useWarpListPages)

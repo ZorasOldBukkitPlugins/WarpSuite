@@ -23,6 +23,10 @@ public class ListPrinter
 		{
 			PublicWarpManager manager = plugin.getPublicWarpManager();
 			List<String> publicWarps = manager.getWarpList();
+			if(publicWarps == null)
+			{
+				publicWarps = new ArrayList<String>();
+			}
 			Collections.sort(publicWarps);
 			for(int ii = 0; ii < publicWarps.size(); ii++)
 			{

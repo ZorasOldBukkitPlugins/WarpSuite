@@ -51,8 +51,13 @@ public class ListOtherPlayersWarps extends WarpSuiteCommand
 			sender.sendMessage(NEGATIVE_PRIMARY + "\'" + NEGATIVE_SECONDARY + targetName + NEGATIVE_PRIMARY + "\' has never played on this server before!");
 			return true;
 		}
-
-		ListPrinter lp = new ListPrinter(sender, manager.getWarpList(), plugin, false, false);
+		List<String> warpList = manager.getWarpList();
+		if(warpList == null)
+		{
+			sender.sendMessage(POSITIVE_PRIMARY + "No warps to list.");
+			return true;
+		}
+		ListPrinter lp = new ListPrinter(sender, warpList, plugin, false, false);
 		lp.setListSize(listSize);
 		
 		if(Config.useWarpListPages)

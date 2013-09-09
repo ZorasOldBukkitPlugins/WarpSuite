@@ -109,6 +109,10 @@ public class WarpManager
 	public List<String> getWarpList()
 	{
 		Set<String> warpSet = getWarpConfigurationSection();
+		if(warpSet == null)
+		{
+			return null;
+		}
 		List<String> warpList = new ArrayList<String>();
 		for(String warpName : warpSet)
 		{

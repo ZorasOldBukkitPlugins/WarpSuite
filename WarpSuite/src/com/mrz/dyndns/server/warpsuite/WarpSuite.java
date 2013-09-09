@@ -72,7 +72,7 @@ public class WarpSuite extends JavaPlugin
 		cs.registerCommand("delwarp", cmd, overrideDelwarp);
 		
 		cs.registerCommand("warp list", new ListPlayersOwnWarps(this), overrideWarp);
-		//TODO: test
+		
 		cs.registerCommand("warp|go", new GoToPublicWarpIfApplicable(this), overrideWarp);
 		cs.registerCommand("warp|go my", new GoPlayersOwnWarp(this), overrideWarp);
 		

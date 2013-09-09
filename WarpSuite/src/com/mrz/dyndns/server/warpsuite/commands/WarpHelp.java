@@ -63,8 +63,6 @@ public class WarpHelp extends WarpSuiteCommand
 				return false;
 			}
 		}
-		//TODO: test warp limits
-		//TODO: force warp limits
 		List<String> helpEntries = new ArrayList<String>();
 		helpEntries.add(WARNING_PRIMARY + "Note either brackets or parentheses: " + USAGE_ARGUMENT + "[mandatory arguments] " + WARNING_PRIMARY + "or" + USAGE_ARGUMENT + " (optional arguments)");
 		if(check(sender, Permissions.WARP) && !isConsole)
