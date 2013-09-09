@@ -11,3 +11,7 @@ warpInviteTimeout: 120
 useMultiverse: true
 warpListPages: false
 defaultToPublicWarp: true
+forceCommandOverride:
+  warp: false
+  delwarp: false
+  setwarp: false

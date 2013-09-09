@@ -56,42 +56,43 @@ public class WarpSuite extends JavaPlugin
 		saveConfig();
 		Config.load(getConfig());
 		
+		boolean overrideWarp = Config.forceWarpCommandOverride;
+		boolean overrideDelwarp = Config.forceDelwarpCommandOverride;
+		boolean overrideSetwarp = Config.forceSetwarpCommandOverride;
+		
 		playerManager = new PlayerManager(this);
 		publicWarpManager = new PublicWarpManager(this);
 		pendingWarpManager = new PendingWarpManager();
 		
-		getServer().getPluginManager().registerEvents(playerManager, this);
-		
 		WarpSuiteCommand cmd = new SetPlayersOwnWarp(this);
-		cs.registerCommand("warp|go set|add", cmd);
-		cs.registerCommand("setwarp", cmd);
+		cs.registerCommand("warp|go set|add", cmd, overrideWarp);
+		cs.registerCommand("setwarp", cmd, overrideSetwarp);
 		
-		cs.registerCommand("warp|go delete|del|remove|clear", new RemovePlayersOwnWarp(this));
-		cs.registerCommand("delwarp", cmd);
-		//TODO: config for extra commands?
+		cs.registerCommand("warp|go delete|del|remove|clear", new RemovePlayersOwnWarp(this), overrideWarp);
+		cs.registerCommand("delwarp", cmd, overrideDelwarp);
 		
-		cs.registerCommand("warp list", new ListPlayersOwnWarps(this));
+		cs.registerCommand("warp list", new ListPlayersOwnWarps(this), overrideWarp);
 		//TODO: test
-		cs.registerCommand("warp|go", new GoToPublicWarpIfApplicable(this));
-		cs.registerCommand("warp|go my", new GoPlayersOwnWarp(this));
+		cs.registerCommand("warp|go", new GoToPublicWarpIfApplicable(this), overrideWarp);
+		cs.registerCommand("warp|go my", new GoPlayersOwnWarp(this), overrideWarp);
 		
 		//admin commands
-		cs.registerCommand("warp|go {*} sendto|to their|his|her", new WarpPlayerToTheirWarp(this));
-		cs.registerCommand("warp|go {*} to my", new WarpPlayerToMyWarp(this));
-		cs.registerCommand("warp|go {*} sendto|to public", new SendPlayerToPublicWarp(this));
-		cs.registerCommand("warp|go {*} set|add", new SetOtherPlayersWarp(this));
-		cs.registerCommand("warp|go {*} delete|del|remove|clear", new DeleteOtherPlayersWarp(this));
-		cs.registerCommand("warp|go {*} list", new ListOtherPlayersWarps(this));
+		cs.registerCommand("warp|go {*} sendto|to their|his|her", new WarpPlayerToTheirWarp(this), overrideWarp);
+		cs.registerCommand("warp|go {*} to my", new WarpPlayerToMyWarp(this), overrideWarp);
+		cs.registerCommand("warp|go {*} sendto|to public", new SendPlayerToPublicWarp(this), overrideWarp);
+		cs.registerCommand("warp|go {*} set|add", new SetOtherPlayersWarp(this), overrideWarp);
+		cs.registerCommand("warp|go {*} delete|del|remove|clear", new DeleteOtherPlayersWarp(this), overrideWarp);
+		cs.registerCommand("warp|go {*} list", new ListOtherPlayersWarps(this), overrideWarp);
 		
 		//public warps
-		cs.registerCommand("warp|go set|add public", new PublicSetWarp(this));
-		cs.registerCommand("warp|go public", new GoToPublicWarp(this));
-		cs.registerCommand("warp|go delete|del|remove|clear public", new PublicRemoveWarp(this));
+		cs.registerCommand("warp|go set|add public", new PublicSetWarp(this), overrideWarp);
+		cs.registerCommand("warp|go public", new GoToPublicWarp(this), overrideWarp);
+		cs.registerCommand("warp|go delete|del|remove|clear public", new PublicRemoveWarp(this), overrideWarp);
 		
 		//invites
-		cs.registerCommand("warp|go invite {*} to", new SendInvite(this));
-		cs.registerCommand("warp|go accept", new AcceptInvite(this));
-		cs.registerCommand("warp|go deny", new DenyInvite(this));
+		cs.registerCommand("warp|go invite {*} to", new SendInvite(this), overrideWarp);
+		cs.registerCommand("warp|go accept", new AcceptInvite(this), overrideWarp);
+		cs.registerCommand("warp|go deny", new DenyInvite(this), overrideWarp);
 		
 		final WarpSuite plugin = this;
 		cs.registerCommand("warp|go reload", new SimpleCommand() {
@@ -115,7 +116,7 @@ public class WarpSuite extends JavaPlugin
 					return true;
 				}
 			}
-		});
+		}, overrideWarp);
 		
 		if(getServer().getPluginManager().getPlugin("Multiverse-Core") != null)
 		{
@@ -131,6 +132,7 @@ public class WarpSuite extends JavaPlugin
 		
 		getServer().getPluginManager().registerEvents(new EntityDamageByEntityListener(this), this);
 		getServer().getPluginManager().registerEvents(new PlayerMoveListener(this), this);
+		getServer().getPluginManager().registerEvents(playerManager, this);
 	}
 	
 	@Override
