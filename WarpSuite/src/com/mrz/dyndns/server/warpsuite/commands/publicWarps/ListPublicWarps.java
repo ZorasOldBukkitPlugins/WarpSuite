@@ -43,7 +43,7 @@ public class ListPublicWarps extends WarpSuiteCommand
 	private boolean execute(CommandSender sender, List<String> args)
 	{
 		PublicWarpManager manager = plugin.getPublicWarpManager();
-		ListPrinter lp = new ListPrinter(sender, manager.getWarpList(), plugin, false);
+		ListPrinter lp = new ListPrinter(sender, manager.getWarpList(), plugin, false, false);
 		
 		if(Config.useWarpListPages)
 		{

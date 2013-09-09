@@ -51,7 +51,7 @@ public class ListPlayersOwnWarps extends WarpSuiteCommand
 		
 		List<String> warpList = player.getWarpManager().getWarpList();
 
-		ListPrinter lp = new ListPrinter(player.getPlayer(), warpList, plugin, true);
+		ListPrinter lp = new ListPrinter(player.getPlayer(), warpList, plugin, true, false);
 		
 		if(Config.useWarpListPages)
 		{

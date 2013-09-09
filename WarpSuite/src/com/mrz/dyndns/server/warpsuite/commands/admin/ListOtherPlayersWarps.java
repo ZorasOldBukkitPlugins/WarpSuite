@@ -52,7 +52,7 @@ public class ListOtherPlayersWarps extends WarpSuiteCommand
 			return true;
 		}
 
-		ListPrinter lp = new ListPrinter(sender, manager.getWarpList(), plugin, false);
+		ListPrinter lp = new ListPrinter(sender, manager.getWarpList(), plugin, false, false);
 		lp.setListSize(listSize);
 		
 		if(Config.useWarpListPages)

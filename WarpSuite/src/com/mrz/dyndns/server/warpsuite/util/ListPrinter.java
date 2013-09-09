@@ -11,10 +11,13 @@ import com.mrz.dyndns.server.warpsuite.managers.PublicWarpManager;
 
 public class ListPrinter
 {
-	public ListPrinter(CommandSender sender, List<String> items, WarpSuite plugin, boolean addPublicWarps)
+	public ListPrinter(CommandSender sender, List<String> items, WarpSuite plugin, boolean addPublicWarps, boolean sort)
 	{
 		this.items = new ArrayList<String>();
-		Collections.sort(items);
+		if(sort)
+		{
+			Collections.sort(items);
+		}
 
 		if(addPublicWarps)
 		{
