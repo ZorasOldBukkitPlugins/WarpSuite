@@ -9,7 +9,7 @@ globalWarpsCountTowardsTotal: false
 defaultMaxWarps: 50
 warpInviteTimeout: 120
 useMultiverse: true
-warpListPages: false
+warpListPages: true
 defaultToPublicWarp: true
 forceCommandOverride:
   warp: false
