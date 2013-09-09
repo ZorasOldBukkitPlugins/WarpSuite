@@ -174,7 +174,7 @@ public class WarpSuitePlayer
 		if(canGoToWorld)
 		{
 			//it is time to teleport!
-			if(Permissions.DELAY_BYPASS.check(this, false) || !Util.areTherePlayersInRadius(this) || override)
+			if(Config.timer == 0 || Permissions.DELAY_BYPASS.check(this, false) || !Util.areTherePlayersInRadius(this) || override)
 			{
 				teleport(sLoc);
 				return true;
