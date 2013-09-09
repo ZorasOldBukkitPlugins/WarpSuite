@@ -4,6 +4,8 @@ import static com.mrz.dyndns.server.warpsuite.util.Coloring.*;
 
 import java.util.List;
 
+import org.bukkit.command.ConsoleCommandSender;
+
 import com.mrz.dyndns.server.warpsuite.WarpSuite;
 import com.mrz.dyndns.server.warpsuite.managers.WarpManager;
 import com.mrz.dyndns.server.warpsuite.permissions.Permissions;
@@ -46,6 +48,14 @@ public abstract class GoPlayersWarp extends WarpSuiteCommand
 				player.sendMessage(POSITIVE_PRIMARY + "If you want to view all of the warp commands, issue " + USAGE + "/warp help");
 			}
 			return true;
+		}
+		
+		if(Permissions.HELP.check(player, false))
+		{
+			if(args.get(0).equalsIgnoreCase("help"))
+			{
+				return new WarpHelp(plugin).warpPlayerExecute(player, args, variables);
+			}
 		}
 		
 		if(args.size() == 2)
@@ -99,6 +109,20 @@ public abstract class GoPlayersWarp extends WarpSuiteCommand
 			player.sendMessage(NEGATIVE_PRIMARY + "Warp \'" + NEGATIVE_SECONDARY + warpName + NEGATIVE_PRIMARY + "\' is not set!");
 			return true;
 		}
+	}
+	
+	@Override
+	public boolean consoleExecute(ConsoleCommandSender sender, List<String> args, List<String> variables)
+	{
+		if(Permissions.HELP.check(sender, false))
+		{
+			if(args.get(0).equalsIgnoreCase("help"))
+			{
+				return new WarpHelp(plugin).consoleExecute(sender, args, variables);
+			}
+		}
+		
+		return Util.mustBePlayer(sender);
 	}
 
 	@Override
