@@ -48,7 +48,7 @@ public class WarpSuite extends JavaPlugin
 	public void onEnable()
 	{
 		Util.initialize(this);
-		Util.setDebugging(true);
+//		Util.setDebugging(true);
 		
 		cs = new CommandSystem(this);
 		

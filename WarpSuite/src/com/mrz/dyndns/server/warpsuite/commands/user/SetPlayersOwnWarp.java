@@ -7,6 +7,7 @@ import com.mrz.dyndns.server.warpsuite.commands.WarpSuiteCommand;
 import com.mrz.dyndns.server.warpsuite.permissions.NumeralPermissions;
 import com.mrz.dyndns.server.warpsuite.permissions.Permissions;
 import com.mrz.dyndns.server.warpsuite.players.WarpSuitePlayer;
+import com.mrz.dyndns.server.warpsuite.util.Config;
 import com.mrz.dyndns.server.warpsuite.util.SimpleLocation;
 import com.mrz.dyndns.server.warpsuite.util.Util;
 
@@ -35,6 +36,10 @@ public class SetPlayersOwnWarp extends WarpSuiteCommand
 		
 		int allowedWarps = NumeralPermissions.COUNT.getAmount(player);
 		int warpsOwned = player.getWarpManager().getAmountOfSetWarps();
+		if(Config.globalWarpsCountTowardsTotal)
+		{
+			warpsOwned += plugin.getPublicWarpManager().getWarpList().size();
+		}
 		
 		if(allowedWarps != -1 && warpsOwned >= allowedWarps)
 		{
