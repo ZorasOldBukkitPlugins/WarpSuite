@@ -7,6 +7,7 @@ import org.bukkit.event.player.PlayerMoveEvent;
 
 import com.mrz.dyndns.server.warpsuite.WarpSuite;
 import com.mrz.dyndns.server.warpsuite.util.Coloring;
+import com.mrz.dyndns.server.warpsuite.util.Config;
 
 public class PlayerMoveListener implements Listener
 {
@@ -20,11 +21,14 @@ public class PlayerMoveListener implements Listener
 	@EventHandler
 	public void onPlayerMove(PlayerMoveEvent event)
 	{
-		Player player = event.getPlayer();
-		if(plugin.getPendingWarpManager().isWaitingToTeleport(player.getName()))
+		if(Config.cancelOnMove)
 		{
-			player.sendMessage(Coloring.NEGATIVE_PRIMARY + "You moved! You will not be warped...");
-			plugin.getPendingWarpManager().removePlayer(player.getName());
+			Player player = event.getPlayer();
+			if(plugin.getPendingWarpManager().isWaitingToTeleport(player.getName()))
+			{
+				player.sendMessage(Coloring.NEGATIVE_PRIMARY + "You moved! You will not be warped...");
+				plugin.getPendingWarpManager().removePlayer(player.getName());
+			}
 		}
 	}
 }

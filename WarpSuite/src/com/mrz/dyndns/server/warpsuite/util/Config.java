@@ -15,7 +15,6 @@ public final class Config
 		cancelOnMobDamage = config.getBoolean("cancelOn.mobDamage", true);
 		cancelOnMove = config.getBoolean("cancelOn.move", true);
 		cancelOnPvp = config.getBoolean("cancelOn.playerPVP", true);
-		timerAndRadius = config.getBoolean("timerAndRadius", true);
 		globalWarpsCountTowardsTotal = config.getBoolean("globalWarpsCountTowardsTotal", false);
 		defaultMaxWarps = config.getInt("defaultMaxWarps", 50);
 		warpInviteTimeout = config.getInt("warpInviteTimeout", 120);
@@ -30,7 +29,6 @@ public final class Config
 	public static int timer;
 	public static int radius;
 	public static boolean cancelOnMobDamage;
-	public static boolean timerAndRadius;
 	public static boolean globalWarpsCountTowardsTotal;
 	public static int defaultMaxWarps;
 	public static int warpInviteTimeout;

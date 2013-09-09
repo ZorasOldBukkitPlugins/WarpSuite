@@ -102,7 +102,7 @@ public final class Util
 				{
 					sb.append(", ");
 				}
-				else if(!Config.cancelOnMobDamage || !Config.cancelOnMobDamage)
+				else if(Config.cancelOnMobDamage || Config.cancelOnMove)
 				{
 					sb.append(" or ");
 				}

@@ -4,7 +4,6 @@ cancelOn:
   playerPVP: true
   move: true
   mobDamage: true
-timerAndRadius: true
 globalWarpsCountTowardsTotal: false
 defaultMaxWarps: 50
 warpInviteTimeout: 120
