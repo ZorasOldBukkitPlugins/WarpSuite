@@ -10,8 +10,6 @@ public class WorldLoader
 	{
 	}
 	
-	//TODO: TEST
-	
 	private static MultiverseCore mvCore;
 	
 	static
@@ -22,7 +20,7 @@ public class WorldLoader
 	public static boolean Load(String worldName)
 	{
 		boolean result = mvCore.getMVWorldManager().loadWorld(worldName);
-		if(result)
+		if(!result)
 		{
 			Bukkit.getLogger().warning("Failed to load world \'" + worldName + "\'");
 		}
