@@ -202,7 +202,7 @@ public class WarpSuitePlayer
 		}
 		else
 		{
-			sendMessage(NEGATIVE_PRIMARY + "The world warp \'" + NEGATIVE_SECONDARY + "\' is located in either no longer exists, or isn't loaded");
+			sendMessage(NEGATIVE_PRIMARY + "The world warp \'" + NEGATIVE_SECONDARY + sLoc.getListingName() + NEGATIVE_PRIMARY + "\' is located in either no longer exists or isn't loaded");
 			return true;
 		}
 	}
