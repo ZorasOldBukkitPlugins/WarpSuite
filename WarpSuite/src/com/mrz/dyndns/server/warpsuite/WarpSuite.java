@@ -7,7 +7,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import com.mrz.dyndns.server.EnhancedCommandSystem.CommandSystem;
 import com.mrz.dyndns.server.EnhancedCommandSystem.SimpleCommand;
-import com.mrz.dyndns.server.warpsuite.commands.WarpHelp;
 import com.mrz.dyndns.server.warpsuite.commands.WarpSuiteCommand;
 import com.mrz.dyndns.server.warpsuite.commands.admin.DeleteOtherPlayersWarp;
 import com.mrz.dyndns.server.warpsuite.commands.admin.ListOtherPlayersWarps;
@@ -93,8 +92,6 @@ public class WarpSuite extends JavaPlugin
 		cs.registerCommand("warp|go invite {*} to", new SendInvite(this));
 		cs.registerCommand("warp|go accept", new AcceptInvite(this));
 		cs.registerCommand("warp|go deny", new DenyInvite(this));
-		
-		cs.registerCommand("warp|go help", new WarpHelp(this));
 		
 		final WarpSuite plugin = this;
 		cs.registerCommand("warp|go reload", new SimpleCommand() {
