@@ -29,7 +29,7 @@ public enum NumeralPermissions
 			{
 				String[] permParts = perm.getPermission().split("\\.");
 				String amount = permParts[permParts.length - 1];
-				return Integer.parseInt(amount.substring(0, amount.length() - 1));
+				return Integer.parseInt(amount.substring(0, amount.length()));
 			}
 		}
 		
