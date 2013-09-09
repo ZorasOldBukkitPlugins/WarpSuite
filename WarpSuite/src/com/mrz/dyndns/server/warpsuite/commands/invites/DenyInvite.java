@@ -33,7 +33,7 @@ public class DenyInvite extends WarpSuiteCommand
 		}
 		else
 		{
-			player.sendMessage(NEGATIVE_PRIMARY + "You have no pending requests!");
+			player.sendMessage(NEGATIVE_PRIMARY + "You don\'t have any pending warp requests!");
 			return true;
 		}
 	}
