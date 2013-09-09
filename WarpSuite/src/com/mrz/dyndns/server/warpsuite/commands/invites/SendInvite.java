@@ -59,7 +59,7 @@ public class SendInvite extends WarpSuiteCommand
 		}
 		else
 		{
-			target.sendMessage(NEGATIVE_PRIMARY + "Player \'" + NEGATIVE_SECONDARY + target.getName() + NEGATIVE_PRIMARY + "\' already has a pending warp request!");
+			player.sendMessage(NEGATIVE_PRIMARY + "Player \'" + NEGATIVE_SECONDARY + target.getName() + NEGATIVE_PRIMARY + "\' already has a pending warp request!");
 		}
 		return true;
 	}
