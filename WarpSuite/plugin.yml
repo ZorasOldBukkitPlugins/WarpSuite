@@ -47,7 +47,7 @@ permissions:
       warpsuite.invite.accept: true
       warpsuite.invite.deny: true
   warpsuite.admin.*:
-    description: Add admin permissions
+    description: All admin permissions
     children:
       warpsuite.admin.warp: true
       warpsuite.admin.sendto: true
@@ -63,6 +63,7 @@ permissions:
       warpsuite.public.remove: true
       warpsuite.public.list: true
       warpsuite.public.sendto: true
+      warpsuite.public.warp.*: true
   warpsuite.*:
     description: All permission nodes
     children:
