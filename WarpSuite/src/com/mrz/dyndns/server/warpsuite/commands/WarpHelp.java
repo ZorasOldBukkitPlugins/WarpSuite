@@ -121,7 +121,7 @@ public class WarpHelp extends WarpSuiteCommand
 		}
 		if(check(sender, Permissions.PUBLIC_LIST))
 		{
-			helpEntries.add(USAGE + "/warp list" + (Config.useWarpListPages ? USAGE_ARGUMENT + " (page)": "") + " public" + USAGE_SEPERATOR + " - " + USAGE_DESCRIPTION + "Lists public warps");
+			helpEntries.add(USAGE + "/warp list" + (Config.useWarpListPages ? USAGE_ARGUMENT + " (page)": "") + USAGE + " public" + USAGE_SEPERATOR + " - " + USAGE_DESCRIPTION + "Lists public warps");
 		}
 		if(check(sender, Permissions.PUBLIC_SENDTO))
 		{
