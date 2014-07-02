@@ -1,10 +1,15 @@
 name: WarpSuite
-version: 1.0.1
+version: 1.0.3
 description: All of your warping needs in one place
 author: MrZoraman
 main: com.mrz.dyndns.server.warpsuite.WarpSuite
 prefix: WarpSuite
 softdepend: [Multiverse-Core]
+commands:
+  go:
+  warp:
+  setwarp:
+  delwarp:
 permissions:
   warpsuite.user:
     description: Standard warp permissions
