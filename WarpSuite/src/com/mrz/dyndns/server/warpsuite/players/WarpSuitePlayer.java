@@ -52,6 +52,7 @@ public class WarpSuitePlayer
 	public void disposePlayerInstance()
 	{
 		player = null;
+		Util.Debug("Player " + playerName + " (" + getUUID() + ") has been disposed of.");
 	}
 	
 	public MyConfig getConfig()

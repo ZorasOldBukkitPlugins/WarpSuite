@@ -21,9 +21,6 @@ public final class Config
 		useMultiverse = config.getBoolean("useMultiverse", true);
 		useWarpListPages = config.getBoolean("warpListPages", true);
 		defaultToPublicWarp = config.getBoolean("defaultToPublicWarp", true);
-		forceWarpCommandOverride = config.getBoolean("forceCommandOverride.warp", false);
-		forceDelwarpCommandOverride = config.getBoolean("forceCommandOverride.delwarp", false);
-		forceSetwarpCommandOverride = config.getBoolean("forceCommandOverride.setwarp", false);
 	}
 	
 	public static int timer;
@@ -37,7 +34,4 @@ public final class Config
 	public static boolean cancelOnPvp;
 	public static boolean useWarpListPages;
 	public static boolean defaultToPublicWarp;
-	public static boolean forceWarpCommandOverride;
-	public static boolean forceDelwarpCommandOverride;
-	public static boolean forceSetwarpCommandOverride;
 }

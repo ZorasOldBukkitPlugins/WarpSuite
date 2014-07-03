@@ -47,17 +47,13 @@ public class WarpSuite extends JavaPlugin
 	public void onEnable()
 	{
 		Util.initialize(this);
-//		Util.setDebugging(true);
+		Util.setDebugging(true);
 		
 		cs = new BukkitCommandSystem(this);
 		
 		getConfig().options().copyDefaults(true);
 		saveConfig();
 		Config.load(getConfig());
-		
-//		boolean overrideWarp = Config.forceWarpCommandOverride;
-//		boolean overrideDelwarp = Config.forceDelwarpCommandOverride;
-//		boolean overrideSetwarp = Config.forceSetwarpCommandOverride;
 		
 		playerManager = new PlayerManager(this);
 		publicWarpManager = new PublicWarpManager(this);
