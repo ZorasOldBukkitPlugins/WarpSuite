@@ -61,7 +61,17 @@ public class PlayerManager implements Listener
 		}
 		else
 		{
-			if(Bukkit.getPlayer(player) == null)
+			Player[] onlinePlayers = Bukkit.getOnlinePlayers();
+			boolean playerFound = false;
+			for(Player p : onlinePlayers)
+			{
+				if(p.getName().equalsIgnoreCase(player))
+				{
+					playerFound = true;
+				}
+			}
+			
+			if(!playerFound)
 			{
 				return null;
 			}
