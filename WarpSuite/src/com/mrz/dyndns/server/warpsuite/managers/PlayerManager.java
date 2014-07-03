@@ -96,6 +96,7 @@ public class PlayerManager implements Listener
 		if(players.containsKey(player))
 		{
 			players.get(player).getConfig().saveCustomConfig();
+			players.get(player).disposePlayerInstance();
 			players.remove(player);
 			Util.Debug("Removed player " + player);
 		}

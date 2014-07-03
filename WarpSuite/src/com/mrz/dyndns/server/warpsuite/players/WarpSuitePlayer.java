@@ -32,25 +32,18 @@ public class WarpSuitePlayer
 		this.plugin = plugin;
 		config = new MyConfig("players/" + playerName, plugin);
 		manager = new WarpManager(config);
+		
+		player = Bukkit.getPlayer(playerName);//TODO: yes.
 	}
 	
 	public Player getPlayer()
 	{
-		if(player == null)
-		{
-			player = Bukkit.getPlayer(playerName);
-		}
-		
-		plugin.getServer().getScheduler().runTask(plugin, new Runnable() {
-			@Override
-			public void run()
-			{
-				//so it doesn't go stale
-				player = null;
-			}
-		});
-		
 		return player;
+	}
+	
+	public void disposePlayerInstance()
+	{
+		player = null;
 	}
 	
 	public MyConfig getConfig()
