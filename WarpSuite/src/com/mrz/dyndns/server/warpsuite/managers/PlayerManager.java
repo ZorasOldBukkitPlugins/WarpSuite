@@ -6,6 +6,8 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
+
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -30,7 +32,7 @@ public class PlayerManager implements Listener
 		
 		for(Player player : plugin.getServer().getOnlinePlayers())
 		{
-			addPlayer_async(player);
+			addPlayer_async(player.getName(), player.getUniqueId());
 		}
 	}
 	
@@ -76,8 +78,7 @@ public class PlayerManager implements Listener
 			}
 			else
 			{
-				//TODO: this seems sketchy
-				addPlayer_async(target);
+				addPlayer_async(player, target.getUniqueId());
 				return players.get(player);
 			}
 		}
@@ -86,8 +87,7 @@ public class PlayerManager implements Listener
 	@EventHandler
 	public void onPlayerJoin(AsyncPlayerPreLoginEvent event)
 	{
-		Player player = Bukkit.getPlayer(event.getUniqueId());
-		addPlayer_async(player);
+		addPlayer_async(event.getName(), event.getUniqueId());
 	}
 	
 	@EventHandler
@@ -96,9 +96,9 @@ public class PlayerManager implements Listener
 		removePlayer(event.getPlayer().getName());
 	}
 	
-	private void addPlayer_async(Player player)
+	private void addPlayer_async(String name, UUID player)
 	{
-		players.put(player.getName(), new WarpSuitePlayer(player.getUniqueId(), plugin));
+		players.put(name, new WarpSuitePlayer(player, plugin));
 		Util.Debug("Added player " + player);
 	}
 	

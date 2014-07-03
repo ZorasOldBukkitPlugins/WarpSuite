@@ -18,25 +18,32 @@ import com.mrz.dyndns.server.warpsuite.util.Util;
 
 public class WarpSuitePlayer
 {
-	private final String playerName;
-	private final MyConfig config;
-	private final WarpManager manager;
-	private final WarpSuite plugin;
+	private String playerName;
+	private MyConfig config;
+	private WarpManager manager;
+	private WarpSuite plugin;
 	
 	private SimpleLocation warpRequest = null;
 	private long timeWhenRequestWasMade = -1;
 	
 	private Player player = null;
 	
-	public WarpSuitePlayer(UUID playerUuid, WarpSuite plugin)
+	public WarpSuitePlayer(final UUID playerUuid, final WarpSuite plugin)
 	{
 		this.plugin = plugin;
 		
-		player = Bukkit.getPlayer(playerUuid);
-		this.playerName = player.getName();
+		Bukkit.getScheduler().runTask(plugin, new Runnable()
+		{
+			@Override
+			public void run()
+			{
+				player = Bukkit.getPlayer(playerUuid);
+				playerName = player.getName();
 
-		config = new MyConfig("players/" + playerName, plugin);
-		manager = new WarpManager(config);
+				config = new MyConfig("players/" + playerName, plugin);
+				manager = new WarpManager(config);
+			}
+		});
 	}
 	
 	public UUID getUUID()
