@@ -3,6 +3,8 @@ package com.mrz.dyndns.server.warpsuite.players;
 import static com.mrz.dyndns.server.warpsuite.util.Coloring.NEGATIVE_PRIMARY;
 import static com.mrz.dyndns.server.warpsuite.util.Coloring.NEGATIVE_SECONDARY;
 
+import java.util.UUID;
+
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -26,14 +28,20 @@ public class WarpSuitePlayer
 	
 	private Player player = null;
 	
-	public WarpSuitePlayer(String playerName, WarpSuite plugin)
+	public WarpSuitePlayer(UUID playerUuid, WarpSuite plugin)
 	{
-		this.playerName = playerName;
 		this.plugin = plugin;
+		
+		player = Bukkit.getPlayer(playerUuid);
+		this.playerName = player.getName();
+
 		config = new MyConfig("players/" + playerName, plugin);
 		manager = new WarpManager(config);
-		
-		player = Bukkit.getPlayer(playerName);//TODO: yes.
+	}
+	
+	public UUID getUUID()
+	{
+		return player.getUniqueId();
 	}
 	
 	public Player getPlayer()
@@ -180,15 +188,15 @@ public class WarpSuitePlayer
 					@Override
 					public void run()
 					{
-						if(plugin.getPendingWarpManager().isWaitingToTeleport(player.getName()))
+						if(plugin.getPendingWarpManager().isWaitingToTeleport(player.getUUID()))
 						{
-							plugin.getPendingWarpManager().removePlayer(player.getName());
+							plugin.getPendingWarpManager().removePlayer(player.getUUID());
 							player.teleport(sLoc);
 						}
 					}
 				}, Config.timer * 20L).getTaskId();
 
-				plugin.getPendingWarpManager().addPlayer(player.getName(), id);
+				plugin.getPendingWarpManager().addPlayer(player.getUUID(), id);
 				
 				return true;
 			}

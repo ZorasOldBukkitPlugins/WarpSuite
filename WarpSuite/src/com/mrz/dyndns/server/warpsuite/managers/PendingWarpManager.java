@@ -2,6 +2,7 @@ package com.mrz.dyndns.server.warpsuite.managers;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 import org.bukkit.Bukkit;
 
@@ -9,23 +10,23 @@ public class PendingWarpManager
 {
 	public PendingWarpManager()
 	{
-		playersWaitingToTeleport = new HashMap<String, Integer>();
+		playersWaitingToTeleport = new HashMap<UUID, Integer>();
 	}
 	
-	private Map<String, Integer> playersWaitingToTeleport;
+	private final Map<UUID, Integer> playersWaitingToTeleport;
 	
-	public void addPlayer(String player, int id)
+	public void addPlayer(UUID player, int id)
 	{
 		playersWaitingToTeleport.put(player, id);
 	}
 	
-	public void removePlayer(String player)
+	public void removePlayer(UUID player)
 	{
 		Bukkit.getScheduler().cancelTask(playersWaitingToTeleport.get(player));
 		playersWaitingToTeleport.remove(player);
 	}
 	
-	public boolean isWaitingToTeleport(String player)
+	public boolean isWaitingToTeleport(UUID player)
 	{
 		if(Bukkit.getPlayer(player) == null)
 		{

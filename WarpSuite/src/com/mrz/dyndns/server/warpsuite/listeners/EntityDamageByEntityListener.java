@@ -1,6 +1,5 @@
 package com.mrz.dyndns.server.warpsuite.listeners;
 
-import org.bukkit.Bukkit;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -25,18 +24,17 @@ public class EntityDamageByEntityListener implements Listener
 	{
 		if(event.getEntityType().equals(EntityType.PLAYER))
 		{
-			String playerName = ((Player) event.getEntity()).getName();
+			Player player = (Player) event.getEntity();
 			
 			if(event.getDamager().getType().equals(EntityType.PLAYER))
 			{
 				//playerPVP
 				if(Config.cancelOnPvp)
 				{
-					if(plugin.getPendingWarpManager().isWaitingToTeleport(playerName))
+					if(plugin.getPendingWarpManager().isWaitingToTeleport(player.getUniqueId()))
 					{
-						plugin.getPendingWarpManager().removePlayer(playerName);
-						Player p = Bukkit.getPlayer(playerName);
-						p.sendMessage(Coloring.NEGATIVE_PRIMARY + "You have been damaged by PVP! You will not be warped...");
+						plugin.getPendingWarpManager().removePlayer(player.getUniqueId());
+						player.sendMessage(Coloring.NEGATIVE_PRIMARY + "You have been damaged by PVP! You will not be warped...");
 						return;
 					}
 				}
@@ -46,11 +44,10 @@ public class EntityDamageByEntityListener implements Listener
 				//damage
 				if(Config.cancelOnMobDamage)
 				{
-					if(plugin.getPendingWarpManager().isWaitingToTeleport(playerName))
+					if(plugin.getPendingWarpManager().isWaitingToTeleport(player.getUniqueId()))
 					{
-						plugin.getPendingWarpManager().removePlayer(playerName);
-						Player p = Bukkit.getPlayer(playerName);
-						p.sendMessage(Coloring.NEGATIVE_PRIMARY + "You have been damaged by a mob (" + Coloring.NEGATIVE_SECONDARY + "a " + 
+						plugin.getPendingWarpManager().removePlayer(player.getUniqueId());
+						player.sendMessage(Coloring.NEGATIVE_PRIMARY + "You have been damaged by a mob (" + Coloring.NEGATIVE_SECONDARY + "a " + 
 								event.getDamager().getType().toString().toLowerCase().replace("_", " ") + ", to be precise" + Coloring.NEGATIVE_PRIMARY + ")! You will not be warped...");
 						return;
 					}

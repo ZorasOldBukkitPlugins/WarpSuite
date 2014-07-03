@@ -6,12 +6,11 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.AsyncPlayerPreLoginEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 import com.mrz.dyndns.server.warpsuite.WarpSuite;
@@ -31,7 +30,7 @@ public class PlayerManager implements Listener
 		
 		for(Player player : plugin.getServer().getOnlinePlayers())
 		{
-			addPlayer(player.getName());
+			addPlayer_async(player);
 		}
 	}
 	
@@ -62,31 +61,33 @@ public class PlayerManager implements Listener
 		else
 		{
 			Player[] onlinePlayers = Bukkit.getOnlinePlayers();
-			boolean playerFound = false;
+			Player target = null;
 			for(Player p : onlinePlayers)
 			{
 				if(p.getName().equalsIgnoreCase(player))
 				{
-					playerFound = true;
+					target = p;
 				}
 			}
 			
-			if(!playerFound)
+			if(target == null)
 			{
 				return null;
 			}
 			else
 			{
-				addPlayer(player);
+				//TODO: this seems sketchy
+				addPlayer_async(target);
 				return players.get(player);
 			}
 		}
 	}
 	
 	@EventHandler
-	public void onPlayerJoin(PlayerJoinEvent event)
+	public void onPlayerJoin(AsyncPlayerPreLoginEvent event)
 	{
-		addPlayer(event.getPlayer().getName());
+		Player player = Bukkit.getPlayer(event.getUniqueId());
+		addPlayer_async(player);
 	}
 	
 	@EventHandler
@@ -95,9 +96,9 @@ public class PlayerManager implements Listener
 		removePlayer(event.getPlayer().getName());
 	}
 	
-	private void addPlayer(String player)
+	private void addPlayer_async(Player player)
 	{
-		players.put(player, new WarpSuitePlayer(player, plugin));
+		players.put(player.getName(), new WarpSuitePlayer(player.getUniqueId(), plugin));
 		Util.Debug("Added player " + player);
 	}
 	

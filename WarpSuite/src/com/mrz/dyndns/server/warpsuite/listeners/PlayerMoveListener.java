@@ -24,10 +24,10 @@ public class PlayerMoveListener implements Listener
 		if(Config.cancelOnMove)
 		{
 			Player player = event.getPlayer();
-			if(plugin.getPendingWarpManager().isWaitingToTeleport(player.getName()))
+			if(plugin.getPendingWarpManager().isWaitingToTeleport(player.getUniqueId()))
 			{
 				player.sendMessage(Coloring.NEGATIVE_PRIMARY + "You moved! You will not be warped...");
-				plugin.getPendingWarpManager().removePlayer(player.getName());
+				plugin.getPendingWarpManager().removePlayer(player.getUniqueId());
 			}
 		}
 	}
