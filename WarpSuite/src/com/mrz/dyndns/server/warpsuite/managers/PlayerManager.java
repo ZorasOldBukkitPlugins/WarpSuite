@@ -12,7 +12,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.AsyncPlayerPreLoginEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 import com.mrz.dyndns.server.warpsuite.WarpSuite;
@@ -85,9 +85,9 @@ public class PlayerManager implements Listener
 	}
 	
 	@EventHandler
-	public void onPlayerJoin(AsyncPlayerPreLoginEvent event)
+	public void onPlayerJoin(PlayerJoinEvent event)
 	{
-		addPlayer_async(event.getName(), event.getUniqueId());
+		addPlayer_async(event.getPlayer().getName(), event.getPlayer().getUniqueId());
 	}
 	
 	@EventHandler

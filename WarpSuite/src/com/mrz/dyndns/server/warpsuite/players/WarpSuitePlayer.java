@@ -31,19 +31,12 @@ public class WarpSuitePlayer
 	public WarpSuitePlayer(final UUID playerUuid, final WarpSuite plugin)
 	{
 		this.plugin = plugin;
-		
-		Bukkit.getScheduler().runTask(plugin, new Runnable()
-		{
-			@Override
-			public void run()
-			{
-				player = Bukkit.getPlayer(playerUuid);
-				playerName = player.getName();
 
-				config = new MyConfig("players/" + playerName, plugin);
-				manager = new WarpManager(config);
-			}
-		});
+		player = Bukkit.getPlayer(playerUuid);
+		playerName = player.getName();
+
+		config = new MyConfig("players/" + playerName, plugin);
+		manager = new WarpManager(config);
 	}
 	
 	public UUID getUUID()
