@@ -60,7 +60,7 @@ public final class Util
 	public static boolean isValidWarpName(String warpName)
 	{
 		return (warpName.contains("\'")
-				|| warpName.contains("\'")
+				|| warpName.contains("\'")//TODO: is this redundant?
 				|| warpName.contains(" ")
 				|| warpName.contains(".") == false);
 	}
